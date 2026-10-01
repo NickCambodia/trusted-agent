@@ -1090,7 +1090,7 @@ const TRAINING = {
    "objectives": [
     "Know the difference between 2 kinds of property title, and why the difference matters",
     "Explain the 3 rules of foreign ownership to any client, in simple words",
-    "Know the 4 steps of the buying process, in order"
+    "Know the 6 steps of buying an off-plan condo, in order, and explain a payment plan with real numbers"
    ],
    "sections": [
     {
@@ -1134,48 +1134,92 @@ const TRAINING = {
     },
     {
      "label": "The buying process",
-     "heading": "4 steps, in order. Memorize this order.",
-     "body": "Every client will ask \"what happens next?\" at some point. Know this order without having to look it up.",
+     "heading": "6 steps, from booking to the title in your name",
+     "body": "This is how buying an off-plan condo works in Cambodia. Every client will ask \"what happens next?\" Know this order, and the numbers in their plan, without looking it up.",
      "rules": [
       {
-       "title": "Reservation",
-       "detail": "The client pays a small deposit, usually $1,000 to $3,000. This holds the unit while paperwork is prepared. Ask the developer about their specific refund policy before the client pays.",
-       "action": "Confirm the refund policy in writing before the client pays the reservation deposit."
+       "title": "Booking",
+       "detail": "The booking fee holds one specific unit while the contract is prepared. It is usually counted toward the down payment. Refund terms differ by developer.",
+       "action": "Confirm in writing whether the booking fee is refundable, and when, before the client pays."
       },
       {
-       "title": "Sale and Purchase Agreement (SPA)",
-       "detail": "This is the main legal contract between the buyer and the developer. Always recommend the client hire their own independent lawyer to review it before signing.",
-       "action": "Say this exact sentence to every client: \"I recommend having your own lawyer review the SPA before you sign.\""
+       "title": "Down payment and the contract (SPA)",
+       "detail": "The Sale and Purchase Agreement (SPA) is the main legal contract between the buyer and the developer. The down payment, usually 20 to 30%, is paid when it is signed, and the booking fee is part of it.",
+       "action": "Say this to every client: \"I recommend having your own lawyer review the SPA before you sign.\""
       },
       {
-       "title": "Payment schedule",
-       "detail": "Payments are usually made in stages during construction, or as one larger payment if the unit is already built. Know the payment schedule for every project you present.",
-       "action": "Before showing a project, check its payment schedule so you can answer questions without pausing."
+       "title": "Monthly instalments",
+       "detail": "While the building goes up, the client pays in instalments: monthly, quarterly, or at construction milestones. Each project has its own plan.",
+       "action": "Before you present a project, know its exact plan: how much, how often, and for how long."
       },
       {
-       "title": "Handover and title registration",
-       "detail": "The developer hands over the finished unit. The client makes the final payment. Then the strata title is registered in the client's name at the Ministry of Land Management. A good agent helps coordinate this step.",
-       "action": "Tell the client this step exists early on, so the ending of the process is not a surprise."
+       "title": "Balance at handover",
+       "detail": "The largest single payment is usually the last one, at completion. Some clients pay it in cash; some use a bank loan.",
+       "action": "Tell the client early how large the final payment is and when it falls due, so they can plan for it."
+      },
+      {
+       "title": "Handover",
+       "detail": "Before taking the keys, the client inspects the unit and lists any defects (a snag list) for the developer to fix.",
+       "action": "Go to the handover with the client, or send them a defect checklist beforehand."
+      },
+      {
+       "title": "Title registration",
+       "detail": "Once the unit is fully paid, the strata title is registered in the buyer's name at the Ministry of Land Management. This is what makes them the legal owner.",
+       "action": "Tell the client about this step from the start, and follow up until they hold the title."
       }
      ],
      "flow": [
       {
-       "title": "Reservation",
-       "sub": "The client pays a small deposit, usually $1,000 to $3,000."
+       "title": "Booking",
+       "sub": "Pay a booking fee, often $1,000, to hold the unit."
       },
       {
-       "title": "Sale and Purchase Agreement (SPA)",
-       "sub": "This is the main legal contract between the buyer and the developer."
+       "title": "Down payment and the contract (SPA)",
+       "sub": "About 20% of the price, paid when the client signs the Sale and Purchase Agreement (SPA)."
       },
       {
-       "title": "Payment schedule",
-       "sub": "Payments are usually made in stages during construction, or as one larger payment if the unit is already built."
+       "title": "Monthly instalments",
+       "sub": "A share of the price each month during construction, for example 1% a month for 35 months."
       },
       {
-       "title": "Handover and title registration",
-       "sub": "The developer hands over the finished unit."
+       "title": "Balance at handover",
+       "sub": "The rest, often 40 to 50%, when the building is finished."
+      },
+      {
+       "title": "Handover",
+       "sub": "Inspect the finished unit and collect the keys."
+      },
+      {
+       "title": "Title registration",
+       "sub": "The strata title is registered in the buyer's name."
       }
-     ]
+     ],
+     "calc": {
+      "title": "A typical off-plan payment plan, for a unit at $90,000",
+      "rows": [
+       {
+        "label": "Booking fee (part of the down payment)",
+        "value": "$1,000"
+       },
+       {
+        "label": "Down payment at the contract, 20%",
+        "value": "$18,000"
+       },
+       {
+        "label": "Monthly instalments, 1% for 35 months",
+        "value": "$900 a month ($31,500)"
+       },
+       {
+        "label": "Balance at handover, 45%",
+        "value": "$40,500"
+       },
+       {
+        "label": "Total",
+        "value": "$90,000",
+        "total": true
+       }
+      ]
+     }
     }
    ],
    "reflection": "In your own simple words, explain the foreign ownership rules to a first-time buyer from Japan who has never bought property outside Japan before.",
@@ -1216,13 +1260,13 @@ const TRAINING = {
     {
      "q": "What is the first step a buyer takes to hold a specific unit?",
      "opts": [
-      "Sign the SPA immediately",
+      "Sign the contract (SPA) immediately",
       "Apply for a visa",
-      "Pay a reservation deposit",
-      "Pay the full purchase price"
+      "Pay a booking fee to hold the unit",
+      "Pay the full price"
      ],
      "correct": 2,
-     "explain": "The reservation deposit comes first, usually $1,000 to $3,000. It holds the unit while paperwork is prepared. Always confirm the refund policy before the client pays."
+     "explain": "A booking fee comes first, often $1,000. It holds the unit while the contract is prepared and is usually counted toward the down payment. Confirm the refund terms before the client pays."
     },
     {
      "q": "Soft Title is:",
@@ -1234,6 +1278,17 @@ const TRAINING = {
      ],
      "correct": 2,
      "explain": "Soft Title is not recognized at the national level. It is only for Cambodian citizens. Never recommend it to a foreign client."
+    },
+    {
+     "q": "A unit costs $90,000. The plan is 20% down, then 1% a month for 35 months. How much is due at handover?",
+     "opts": [
+      "$18,000",
+      "$31,500",
+      "$40,500",
+      "$90,000"
+     ],
+     "correct": 2,
+     "explain": "20% down is $18,000, the monthly payments add up to 35%, $31,500, so 45% is left at handover: $40,500. Clients need to plan for this last, largest payment."
     }
    ],
    "roleplay": {
