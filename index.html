@@ -570,6 +570,7 @@ main.home{ padding-bottom:0; }
 .at-flow.fl-seq li:not(.fl-seen){ opacity:.28; }
 .at-flow li.fl-now{ background:color-mix(in srgb, var(--u,var(--gold)) 12%, var(--card)); box-shadow:0 0 0 2px color-mix(in srgb, var(--u,var(--gold)) 45%, transparent); transform:translateX(4px); }
 .at-flow li.fl-now::before{ box-shadow:0 0 0 5px color-mix(in srgb, var(--u,var(--gold)) 25%, transparent); }
+.at-src{ margin-top:10px; font-size:.78rem; color:var(--dim); font-style:italic; }
 .at-flow b{ display:block; font-size:1rem; line-height:1.3; padding-top:5px; } .at-flow span{ display:block; font-size:.9rem; line-height:1.45; color:var(--dim); margin-top:2px; }
 .at-grid{ margin-top:18px; display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:10px; } .at-grid .card{ padding:12px 14px; margin:0; }
 .at-grid b{ display:block; font-size:.95rem; margin-bottom:4px; } .at-grid p{ font-size:.92rem; line-height:1.5; color:var(--dim); margin:0; }
@@ -1135,16 +1136,16 @@ const TRAINING = {
     {
      "label": "The buying process",
      "heading": "6 steps, from booking to the title in your name",
-     "body": "This is how buying an off-plan condo works in Cambodia. Every client will ask \"what happens next?\" Know this order, and the numbers in their plan, without looking it up.",
+     "body": "Most condos in Cambodia follow these same steps. What changes from project to project is the money: how much is paid at each step, and over how long. Learn the steps once, then learn each project's numbers.",
      "rules": [
       {
        "title": "Booking",
-       "detail": "The booking fee holds one specific unit while the contract is prepared. It is usually counted toward the down payment. Refund terms differ by developer.",
+       "detail": "The booking fee holds one specific unit while the contract is prepared, usually $500 to $2,000. It is normally counted toward the down payment. Refund terms differ by developer.",
        "action": "Confirm in writing whether the booking fee is refundable, and when, before the client pays."
       },
       {
        "title": "Down payment and the contract (SPA)",
-       "detail": "The Sale and Purchase Agreement (SPA) is the main legal contract between the buyer and the developer. The down payment, usually 20 to 30%, is paid when it is signed, and the booking fee is part of it.",
+       "detail": "The Sale and Purchase Agreement (SPA) is the main legal contract between the buyer and the developer. Check the terms, the developer's obligations, the penalties for delay, the handover date and how the title will be delivered. The down payment, usually 20 to 30%, is due when it is signed, and the booking fee is part of it.",
        "action": "Say this to every client: \"I recommend having your own lawyer review the SPA before you sign.\""
       },
       {
@@ -1154,7 +1155,7 @@ const TRAINING = {
       },
       {
        "title": "Balance at handover",
-       "detail": "The largest single payment is usually the last one, at completion. Some clients pay it in cash; some use a bank loan.",
+       "detail": "The largest single payment is usually the last one, when the building is finished. The client pays it in cash or with a bank loan, so a client who needs a loan should start early.",
        "action": "Tell the client early how large the final payment is and when it falls due, so they can plan for it."
       },
       {
@@ -1164,14 +1165,14 @@ const TRAINING = {
       },
       {
        "title": "Title registration",
-       "detail": "Once the unit is fully paid, the strata title is registered in the buyer's name at the Ministry of Land Management. This is what makes them the legal owner.",
+       "detail": "Once the unit is fully paid and finished, the strata title is registered in the buyer's name with the Ministry of Land Management, Urban Planning and Construction (MLMUPC). This is what makes them the legal owner.",
        "action": "Tell the client about this step from the start, and follow up until they hold the title."
       }
      ],
      "flow": [
       {
        "title": "Booking",
-       "sub": "Pay a booking fee, often $1,000, to hold the unit."
+       "sub": "Choose a unit and pay a booking fee, usually $500 to $2,000, to hold it."
       },
       {
        "title": "Down payment and the contract (SPA)",
@@ -1179,11 +1180,11 @@ const TRAINING = {
       },
       {
        "title": "Monthly instalments",
-       "sub": "A share of the price each month during construction, for example 1% a month for 35 months."
+       "sub": "Paid during construction: monthly, quarterly, or at construction stages. For example 1% a month for 35 months."
       },
       {
        "title": "Balance at handover",
-       "sub": "The rest, often 40 to 50%, when the building is finished."
+       "sub": "The rest, often 40 to 50%, at handover: in cash, or with a bank loan."
       },
       {
        "title": "Handover",
@@ -1191,7 +1192,7 @@ const TRAINING = {
       },
       {
        "title": "Title registration",
-       "sub": "The strata title is registered in the buyer's name."
+       "sub": "Once fully paid, the strata title is registered in the buyer's name with the Ministry of Land Management (MLMUPC)."
       }
      ],
      "calc": {
@@ -1219,7 +1220,8 @@ const TRAINING = {
         "total": true
        }
       ]
-     }
+     },
+     "source": "Steps from Realestate.com.kh, Cambodia Condo Investment Guide 2026 (Buyer Toolbox)"
     }
    ],
    "reflection": "In your own simple words, explain the foreign ownership rules to a first-time buyer from Japan who has never bought property outside Japan before.",
@@ -6050,6 +6052,7 @@ function atExtras(x){ let h='';
   if(x.table) h+=`<div class="at-table"><table><thead><tr>${x.table.headers.map(t=>`<th>${esc(t)}</th>`).join('')}</tr></thead><tbody>${x.table.rows.map(r=>`<tr>${r.map(t=>`<td>${esc(t)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
   if(x.calc) h+=`<div class="card at-calc"><p class="at-box-t">${esc(x.calc.title)}</p>${x.calc.rows.map(r=>`<div class="at-calc-r${r.total?' tot':''}"><span>${esc(r.label)}</span><b>${esc(r.value)}</b></div>`).join('')}</div>`;
   (x.diagrams||[]).forEach(d=>{ h+=d==='floors'?atFloors():d==='quota'?atQuota():''; });
+  if(x.source) h+=`<p class="at-src">${esc(x.source)}</p>`;
   if(x.warning) h+=`<div class="at-warn"><span class="res-ic">${ICO.warn}</span><p>${esc(x.warning)}</p></div>`;
   return h; }
 function atFloors(){ const fl=['4','3','2','1'];
