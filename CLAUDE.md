@@ -24,6 +24,14 @@ text, one idea per card, natural voices, a journey home screen (a tower: each le
 - `sw.js`: offline copy, caches `ta-*`. Storage: localStorage `trusted-agent-v1`, IndexedDB `trusted-agent`.
 - Icons: `icons/icon-{180,192,512}.png` (a brass house with a check on deep ink).
 
+## Steps and voice (2026-10-02)
+- A section's numbered steps (`flow`) are read one at a time: the coach introduces the section, then each step lights up
+  (`fl-now`) while its clip `c-at{i}-s{k}-f{j}` plays ("Step one: …"); unread steps wait faded (`fl-seq`); tap a step to
+  hear it again (`ls-flow`). Coach off = all steps shown.
+- The voice never reads markup: `flowing()` in make_voice.py turns pause dots into commas/full stops so each line is one
+  natural sentence; `speakable()` says an abbreviation once ("Capital Gains Tax (CGT)" → the name) and Realestate.com.kh
+  as "Real Estate dot com dot K H".
+
 ## Writing rules
 No dashes in content; sentence case; abbreviations written out on first use; numbers spoken naturally; nothing
 company-specific. Verify any market number against a source before adding it.

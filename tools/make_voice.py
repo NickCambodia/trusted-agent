@@ -34,6 +34,8 @@ def number(txt):
         i, d = txt.split("."); return words(i) + " point " + " ".join(_ONES[int(c)] for c in d)
     return words(txt)
 def speakable(t):
+    t = re.sub(r"\s*\(([A-Z]{2,6})\)", "", t)                      # "Capital Gains Tax (CGT)" is said once, as the name
+    t = re.sub(r"Realestate\.com\.kh|\bREAKH\b", "Real Estate dot com dot K H", t)
     t = t.replace("–", " to ").replace("&", " and ").replace("G.A.T.O", "Gato").replace("~", "about ")
     def money(m):
         v = float(m.group(1).replace(",", "")) * {"K": 1000, "k": 1000, "M": 1000000}.get(m.group(2) or "", 1)
@@ -45,8 +47,15 @@ def speakable(t):
     t = re.sub(r"\b([1-4])BR\b", lambda m: words(m.group(1)) + "-bedroom", t)
     t = re.sub(r"(?<![\d,$])\b(19|20)(\d\d)\b(?!,\d)", lambda m: words(m.group(1)) + " " + (words(m.group(2)) if m.group(2) != "00" else "hundred") if int(m.group(2)) >= 10 else words(m.group(1) + m.group(2)), t)
     t = re.sub(r"\b(\d{1,3}(?:,\d{3})+|\d+)\+", lambda m: number(m.group(1)) + " plus", t)
-    t = re.sub(r"\bSPA\b", "S P A", t); t = re.sub(r"\bCGT\b", "C G T", t); t = re.sub(r"\bREAKH\b", "Realestate dot com dot K H", t)
+    t = re.sub(r"\bSPA\b", "S P A", t); t = re.sub(r"\bCGT\b", "C G T", t); t = t
     return re.sub(r"\s+", " ", t).strip()
+def flowing(t):
+    """Script markup is for the learner's eyes (pause dots, stress stars, falling pitch). The voice gets one natural
+    sentence: a short pause becomes a comma, a long one a full stop. Each fragment rendered on its own sounded choppy."""
+    t = t.replace("↘", "").replace("*", "")
+    t = re.sub(r"\s*‧‧‧‧‧\s*", ". ", t); t = re.sub(r"\s*‧‧‧\s*", ", ", t)
+    t = re.sub(r"([,.!?:;])\s*,\s*", r"\1 ", t); t = re.sub(r",\s*([.!?])", r"\1", t)
+    return re.sub(r"\s+", " ", t).strip(" ,")
 plain = lambda h: re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", h)).strip()
 dot = lambda t: t if re.search(r'[.?!"”]$', t.strip()) else t.strip() + "."
 
@@ -77,6 +86,8 @@ def jobs():
                 add(f"c-lesson{i}-ask" if pk == 0 else f"c-lesson{i}-p{pk}-ask", COACH, dot(x["heading"]) + " Which is the professional way?")
                 add(f"qz{i}-a", COACH, x["before"]["text"]); add(f"qz{i}-b", COACH, x["now"]["text"])
                 add(f"c-lesson{i}-p{pk}-note", COACH, x.get("pairWhy") or (x["rules"][0]["detail"] if x.get("rules") else plain(x["body"]))); pk += 1
+            for j, f in enumerate(x.get("flow", [])):
+                add(f"c-at{i}-s{k}-f{j}", COACH, f"Step {words(j + 1)}: {dot(f['title'])} {dot(f['sub'])}")
             for j, r in enumerate(x.get("rules", [])):
                 add(f"c-at{i}-s{k}-r{j}", COACH, f"{dot(r['title'])} {r['detail']}" + (f" Do this: {r['action']}" if r.get("action") else ""))
         rp = l["roleplay"]
@@ -103,7 +114,7 @@ def main():
         m = re.search(r"=\s*(\{.*\})\s*;?\s*$", open(mf, encoding="utf-8").read(), re.S)
         if m: old = json.loads(m.group(1))
     for lid, voice, speed, text in jobs():
-        text = speakable(text)
+        text = speakable(flowing(text))
         h = hashlib.sha1(f"kokoro|norm1|lead{mv.LEAD}|{voice}|{speed}|{mv.SHORT}|{mv.LONG}|{text}".encode()).hexdigest()[:12]
         fn = f"{lid}.m4a"; path = os.path.join(OUT, fn)
         if old.get(lid, {}).get("h") == h and os.path.exists(path):

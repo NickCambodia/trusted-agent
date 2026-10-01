@@ -566,6 +566,10 @@ main.home{ padding-bottom:0; }
 .at-flow{ list-style:none; margin-top:18px; counter-reset:f; } .at-flow li{ counter-increment:f; position:relative; padding:0 0 14px 44px; min-height:40px; }
 .at-flow li::before{ content:counter(f); position:absolute; left:0; top:0; width:30px; height:30px; border-radius:50%; background:linear-gradient(145deg, var(--u,var(--gold)), var(--u-d,var(--gold))); color:#fff; font-weight:600; font-size:.85rem; display:flex; align-items:center; justify-content:center; }
 .at-flow li::after{ content:''; position:absolute; left:14px; top:32px; bottom:2px; width:2px; background:var(--line); } .at-flow li:last-child{ padding-bottom:0; } .at-flow li:last-child::after{ display:none; }
+.at-flow li{ border-radius:14px; transition:background .3s, opacity .3s, transform .3s; cursor:pointer; }
+.at-flow.fl-seq li:not(.fl-seen){ opacity:.28; }
+.at-flow li.fl-now{ background:color-mix(in srgb, var(--u,var(--gold)) 12%, var(--card)); box-shadow:0 0 0 2px color-mix(in srgb, var(--u,var(--gold)) 45%, transparent); transform:translateX(4px); }
+.at-flow li.fl-now::before{ box-shadow:0 0 0 5px color-mix(in srgb, var(--u,var(--gold)) 25%, transparent); }
 .at-flow b{ display:block; font-size:1rem; line-height:1.3; padding-top:5px; } .at-flow span{ display:block; font-size:.9rem; line-height:1.45; color:var(--dim); margin-top:2px; }
 .at-grid{ margin-top:18px; display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:10px; } .at-grid .card{ padding:12px 14px; margin:0; }
 .at-grid b{ display:block; font-size:.95rem; margin-bottom:4px; } .at-grid p{ font-size:.92rem; line-height:1.5; color:var(--dim); margin:0; }
@@ -808,8 +812,8 @@ const TRAINING = {
    "sections": [
     {
      "label": "Where these numbers come from",
-     "heading": "Realestate.com.kh (REAKH): our data partner",
-     "body": "Every number in this lesson comes from Realestate.com.kh (REAKH), our official listing partner and the leading property platform in Cambodia. When you say a number to a client, you can say where it came from. That is what makes the number trustworthy instead of a guess.",
+     "heading": "Realestate.com.kh (REAKH): where the numbers come from",
+     "body": "Every number in this lesson comes from Realestate.com.kh (REAKH), the leading property platform in Cambodia. When you say a number to a client, you can say where it came from. That is what makes the number trustworthy instead of a guess.",
      "dataTitle": "Cambodia condo market: REAKH 2026 report",
      "data": [
       "Average price across Phnom Penh: $1,800/sqm (gross floor area)",
@@ -1152,6 +1156,24 @@ const TRAINING = {
        "title": "Handover and title registration",
        "detail": "The developer hands over the finished unit. The client makes the final payment. Then the strata title is registered in the client's name at the Ministry of Land Management. A good agent helps coordinate this step.",
        "action": "Tell the client this step exists early on, so the ending of the process is not a surprise."
+      }
+     ],
+     "flow": [
+      {
+       "title": "Reservation",
+       "sub": "The client pays a small deposit, usually $1,000 to $3,000."
+      },
+      {
+       "title": "Sale and Purchase Agreement (SPA)",
+       "sub": "This is the main legal contract between the buyer and the developer."
+      },
+      {
+       "title": "Payment schedule",
+       "sub": "Payments are usually made in stages during construction, or as one larger payment if the unit is already built."
+      },
+      {
+       "title": "Handover and title registration",
+       "sub": "The developer hands over the finished unit."
       }
      ]
     }
@@ -5865,12 +5887,24 @@ function enterCard(){ stopAll(); cancelRec(); const c=lsess.cards[lsess.n], i=ls
   else if(c.type==='pq') cs(`c-at${i}-pq${c.k}`);
   else if(c.type==='decide') cs(`c-dc${i}-s${c.k}`);
   else if(c.type==='principle') cs(`c-dc${i}-pr`);
-  else if(c.type==='sec') cs(`c-at${i}-s${c.k}`);
+  else if(c.type==='sec'){ if(LESSONS[i].sections[c.k].flow) flowRead(t,i,c.k); else cs(`c-at${i}-s${c.k}`); }
   else if(c.type==='rule') cs(`c-at${i}-s${c.k}-r${c.j}`);
   else if(c.type==='rp') cs(`c-at${i}-rp`);
   else if(c.type==='debrief') cs(`c-at${i}-db`);
   else if(c.type==='reflect') cs(`c-at${i}-rf`);
   else if(c.type==='done'&&lsess.kind==='lesson') cs('c-fx-ldone'); }
+/* A list of steps (flow) is read one step at a time: the coach introduces the section, then each step lights up while
+   the coach reads it (clip c-at{i}-s{k}-f{j}); read steps stay, the rest wait faded. Tap any step to hear it again.
+   With the coach off, every step simply shows. */
+async function flowRead(t,i,k){ const ol=document.querySelector('.at-flow'); if(!ol) return;
+  const items=[...ol.querySelectorAll('li')], done=()=>{ ol.classList.remove('fl-seq'); if(t===tok) items.forEach(li=>li.classList.remove('fl-now')); };   // a tap that interrupted us keeps its own highlight
+  if(!await wait(LEAD,t)||!await coachSay(`c-at${i}-s${k}`,t)) return done();
+  for(let j=0;j<items.length;j++){ if(t!==tok) return done();
+    items.forEach(li=>li.classList.remove('fl-now')); items[j].classList.add('fl-now','fl-seen');
+    items[j].scrollIntoView({block:'nearest',behavior:reduceMotion()?'auto':'smooth'});
+    if(!await wait(250,t)||!await coachSay(`c-at${i}-s${k}-f${j}`,t)) return done(); }
+  done(); }
+const reduceMotion=()=>matchMedia('(prefers-reduced-motion: reduce)').matches;
 const LEAD=500;   // ms of quiet before audio that starts by itself, so the screen settles first (a tap plays at once)
 async function lsListen(auto){ const c=lsess.cards[lsess.n]; stopAll(); c.step='listen'; render(); const t=++tok;
   if(auto&&!await wait(LEAD,t)) return;
@@ -5915,6 +5949,9 @@ function lessonAct(a,btn){
   if(a==='ls-exit'){ const f=lsess.from; endLesson(); return go(f); }
   if(a==='ls-next'){ if(lsess.n<lsess.cards.length-1){ lsess.n++; enterCard(); } return; }
   if(a==='ls-why'){ c.why=true; return render(); }
+  if(a==='ls-flow'){ const j=+btn.dataset.f, ol=btn.closest('.at-flow'); stopAll(); const t=++tok;
+    ol.classList.remove('fl-seq'); ol.querySelectorAll('li').forEach(li=>li.classList.toggle('fl-now',li===btn));
+    coachSay(`c-at${lsess.i}-s${c.k}-f${j}`,t).then(()=>{ if(t===tok) btn.classList.remove('fl-now'); }); return; }
   if(a==='ls-pick'){ if(c.pick) return; c.pick=btn.dataset.o; c.ok=c.pick==='b'; stopAll(); render(); quizVerdict(c.pick==='b',`c-lesson${lsess.i}-p${c.k}-note`); return; }
   if(a==='ls-qread') return quizRead();
   if(a==='ls-listen') return lsListen();
@@ -5951,7 +5988,7 @@ const rpHow=rp=>{ const w=rp.turns.find(t=>t.client.length); return !w?'Hear the
 function atExtras(x){ let h='';
   if(x.analogy) h+=`<div class="at-analogy"><span>Think of it like this</span>${esc(x.analogy)}</div>`;
   if(x.box) h+=`<div class="card at-box">${x.box.title?`<p class="at-box-t">${esc(x.box.title)}</p>`:''}<ul>${x.box.lines.map(d=>`<li>${esc(d)}</li>`).join('')}</ul></div>`;
-  if(x.flow) h+=`<ol class="at-flow">${x.flow.map(f=>`<li><b>${esc(f.title)}</b><span>${esc(f.sub)}</span></li>`).join('')}</ol>`;
+  if(x.flow) h+=`<ol class="at-flow${coachOn()?' fl-seq':''}">${x.flow.map((f,j)=>`<li data-act="ls-flow" data-f="${j}" tabindex="0"><b>${esc(f.title)}</b><span>${esc(f.sub)}</span></li>`).join('')}</ol>`;
   if(x.grid) h+=`<div class="at-grid">${x.grid.map(([t,d])=>`<div class="card"><b>${esc(t)}</b><p>${esc(d)}</p></div>`).join('')}</div>`;
   if(x.bars) h+=`<div class="card at-bars"><p class="at-box-t">${esc(x.bars.title)}</p>${x.bars.bars.map(b=>`<div class="at-bar${b.dim?' dim':''}"><div class="at-bar-l"><span>${esc(b.label)}</span><b>${esc(b.valueLabel)}</b></div><i style="width:${b.pct}%"></i></div>`).join('')}</div>`;
   if(x.data) h+=`<div class="card at-box">${x.dataTitle?`<p class="at-box-t">${esc(x.dataTitle)}</p>`:''}<ul>${x.data.map(d=>`<li>${esc(d)}</li>`).join('')}</ul></div>`;
