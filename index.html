@@ -664,7 +664,7 @@ html{ font-size:17px; }
 .il .suit{ fill:var(--il-suit); } .il .cl .suit{ fill:var(--il-client); }
 .il .shirt{ fill:#FFFFFF; stroke:none; }
 .il .wood{ fill:var(--il-wood); } .il .chair{ fill:var(--il-chair); stroke:none; }
-.il .bub{ fill:#FFFFFF; } .il text.t{ fill:#1F2630; font-size:11px; font-weight:700; }
+.il .bub{ fill:#FFFFFF; } .il text.t{ fill:#1F2630; font-size:10.5px; font-weight:600; }
 .il .hair{ fill:var(--il-hair,#2A2E35); opacity:1; } .il .mouth{ stroke:#7A3E2C; stroke-width:1.6; } .il .i{ fill:#1F2630; }
 @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .il .bub{ fill:#F3EFE8; } }
 .ls-opt.pic .il{ border-radius:10px; }
@@ -5330,7 +5330,7 @@ function mtnArt(M,dark){ const R=rng(7), Z=dark?ZONES.dark:ZONES.light, st=M.ste
   o+=`<rect x="320" y="200" width="360" height="100" fill="${dark?'#141D27':'#A9BACA'}"/><text x="500" y="266" text-anchor="middle" font-family="Spectral, Georgia, serif" font-weight="600" font-size="30" letter-spacing="6" fill="${dark?'#D1A55A':'#B8893B'}">TRUSTED</text>`;
   o+=`<rect x="360" y="160" width="280" height="40" fill="${dark?'#1B2632':'#C9D5DF'}"/><path d="M360 160h280" stroke="${dark?'#56606B':'#7D8C99'}" stroke-width="3"/><path d="M500 160V${PEAK[1]}" stroke="${dark?'#56606B':'#7D8C99'}" stroke-width="5"/>`;
   // lobby, street, trees
-  o+=`<rect x="240" y="1400" width="520" height="80" fill="${dark?'#101820':'#8E9CA8'}"/><rect x="432" y="1412" width="136" height="22" rx="3" fill="${dark?'#0A0F16':'#1B2430'}"/>
+  o+=`<rect x="240" y="1400" width="520" height="80" fill="${dark?'#101820':'#8E9CA8'}"/><rect x="408" y="1410" width="184" height="26" rx="3" fill="${dark?'#0A0F16':'#1B2430'}"/>
     <text x="500" y="1428" text-anchor="middle" font-family="Spectral, Georgia, serif" font-size="13" font-weight="600" letter-spacing="3" fill="${dark?'#D1A55A':'#D4AE68'}">TRUSTED AGENT</text>
     <rect x="452" y="1438" width="96" height="42" fill="${dark?'#E8C98A':'#F6E7C8'}" opacity="${dark?.75:.95}"/><path d="M500 1438v42M492 1458v6M508 1458v6" stroke="${dark?'#5B4A2A':'#8E9CA8'}" stroke-width="2"/>
     <rect x="424" y="1446" width="18" height="34" rx="8" fill="${dark?'#243A2E':'#7FA588'}"/><rect x="558" y="1446" width="18" height="34" rx="8" fill="${dark?'#243A2E':'#7FA588'}"/>`;
@@ -6019,7 +6019,7 @@ const AT_ILL={
   push:`<path d="M8 122h184"/>${IL.side(58,6,{arm:`<path d="M62 86q22 0 38-8"/><path class="f s" d="M98 70l18-4 4 18-18 4z"/>`})}<g class="cl" transform="translate(200 0) scale(-1 1)">${IL.side(52,-10)}</g>${IL.bubble(26,2,62,'Sign today!',50)}`,
   listen:`<path d="M8 122h184"/>${IL.side(58,4,{arm:`<path d="M60 88q12 4 20 0"/><path class="f s" d="M78 80h14v14H78z"/><path class="m" d="M81 84h8M81 88h6"/>`})}<g class="cl" transform="translate(200 0) scale(-1 1)">${IL.side(52,0)}</g>${IL.bubble(118,2,40,'…',152)}`,
   guess:ilDesk({extra:IL.bubble(112,4,84,'Probably 8%…',120)}),
-  confirm:ilDesk({extra:IL.bubble(96,4,100,'Let me confirm that',110)}),
+  confirm:ilDesk({extra:IL.bubble(88,4,110,'Let me confirm that',110)}),
   u1:`<rect class="f s" x="40" y="14" width="120" height="104" rx="4"/><path d="M40 66h56v52"/>${bed(58,76)}<path class="m" d="M110 30h36v26h-36z"/>`,
   u2:`<rect class="f s" x="40" y="14" width="120" height="104" rx="4"/><path d="M40 66h120M100 66v52"/>${bed(56,76)}${bed(118,76)}<path class="m" d="M60 30h80v22H60z"/>`,
   u3:`<rect class="f s" x="30" y="14" width="140" height="104" rx="4"/><path d="M30 66h140M76 66v52M122 66v52"/>${bed(40,76)}${bed(86,76)}${bed(132,76)}<path class="m" d="M60 30h80v22H60z"/>`,
@@ -6027,7 +6027,7 @@ const AT_ILL={
     <text x="58" y="100" class="t">$100K paid</text><text x="117" y="100" class="t">$40K</text><text x="159" y="100" class="t">$60K</text><text x="100" y="40" class="t">Tax on $200,000</text>`,
   cgtgain:`<rect class="f s" x="16" y="52" width="168" height="30" rx="4"/><rect class="gf" x="134" y="52" width="50" height="30" rx="4" opacity=".55"/><path d="M100 52v30M134 52v30"/>
     <text x="58" y="100" class="t">$100K paid</text><text x="117" y="100" class="t">$40K</text><text x="159" y="100" class="t">$60K</text><text x="100" y="40" class="t">Tax on $60,000</text>`,
-  strata:doc(58,8,'STRATA TITLE','Ministry of Land Management',`<circle class="gf" cx="100" cy="80" r="9"/><circle cx="100" cy="80" r="12"/>`),
+  strata:doc(58,8,'STRATA TITLE','National registry',`<circle class="gf" cx="100" cy="80" r="9"/><circle cx="100" cy="80" r="12"/>`),
   soft:doc(58,8,'SOFT TITLE','Local authority',`<rect class="m" x="92" y="74" width="16" height="10" rx="2"/>`),
   'pj-jt':`<path d="M20 118h160"/>${tower(80,40,104,`<path d="M100 14v-8"/><circle class="gf" cx="100" cy="6" r="2.5"/>`)}${tower(126,26,60)}${tower(48,26,48)}`,
   'pj-ts':`<path d="M20 118h160"/><path class="m" d="M20 124q10-4 20 0t20 0 20 0 20 0 20 0 20 0 20 0 20 0"/>${tower(70,60,44)}<path d="M150 118v-34"/><path class="f s" d="M150 84q-16-6-20 4q12-2 20-4q-2-14 12-16q-4 10-12 16q16-2 20 8q-14-6-20-8"/><circle class="gf" cx="40" cy="30" r="10"/>`,
@@ -6036,7 +6036,7 @@ const AT_ILL={
   'd-title':doc(58,8,'STRATA TITLE?','Proof not provided',`<text x="100" y="86" class="t" style="font-size:26px;fill:var(--mute)">?</text>`),
   'd-bonus':`<path class="f s" d="M52 44h96v60H52z"/><path d="M52 44l48 34 48-34"/><circle class="gf" cx="150" cy="40" r="14"/><text x="150" y="44.5" class="t" style="font-size:13px">$</text>`,
   'd-nominee':`<path d="M8 122h184"/>${IL.side(56)}<g class="cl" transform="translate(200 0) scale(-1 1)">${IL.side(56)}</g><path class="f s" d="M84 60h32v40H84z"/><path class="m" d="M90 70h20M90 78h20M90 86h12"/><path d="M78 108q22 10 44 0" stroke-dasharray="3 4"/>`,
-  'd-quota':`<path class="f s" d="M30 104a70 70 0 0 1 140 0"/><path class="gf" d="M30 104a70 70 0 0 1 128.6-38.4l-10 6A58 58 0 0 0 42 104z"/><path d="M100 104l40-40"/><circle class="f s" cx="100" cy="104" r="5"/><text x="100" y="124" class="t">68% of 70% foreign quota</text>`,
+  'd-quota':`<path class="f s" d="M30 104a70 70 0 0 1 140 0"/><path class="gf" d="M30 104a70 70 0 0 1 128.6-38.4l-10 6A58 58 0 0 0 42 104z"/><path d="M100 104l40-40"/><circle class="f s" cx="100" cy="104" r="5"/><text x="100" y="114.5" class="t" style="font-size:9.5px">68% of 70% foreign quota</text>`,
   'd-guarantee':ilDesk({extra:IL.bubble(100,4,94,'Guarantee 8%?',112)}),
   'sig-think':ilDesk({eyes:'down',tilt:-6,extra:IL.bubble(108,4,88,'I\'ll think…',118)}),
   'sig-floor':ilDesk({extra:IL.bubble(104,4,92,'Which floor?',114)+IL.paper(128,97,0)}),
@@ -6046,7 +6046,7 @@ const AT_ILL={
   'site-wow':`<path d="M8 122h184"/><path class="f s" d="M118 20h70v84h-70z"/><path d="M153 20v84M118 62h70"/><circle class="gf" cx="170" cy="38" r="7"/>${IL.side(64,4,{arm:`<path d="M66 86q22-8 44-26"/>`})}${IL.bubble(10,2,98,'Amazing views!',50)}`,
   'site-fact':`<path d="M8 122h184"/><path class="f s" d="M118 20h70v84h-70z"/><path d="M153 20v84M118 62h70"/><circle class="gf" cx="170" cy="38" r="7"/><text x="136" y="96" class="t">S</text><path class="m" d="M136 84v-12M132 76l4-4 4 4"/>${IL.side(64,4,{arm:`<path d="M60 88q12 4 20 0"/><path class="f s" d="M78 80h14v14H78z"/>`})}${IL.bubble(6,2,104,'Floor 17, south',50)}`,
   'msg-chase':`<rect class="f s" x="66" y="4" width="68" height="122" rx="11"/><path d="M92 12h16"/><path class="f s" d="M74 42h52v20H74z"/><text x="100" y="55.5" class="t" style="font-size:10px">Hi?</text><path class="m" d="M74 74h36M74 82h24"/>`,
-  'msg-value':`<rect class="f s" x="66" y="4" width="68" height="122" rx="11"/><path d="M92 12h16"/><path class="f s" d="M74 34h52v44H74z"/><text x="100" y="46" class="t" style="font-size:9px">Quota 64%</text><rect class="gf" x="80" y="54" width="8" height="18"/><rect class="gf" x="92" y="60" width="8" height="12" opacity=".7"/><rect class="gf" x="104" y="64" width="8" height="8" opacity=".5"/><path class="m" d="M74 90h40M74 98h30"/>`,
+  'msg-value':`<rect class="f s" x="66" y="4" width="68" height="122" rx="11"/><path d="M92 12h16"/><path class="f s" d="M74 34h52v44H74z"/><text x="100" y="46" class="t" style="font-size:8px">Quota 64%</text><rect class="gf" x="80" y="54" width="8" height="18"/><rect class="gf" x="92" y="60" width="8" height="12" opacity=".7"/><rect class="gf" x="104" y="64" width="8" height="8" opacity=".5"/><path class="m" d="M74 90h40M74 98h30"/>`,
 };
 function atSVG(key,label){ let m=String(key).match(/^sla:(\w+):([ab])$/); const body=m?(ILLUS_SLA[m[1]]||{})[m[2]]:AT_ILL[key];
   return body?`<svg class="il" viewBox="0 0 200 130" role="img" aria-label="${esc(label||'')}">${IL_ROOM}${body}</svg>`:''; }
