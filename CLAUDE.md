@@ -24,13 +24,26 @@ text, one idea per card, natural voices, a journey home screen (a tower: each le
 - `sw.js`: offline copy, caches `ta-*`. Storage: localStorage `trusted-agent-v1`, IndexedDB `trusted-agent`.
 - Icons: `icons/icon-{180,192,512}.png` (a brass house with a check on deep ink).
 
-## Steps and voice (2026-10-02)
-- A section's numbered steps (`flow`) are read one at a time: the coach introduces the section, then each step lights up
-  (`fl-now`) while its clip `c-at{i}-s{k}-f{j}` plays ("Step one: …"); unread steps wait faded (`fl-seq`); tap a step to
-  hear it again (`ls-flow`). Coach off = all steps shown.
+## Steps, voice and look (2026-10-02, approved)
+- Steps (`flow`) are taught page by page: card `sec` shows the section and all steps (the coach names each,
+  clip `c-at{i}-s{k}-f{j}t`); then one card `step` per step: the whole list stays, that step is bright (`.at-steps li.on`,
+  a soft tinted card `.st-c`, the number glows), earlier steps ticked, later ones dimmed; the coach reads
+  `c-at{i}-s{k}-f{j}`. Anything else in that section (calc, source) follows on card `secx` (`atExtras(x,'rest')`).
+- Every readable part of a card has `data-rd` (its clip suffix, `atExtras` numbers them x0.., same order as
+  `extra_units()` in make_voice.py). `readParts` reads them in turn with a highlight (`rd-now`), unread parts faded
+  (`rd-seq`); tap a part to hear it again (`ls-rd`).
+- Picture questions: the coach reads the prompt, then each option lit up (`.reading`). Captions are split by
+  `capParts()` / `cap_parts()`: quoted words are said by the person in the picture (client voice for `sig-*`, else the
+  agent voice), the rest by the coach. Clips `c-at{i}-pq{k}-o{n}-p{m}`.
+- Pictures are in colour (`.il` tokens: agent navy `suit`, client terracotta `.cl .suit`, `skin`, `wood`, a `room`
+  behind each, faces with a `mouth`). On phones the options stack, picture beside its words.
+- Look: each card has a kind (Learn blue, Practice green, Quiz amber, Decide purple, Your words teal: `KIND_OF`), shown
+  as a pill on the same line as the topic, a soft wash in that colour at the top (`.ls-card`), a big bold heading and
+  lighter body text. Continue is full width and centred on phones and tablets, bottom right on a computer.
+  Base font 17px, `--mute` #646B75 (4.9:1), no tiny capitals.
 - The voice never reads markup: `flowing()` in make_voice.py turns pause dots into commas/full stops so each line is one
-  natural sentence; `speakable()` says an abbreviation once ("Capital Gains Tax (CGT)" → the name) and Realestate.com.kh
-  as "Real Estate dot com dot K H".
+  natural sentence; `speakable()` says an abbreviation once ("Capital Gains Tax (CGT)" → the name), Realestate.com.kh
+  as "Real Estate dot com dot K H", "$1 to $2" as "one to two dollars", "BKK1" as "B K K one".
 
 ## Writing rules
 No dashes in content; sentence case; abbreviations written out on first use; numbers spoken naturally; nothing

@@ -36,18 +36,27 @@ def number(txt):
 def speakable(t):
     t = re.sub(r"\s*\(([A-Z]{2,6})\)", "", t)                      # "Capital Gains Tax (CGT)" is said once, as the name
     t = re.sub(r"Realestate\.com\.kh|\bREAKH\b", "Real Estate dot com dot K H", t)
+    t = t.replace("\u2212", "minus ").replace("$/sqm", "price per square meter")
+    t = re.sub(r"(?<![\w$])-\$", "minus $", t)
+    t = re.sub(r"(\d+(?:\.\d+)?) to (\d+(?:\.\d+)?)\s?%", lambda m: number(m.group(1)) + " to " + number(m.group(2)) + " percent", t)
     t = t.replace("–", " to ").replace("&", " and ").replace("G.A.T.O", "Gato").replace("~", "about ")
     def money(m):
         v = float(m.group(1).replace(",", "")) * {"K": 1000, "k": 1000, "M": 1000000}.get(m.group(2) or "", 1)
         return (number(f"{v:g}") if v != int(v) else words(v)) + " dollars"
     t = re.sub(r"\$([\d,]*\d(?:\.\d+)?)([KkM])?(?![A-Za-z])", money, t)
+    num = r"(?:(?:zero|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|\w+teen|\w+ty(?:-\w+)?|hundred|thousand|million|and|point) )+"
+    t = re.sub(r" dollars to (?=" + num + r"dollars)", " to ", t)                 # "$1 to $2" = "one to two dollars"
+    t = re.sub(r"\bone dollars\b", "one dollar", t)
+    t = re.sub(r"dollars (unit|condo|apartment|property|home|house|villa|budget|deposit|loan)\b", r"dollar \1", t)
     t = re.sub(r"/sqm\b", " per square meter", t); t = re.sub(r"\bper sqm\b", "per square meter", t); t = re.sub(r"\bsqm\b", "square meters", t)
     t = re.sub(r"(\d+(?:\.\d+)?)\s?%", lambda m: number(m.group(1)) + " percent", t)
     t = re.sub(r"/yr\b", " a year", t)
     t = re.sub(r"\b([1-4])BR\b", lambda m: words(m.group(1)) + "-bedroom", t)
     t = re.sub(r"(?<![\d,$])\b(19|20)(\d\d)\b(?!,\d)", lambda m: words(m.group(1)) + " " + (words(m.group(2)) if m.group(2) != "00" else "hundred") if int(m.group(2)) >= 10 else words(m.group(1) + m.group(2)), t)
     t = re.sub(r"\b(\d{1,3}(?:,\d{3})+|\d+)\+", lambda m: number(m.group(1)) + " plus", t)
-    t = re.sub(r"\bSPA\b", "S P A", t); t = re.sub(r"\bCGT\b", "C G T", t); t = t
+    t = re.sub(r"\bSPA\b", "S P A", t); t = re.sub(r"\bCGT\b", "capital gains tax", t)
+    t = re.sub(r"\bBKK ?(\d)\b", lambda m: "B K K " + words(m.group(1)), t)
+    t = t.replace(" = ", " equals ").replace(" + ", " plus ")
     return re.sub(r"\s+", " ", t).strip()
 def flowing(t):
     """Script markup is for the learner's eyes (pause dots, stress stars, falling pitch). The voice gets one natural
@@ -58,6 +67,39 @@ def flowing(t):
     return re.sub(r"\s+", " ", t).strip(" ,")
 plain = lambda h: re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", h)).strip()
 dot = lambda t: t if re.search(r'[.?!"”]$', t.strip()) else t.strip() + "."
+
+def cap_parts(cap, svg):
+    """A picture caption split for the voice, like capParts() in index.html: quoted words are said by the person in the
+    picture (the client in the buying-signal pictures, otherwise the agent); the rest is the coach describing it."""
+    out, who, last = [], ("client" if svg.startswith("sig-") else "you"), 0
+    def coach(x):
+        x = re.sub(r"^[\s:,;.\u2013-]+|[\s:,;\u2013-]+$", "", x)
+        if x: out.append(("coach", x[0].upper() + x[1:]))
+    for m in re.finditer(r'[\u201c"]([^\u201d"]+)[\u201d"]', cap):
+        coach(cap[last:m.start()]); out.append((who, m.group(1))); last = m.end()
+    coach(cap[last:]); return out
+
+def extra_units(x):
+    """The spoken text of each readable part of a section, in the order index.html's atExtras() numbers them (x0, x1..)."""
+    out = []
+    if x.get("analogy"): out.append("Think of it like this. " + dot(x["analogy"]))
+    if x.get("box"):
+        for n, line in enumerate(x["box"]["lines"]): out.append((dot(x["box"]["title"].rstrip(":")) + " " if n == 0 and x["box"].get("title") else "") + dot(line))
+    for t, d in x.get("grid", []): out.append(f"{dot(t)} {dot(d)}")
+    if x.get("bars"):
+        for n, b in enumerate(x["bars"]["bars"]): out.append((dot(x["bars"]["title"]) + " " if n == 0 else "") + f"{b['label']}: {b['valueLabel']}.")
+    for n, d in enumerate(x.get("data", [])): out.append((dot(x["dataTitle"]) + " " if n == 0 and x.get("dataTitle") else "") + dot(d))
+    if x.get("table"):
+        hd = x["table"]["headers"]
+        for r in x["table"]["rows"]:
+            if len(hd) == 2 and hd[0].lower().startswith(("instead", "never")): out.append(f"Instead of {r[0].rstrip('.')}, say: {dot(r[1])}" if not r[1].lower().startswith("never") else f"{r[0]}: {dot(r[1])}")
+            else: out.append(dot(r[0]) + " " + " ".join(f"{h.rstrip('.…')}: {dot(c)}" for h, c in zip(hd[1:], r[1:])))
+    if x.get("calc"):
+        for n, r in enumerate(x["calc"]["rows"]):
+            val = re.sub(r"^\s*(\u2212|-|minus\s+)", "", r["value"], flags=re.I).strip() if r["label"].lstrip().lower().startswith(("minus", "\u2212", "-")) else r["value"]   # "Minus: …: −$100,000" says minus once
+            out.append((dot(x["calc"]["title"]) + " " if n == 0 else "") + f"{r['label']}: {dot(val)}")
+    if x.get("warning"): out.append("Important. " + dot(x["warning"]))
+    return out
 
 def block(src, name):
     i = src.index(name) + len(name)
@@ -79,6 +121,9 @@ def jobs():
         add(f"c-at{i}-intro", COACH, f"{dot(l['title'])} In this lesson: " + " ".join(dot(o) for o in l["objectives"]))
         for k, p in enumerate(l.get("pics", [])):
             add(f"c-at{i}-pq{k}", COACH, p["prompt"]); add(f"c-at{i}-pq{k}-why", COACH, p["why"])
+            for n, o in enumerate(p.get("options", [])):
+                for m, (who, text) in enumerate(cap_parts(o["cap"], o["svg"])):
+                    add(f"c-at{i}-pq{k}-o{n}-p{m}", COACH if who == "coach" else CLIENT if who == "client" else YOU, dot(text) if who == "coach" else text)
         pk = 0
         for k, x in enumerate(l["sections"]):
             add(f"c-at{i}-s{k}", COACH, dot(plain(x["heading"])) + " " + plain(x["body"]))
@@ -88,6 +133,9 @@ def jobs():
                 add(f"c-lesson{i}-p{pk}-note", COACH, x.get("pairWhy") or (x["rules"][0]["detail"] if x.get("rules") else plain(x["body"]))); pk += 1
             for j, f in enumerate(x.get("flow", [])):
                 add(f"c-at{i}-s{k}-f{j}", COACH, f"Step {words(j + 1)}: {dot(f['title'])} {dot(f['sub'])}")
+                add(f"c-at{i}-s{k}-f{j}t", COACH, f"Step {words(j + 1)}: {dot(f['title'])}")
+            for n, text in enumerate(extra_units(x)):
+                add(f"c-at{i}-s{k}-x{n}", COACH, text)
             for j, r in enumerate(x.get("rules", [])):
                 add(f"c-at{i}-s{k}-r{j}", COACH, f"{dot(r['title'])} {r['detail']}" + (f" Do this: {r['action']}" if r.get("action") else ""))
         rp = l["roleplay"]

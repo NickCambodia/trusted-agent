@@ -566,11 +566,11 @@ main.home{ padding-bottom:0; }
 .at-flow{ list-style:none; margin-top:18px; counter-reset:f; } .at-flow li{ counter-increment:f; position:relative; padding:0 0 14px 44px; min-height:40px; }
 .at-flow li::before{ content:counter(f); position:absolute; left:0; top:0; width:30px; height:30px; border-radius:50%; background:linear-gradient(145deg, var(--u,var(--gold)), var(--u-d,var(--gold))); color:#fff; font-weight:600; font-size:.85rem; display:flex; align-items:center; justify-content:center; }
 .at-flow li::after{ content:''; position:absolute; left:14px; top:32px; bottom:2px; width:2px; background:var(--line); } .at-flow li:last-child{ padding-bottom:0; } .at-flow li:last-child::after{ display:none; }
-.at-flow li{ border-radius:14px; transition:background .3s, opacity .3s, transform .3s; cursor:pointer; }
-.at-flow.fl-seq li:not(.fl-seen){ opacity:.28; }
-.at-flow li.fl-now{ background:color-mix(in srgb, var(--u,var(--gold)) 12%, var(--card)); box-shadow:0 0 0 2px color-mix(in srgb, var(--u,var(--gold)) 45%, transparent); transform:translateX(4px); }
-.at-flow li.fl-now::before{ box-shadow:0 0 0 5px color-mix(in srgb, var(--u,var(--gold)) 25%, transparent); }
-.at-src{ margin-top:10px; font-size:.78rem; color:var(--dim); font-style:italic; }
+[data-rd]{ cursor:pointer; transition:background .3s, opacity .3s, box-shadow .3s; border-radius:12px; }
+.rd-seq [data-rd]:not(.rd-seen){ opacity:.3; }
+[data-rd].rd-now{ background:color-mix(in srgb, var(--u,var(--gold)) 13%, var(--card)); box-shadow:0 0 0 2px color-mix(in srgb, var(--u,var(--gold)) 50%, transparent); }
+.at-flow li.rd-now::before{ box-shadow:0 0 0 5px color-mix(in srgb, var(--u,var(--gold)) 25%, transparent); }
+tr[data-rd].rd-now td{ background:color-mix(in srgb, var(--u,var(--gold)) 13%, var(--card)); }
 .at-flow b{ display:block; font-size:1rem; line-height:1.3; padding-top:5px; } .at-flow span{ display:block; font-size:.9rem; line-height:1.45; color:var(--dim); margin-top:2px; }
 .at-grid{ margin-top:18px; display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:10px; } .at-grid .card{ padding:12px 14px; margin:0; }
 .at-grid b{ display:block; font-size:.95rem; margin-bottom:4px; } .at-grid p{ font-size:.92rem; line-height:1.5; color:var(--dim); margin:0; }
@@ -596,6 +596,116 @@ main.home{ padding-bottom:0; }
 .at-floor.on{ border-color:var(--gold); background:var(--gold-soft); } .at-floor.right{ border-color:var(--pri); background:var(--pri-soft); }
 .at-floor.wrong{ border-color:var(--red); background:var(--red-soft); } .at-floor.miss{ border-style:dashed; border-color:var(--pri); }
 .at-floor-door{ width:44px; height:22px; margin:0 auto; background:var(--text); opacity:.55; border-radius:3px 3px 0 0; }
+
+/* ---------- v2 (2026-10-02): easier to read, clearer to use ---------- */
+html{ font-size:17px; }
+:root{ --mute:#646B75; } @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){ --mute:#8C939C; } } :root[data-theme="dark"]{ --mute:#8C939C; }
+/* no more tiny capitals: labels are normal case, bold, at least 13px */
+.eyebrow,.unit-k,.sec-k,.at-box-t,.at-table th,.at-do span,.at-analogy span,.chip,.row-soon,.sl-who,.gate-k,.gate-r,.tile span,.brief p > span,.sc-goal span,.pair-normal span,.pair-better > span:first-child,.pair-pics figcaption,.tip{
+  text-transform:none!important; letter-spacing:.005em!important; font-size:.8rem!important; font-weight:700!important; }
+.mcamp b,.msummit b{ text-transform:none!important; letter-spacing:0!important; font-size:.72rem!important; }
+.tb,.row-meta,.say-legend,.fb-foot,.j-stats,.ladder li span,.mzoom,.stat small,.cmp-row.first .cmp-lab small,.at-quota-cap{ font-size:.78rem!important; }
+.at-table th{ color:var(--text)!important; background:var(--bg-2); }
+.ctx{ font-size:.95rem!important; font-weight:600!important; }
+.at-body{ font-size:1.02rem; line-height:1.68; }
+/* what kind of screen: a coloured label, and the same colour for highlights and progress */
+.kind-learn{ --u:#2F6FD6; --u-d:#1F4FA0; --kc-soft:#E6EEFB; --kc-text:#1F4FA0; }
+.kind-practice{ --u:#2E9E64; --u-d:#1F6E45; --kc-soft:#E3F3EA; --kc-text:#1F6E45; }
+.kind-decide{ --u:#7A4CC2; --u-d:#583690; --kc-soft:#EFE8FA; --kc-text:#583690; }
+.kind-quiz{ --u:#C98A12; --u-d:#8A5A00; --kc-soft:#FBF0D8; --kc-text:#7A5000; }
+.kind-reflect{ --u:#0F8B8D; --u-d:#0A6365; --kc-soft:#DFF2F2; --kc-text:#0A6365; }
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) [class*="kind-"]{ --kc-soft:color-mix(in srgb, var(--u) 22%, var(--card)); --kc-text:color-mix(in srgb, var(--u) 55%, #fff); } }
+.kind-pill{ display:inline-flex; align-items:center; gap:7px; margin:2px 0 12px; padding:6px 14px 6px 10px; border-radius:999px; background:var(--kc-soft); color:var(--kc-text); font-weight:700; font-size:.88rem; }
+.kind-pill .ic{ width:18px; height:18px; stroke:currentColor; fill:none; stroke-width:2.2; }
+[class*="kind-"] .pbar i{ background:var(--u)!important; }
+/* bigger, clearer answers and results */
+.ls-opt{ font-size:1.02rem!important; line-height:1.45!important; padding:16px 18px!important; border-width:2px!important; border-radius:16px!important; }
+.ls-opt.right{ border-color:#2E9E64!important; background:#E3F3EA!important; color:#14532D!important; }
+.ls-opt.wrong{ border-color:#C2410C!important; background:#FDECE4!important; color:#7C2D12!important; }
+.res-t{ font-size:1.3rem!important; font-weight:800!important; }
+.res .res-ic{ transform:scale(1.15); }
+.fb-tip{ font-size:.98rem!important; line-height:1.55!important; }
+.solid-btn{ font-size:1.02rem; }
+
+/* ---------- v3 (2026-10-02): topic, heading and text clearly apart; Continue in the middle on touch screens ---------- */
+/* each card opens with a soft wash in its colour: the topic zone */
+.ls-card{ margin:-16px -18px 0; padding:16px 18px 0; background:linear-gradient(180deg, var(--kc-soft,transparent) 0, color-mix(in srgb, var(--kc-soft,var(--bg)) 35%, var(--bg)) 150px, var(--bg) 260px); min-height:100%; }
+@media (min-width:900px){ .ls-card{ border-radius:0 0 24px 24px; } }
+/* level 1, the topic: the kind label and the topic name on one line, in the card's colour */
+.ctx.has-pill{ display:flex; flex-wrap:wrap; align-items:center; gap:8px 10px; margin:4px 0 14px; }
+.ctx.has-pill::before{ display:none; }
+.ctx.has-pill .kind-pill{ margin:0; background:var(--card); box-shadow:0 0 0 1.5px color-mix(in srgb, var(--u) 35%, transparent); }
+.ctx-t{ color:var(--kc-text,var(--text)); font-weight:700; font-size:1rem; }
+/* level 2, the heading: big, heavy, ink */
+.ls-card .fx-title{ font-weight:700; font-size:1.95rem; line-height:1.16; letter-spacing:-.012em; margin-bottom:14px; color:var(--text); text-wrap:balance; }
+/* level 3, the text: lighter and calmer, with room before the first box */
+.ls-card .at-body{ color:color-mix(in srgb, var(--text) 80%, var(--bg)); font-size:1.04rem; line-height:1.7; max-width:36em; }
+.ls-card .at-body strong{ color:var(--text); }
+.ls-card .at-flow{ margin-top:24px; } .ls-card .at-flow b{ font-size:1.06rem; font-weight:700; color:var(--text); }
+.ls-card .at-flow span{ font-size:.94rem; }
+.ls-card .at-table{ margin-top:22px; }
+/* Continue: in the middle, full width, under the thumb on phones and tablets; on a computer it stays at the right */
+@media (max-width:1023px), (pointer:coarse){
+  .fx-btns{ max-width:560px; width:100%; margin:0 auto; justify-content:center; }
+  .fx-btns > span:empty{ display:none; }
+  .fx-btns .solid-btn{ flex:1; max-width:none; margin:0; padding:16px 20px; font-size:1.06rem; }
+  .fx-btns .ghost-btn{ flex:0 0 auto; padding:15px 18px; }
+  .fx-btns .ghost-btn:only-child{ flex:1; }
+}
+/* pictures: colour, a room behind, and larger on phones (picture beside its caption) */
+.il{ --il-skin:#F2CDAE; --il-suit:#2F4C7E; --il-client:#C47650; --il-wood:#C99D70; --il-chair:#D9D4CC; --il-obj:#FFFFFF; --il-room:#EEF2F6; --il-floor:#E6DED1; --il-ink:#1F2630; }
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .il{ --il-skin:#D7AD8C; --il-suit:#5577B4; --il-client:#C9825F; --il-wood:#8E6D4C; --il-chair:#3A414B; --il-obj:#2C333D; --il-room:#1C232C; --il-floor:#262D36; --il-ink:#E8E4DC; --il-hair:#6B5443; } }
+:root[data-theme="dark"] .il{ --il-skin:#D7AD8C; --il-suit:#5577B4; --il-client:#C9825F; --il-wood:#8E6D4C; --il-chair:#3A414B; --il-obj:#2C333D; --il-room:#1C232C; --il-floor:#262D36; --il-ink:#E8E4DC; --il-hair:#6B5443; }
+.il *{ stroke:var(--il-ink); }
+.il .f{ fill:var(--il-obj); }
+.il .room{ fill:var(--il-room); stroke:none; } .il .floor{ fill:var(--il-floor); stroke:none; }
+.il .skin, .il ellipse.f{ fill:var(--il-skin); }
+.il .suit{ fill:var(--il-suit); } .il .cl .suit{ fill:var(--il-client); }
+.il .shirt{ fill:#FFFFFF; stroke:none; }
+.il .wood{ fill:var(--il-wood); } .il .chair{ fill:var(--il-chair); stroke:none; }
+.il .bub{ fill:#FFFFFF; } .il text.t{ fill:#1F2630; font-size:11px; font-weight:700; }
+.il .hair{ fill:var(--il-hair,#2A2E35); opacity:1; } .il .mouth{ stroke:#7A3E2C; stroke-width:1.6; } .il .i{ fill:#1F2630; }
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .il .bub{ fill:#F3EFE8; } }
+.ls-opt.pic .il{ border-radius:10px; }
+.ls-opt.pic .cap{ font-size:.95rem!important; color:var(--text)!important; font-weight:500; }
+@media (max-width:640px){
+  .ls-opts.pics, .ls-opts.pics.three{ grid-template-columns:1fr; gap:12px; }
+  .ls-opt.pic{ flex-direction:row!important; align-items:center; gap:14px!important; padding:10px!important; }
+  .ls-opt.pic .il{ flex:0 0 58%; width:58%; }
+  .ls-opt.pic .cap{ flex:1; font-size:1rem!important; line-height:1.4!important; }
+}
+
+/* ---------- v4: one page per step; the whole list stays, the step we're on is bright ---------- */
+.at-steps li{ transition:opacity .25s; }
+.no-calc-t .at-calc > .at-box-t{ display:none; }
+.at-src{ font-size:.82rem; line-height:1.5; color:var(--mute); margin-top:12px; }
+.at-steps li.later, .at-steps li.past{ opacity:.42; }
+.at-steps li.past::before{ content:'✓'; }
+.at-steps li.on{ background:color-mix(in srgb, var(--u,var(--gold)) 12%, var(--card)); box-shadow:0 0 0 2px color-mix(in srgb, var(--u,var(--gold)) 55%, transparent), 0 10px 24px -14px var(--u,var(--gold)); padding:12px 14px 12px 52px; margin:4px -6px 18px; border-radius:14px; }
+.at-steps li.on::before{ left:12px; top:12px; box-shadow:0 0 0 5px color-mix(in srgb, var(--u,var(--gold)) 22%, transparent); }
+.at-steps li.on::after{ display:none; }
+.at-steps li.on b{ font-size:1.18rem!important; }
+.at-steps li.on span{ font-size:1.02rem!important; color:var(--text)!important; line-height:1.55; margin-top:4px; }
+
+/* ---------- v5: a softer, more elegant highlight ---------- */
+/* the words sit on a light card in the card's colour; no hard outline; the number on the timeline glows */
+.at-flow .st-c{ border-radius:16px; padding:10px 14px; margin:-6px 0 0 -14px; transition:background .35s, box-shadow .35s; }
+.at-flow li.rd-now, .at-steps li.on{ background:none!important; box-shadow:none!important; padding:0 0 14px 44px!important; margin:0!important; }
+.at-flow li.rd-now .st-c, .at-steps li.on .st-c{
+  background:linear-gradient(120deg, color-mix(in srgb, var(--u,var(--gold)) 11%, var(--card)) 0%, var(--card) 85%);
+  box-shadow:0 16px 32px -20px color-mix(in srgb, var(--u,var(--gold)) 75%, transparent), 0 0 0 1px color-mix(in srgb, var(--u,var(--gold)) 14%, transparent); }
+.at-flow li.rd-now::before, .at-steps li.on::before{ left:0!important; top:0!important; transform:scale(1.12);
+  box-shadow:0 0 0 5px color-mix(in srgb, var(--u,var(--gold)) 16%, transparent), 0 6px 14px -4px color-mix(in srgb, var(--u,var(--gold)) 70%, transparent)!important; }
+.at-flow li::before{ transition:transform .35s, box-shadow .35s; }
+.at-steps li.on::after{ display:block!important; }
+.at-steps li.on b{ font-size:1.12rem!important; }
+.at-steps li.on span{ font-size:1rem!important; }
+/* other parts read aloud (rows, lines, cards): a soft glow, no outline */
+[data-rd].rd-now:not(li.rdi:has(.st-c)){ background:linear-gradient(120deg, color-mix(in srgb, var(--u,var(--gold)) 11%, var(--card)), var(--card) 90%)!important;
+  box-shadow:0 12px 26px -18px color-mix(in srgb, var(--u,var(--gold)) 75%, transparent), 0 0 0 1px color-mix(in srgb, var(--u,var(--gold)) 14%, transparent)!important; }
+tr[data-rd].rd-now{ box-shadow:none!important; background:none!important; }
+tr[data-rd].rd-now td{ background:color-mix(in srgb, var(--u,var(--gold)) 16%, var(--card))!important; color:var(--text); font-weight:600; }
+tr[data-rd].rd-now td:first-child{ box-shadow:inset 3px 0 0 var(--u,var(--gold)); }
 </style>
 </head>
 <body>
@@ -5130,7 +5240,7 @@ function viewJourney(us){
    mountain, and it zooms in as you climb. Drag to look around; "Whole mountain" zooms out.
    World units: 1000 × 1600, peak at the top. */
 const MW=1000, MH=1600, PEAK=[500,118], BASE_Y=1470;   // the tower: ground at BASE_Y, rooftop spire at PEAK
-const ZONES={ light:['#8FC4A8','#D6A09A','#C4A3C8','#9DB8DD','#BCA9D8','#8FCACB','#AEB9C6'], _slaLight:['#AFC6A0','#9BBC92','#7FA588','#8FA886','#B9B893','#AEA58F','#A99D90','#9F9A94','#B3B6B9','#C4CCD4','#E8EDF1'], dark:['#1F4032','#4A2A2A','#3E2B3E','#22334B','#342A4A','#1E3E40','#2A323C'] };
+const ZONES={ light:['#CFE6D8','#F0D9D3','#E0D7EE','#D5E3F4','#E6DDF3','#CFE9E8','#DDE3EA'], _slaLight:['#AFC6A0','#9BBC92','#7FA588','#8FA886','#B9B893','#AEA58F','#A99D90','#9F9A94','#B3B6B9','#C4CCD4','#E8EDF1'], dark:['#1F4032','#4A2A2A','#3E2B3E','#22334B','#342A4A','#1E3E40','#2A323C'] };
 function rng(seed){ return ()=>{ seed|=0; seed=seed+0x6D2B79F5|0; let t=Math.imul(seed^seed>>>15,1|seed); t=t+Math.imul(t^t>>>7,61|t)^t; return ((t^t>>>14)>>>0)/4294967296; }; }
 function isDark(){ const bg=getComputedStyle(document.documentElement).getPropertyValue('--bg').trim(); return parseInt(bg.slice(1,3),16)<80; }
 function shade(hex,f){ const n=parseInt(hex.slice(1),16), c=[n>>16,n>>8&255,n&255].map(v=>Math.max(0,Math.min(255,Math.round(v*f)))); return '#'+c.map(v=>v.toString(16).padStart(2,'0')).join(''); }
@@ -5167,14 +5277,15 @@ function mtnArt(M,dark){ const R=rng(7), Z=dark?ZONES.dark:ZONES.light, st=M.ste
   const doneU=M.us.map(u=>u.items.every(x=>x.done||x.stub)&&u.items.some(x=>x.done));
   let o=`<defs><linearGradient id="msky" x1="0" y1="0" x2="0" y2="${MH}" gradientUnits="userSpaceOnUse">${dark
       ?'<stop offset="0" stop-color="#070B14"/><stop offset=".6" stop-color="#101827"/><stop offset="1" stop-color="#1D1B22"/>'
-      :'<stop offset="0" stop-color="#B9CEE0"/><stop offset=".55" stop-color="#E3E7E8"/><stop offset="1" stop-color="#F4E4CC"/>'}</linearGradient>
+      :'<stop offset="0" stop-color="#8FB8E2"/><stop offset=".45" stop-color="#D3E4F2"/><stop offset=".8" stop-color="#F3EEE6"/><stop offset="1" stop-color="#FAEBD7"/>'}</linearGradient>
+    <linearGradient id="mshine" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".42" stop-color="#fff" stop-opacity="${dark?.04:.28}"/><stop offset=".5" stop-color="#fff" stop-opacity="0"/><stop offset=".62" stop-color="#fff" stop-opacity="${dark?.03:.16}"/><stop offset=".7" stop-color="#fff" stop-opacity="0"/></linearGradient>
     <linearGradient id="mglass" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="${dark?'#1B2632':'#C6D5E1'}"/><stop offset=".55" stop-color="${dark?'#243344':'#DCE6EE'}"/><stop offset="1" stop-color="${dark?'#16202B':'#B4C5D4'}"/></linearGradient>
     <radialGradient id="mglow"><stop offset="0" stop-color="${dark?'#E9E4D6':'#FFF4DC'}" stop-opacity=".9"/><stop offset="1" stop-color="${dark?'#E9E4D6':'#FFF4DC'}" stop-opacity="0"/></radialGradient></defs>
     <rect x="-600" y="-600" width="${MW+1200}" height="${MH+1200}" fill="url(#msky)"/>`;
   if(dark) for(let i=0;i<110;i++) o+=`<circle cx="${(R()*1400-200).toFixed(0)}" cy="${(R()*800-100).toFixed(0)}" r="${(R()*1.5+.4).toFixed(1)}" fill="#fff" opacity="${(R()*.6+.2).toFixed(2)}"/>`;
   o+=`<circle cx="840" cy="260" r="150" fill="url(#mglow)" opacity="${dark?.35:1}"/><circle cx="840" cy="260" r="${dark?30:40}" fill="${dark?'#EDE8DA':'#FFF1CF'}"/>${dark?'<circle cx="856" cy="250" r="26" fill="#0A0F1A"/>':''}`;
   // the city behind: two layers of simpler towers
-  [[dark?'#1A2230':'#C8D2DC',.9,260,760],[dark?'#212B3A':'#B7C3CE',1,160,520]].forEach(([c,op,minH,maxH],n)=>{ let x=-600;
+  [[dark?'#1A2230':'#BCCDDE',.9,260,760],[dark?'#212B3A':'#A3B7CB',1,160,520]].forEach(([c,op,minH,maxH],n)=>{ let x=-600;
     while(x<MW+600){ const w=40+R()*70, h=minH+R()*(maxH-minH); if(x+w<250||x>750||n===0){ o+=`<rect x="${x.toFixed(0)}" y="${(1480-h).toFixed(0)}" width="${w.toFixed(0)}" height="${h.toFixed(0)}" fill="${c}" opacity="${op}"/>`;
         for(let wy=1480-h+14;wy<1470;wy+=22) for(let wx=x+7;wx<x+w-8;wx+=12) if(R()<(dark?.28:.12)) o+=`<rect x="${wx.toFixed(0)}" y="${wy.toFixed(0)}" width="5" height="8" fill="${dark?'#E8C98A':'#FFFFFF'}" opacity="${dark?.55:.5}"/>`; }
       x+=w+6+R()*14; } });
@@ -5182,9 +5293,11 @@ function mtnArt(M,dark){ const R=rng(7), Z=dark?ZONES.dark:ZONES.light, st=M.ste
     o+=`<g opacity="${dark?.06:.55}" fill="#fff"><ellipse cx="${x}" cy="${y}" rx="${46*s}" ry="${13*s}"/><ellipse cx="${x-22*s}" cy="${y-6*s}" rx="${24*s}" ry="${12*s}"/><ellipse cx="${x+16*s}" cy="${y-10*s}" rx="${22*s}" ry="${14*s}"/></g>`; }
   // the tower
   o+=`<rect x="270" y="300" width="460" height="1110" fill="url(#mglass)"/>`;
-  campY.forEach(([b,t],k)=>{ o+=`<rect x="270" y="${Math.max(300,t).toFixed(0)}" width="460" height="${(Math.min(1410,b)-Math.max(300,t)).toFixed(0)}" fill="${Z[k]}" opacity="${dark?.35:.28}"/>`; });
+  campY.forEach(([b,t],k)=>{ o+=`<rect x="270" y="${Math.max(300,t).toFixed(0)}" width="460" height="${(Math.min(1410,b)-Math.max(300,t)).toFixed(0)}" fill="${Z[k]}" opacity="${dark?.5:1}"/>`; });
   for(let fy=320;fy<1410;fy+=44){ const k=campY.findIndex(([b,t])=>fy<=b&&fy>=t), lit=k>=0&&doneU[k];
-    for(let fx=282;fx<726;fx+=37){ const on=lit&&R()<.75; o+=`<rect x="${fx}" y="${fy}" width="27" height="30" fill="${on?(dark?'#B8914E':'#FFE7B0'):(dark?'#0E151E':'#FFFFFF')}" opacity="${on?(dark?.42:.7):(dark?.55:.35)}"/>`; } }
+    const wc=dark?'#FFFFFF':k>=0?shade(Z[k],.8):'#C9D7E3';
+    for(let fx=282;fx<726;fx+=37){ const on=lit&&R()<.75; o+=`<rect x="${fx}" y="${fy}" width="27" height="30" rx="2" fill="${on?(dark?'#B8914E':'#FFE7B0'):(dark?'#0E151E':wc)}" opacity="${on?(dark?.42:.85):(dark?.55:.9)}"/>`; } }
+  o+=`<rect x="270" y="300" width="460" height="1110" fill="url(#mshine)"/>`;
   o+=`<path d="M270 300v1110M730 300v1110" stroke="${dark?'#0A0F16':'#8A9BAA'}" stroke-width="3"/>`;
   o+=`<rect x="320" y="200" width="360" height="100" fill="${dark?'#141D27':'#A9BACA'}"/><text x="500" y="266" text-anchor="middle" font-family="Spectral, Georgia, serif" font-weight="600" font-size="30" letter-spacing="6" fill="${dark?'#D1A55A':'#B8893B'}">TRUSTED</text>`;
   o+=`<rect x="360" y="160" width="280" height="40" fill="${dark?'#1B2632':'#C9D5DF'}"/><path d="M360 160h280" stroke="${dark?'#56606B':'#7D8C99'}" stroke-width="3"/><path d="M500 160V${PEAK[1]}" stroke="${dark?'#56606B':'#7D8C99'}" stroke-width="5"/>`;
@@ -5197,7 +5310,7 @@ function mtnArt(M,dark){ const R=rng(7), Z=dark?ZONES.dark:ZONES.light, st=M.ste
   for(let x=-80;x<1100;x+=70+R()*40){ if(x>230&&x<770) continue; const h=26+R()*14; o+=`<path d="M${x} 1480v-${h*.5}" stroke="${dark?'#2E3A30':'#6F7F68'}" stroke-width="4"/><circle cx="${x}" cy="${1480-h*.7}" r="${h*.42}" fill="${dark?'#243A2E':'#7FA588'}"/>`; }
   // mist over the levels you haven't reached
   if(M.edge&&M.edge.ui<M.us.length-1){ const nx=M.steps.find(x=>x.ui===M.edge.ui+1), yb=nx.y+60, mc=dark?'#0B111C':'#F4F2EC';
-    o+=`<defs><linearGradient id="mmist" x1="0" y1="-600" x2="0" y2="${yb}" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="${mc}" stop-opacity="${dark?.7:.72}"/><stop offset=".72" stop-color="${mc}" stop-opacity=".5"/><stop offset="1" stop-color="${mc}" stop-opacity="0"/></linearGradient></defs><rect x="-600" y="-600" width="${MW+1200}" height="${yb+600}" fill="url(#mmist)"/>`; }
+    o+=`<defs><linearGradient id="mmist" x1="0" y1="-600" x2="0" y2="${yb}" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="${mc}" stop-opacity="${dark?.6:.5}"/><stop offset=".72" stop-color="${mc}" stop-opacity="${dark?.4:.28}"/><stop offset="1" stop-color="${mc}" stop-opacity="0"/></linearGradient></defs><rect x="-600" y="-600" width="${MW+1200}" height="${yb+600}" fill="url(#mmist)"/>`; }
   o+=`<path d="M${PEAK[0]} ${PEAK[1]}v-58" stroke="${dark?'#E7E2D6':'#3A4048'}" stroke-width="3"/><path d="M${PEAK[0]} ${PEAK[1]-58}h40l-9 11 9 11h-40Z" fill="${M.edge?(dark?'#56606B':'#9AA0A8'):'#C9A04F'}"/>`;
   return o; }
 
@@ -5804,18 +5917,18 @@ const IL={
   // a head seen from the front: face, hair, eyes (fwd | down | side); no mouth, speech is shown with bubbles
   head(cx,cy,eyes='fwd',tilt=0){ const e=eyes==='down'?`<path d="M${cx-8} ${cy+4}q2.5 2 5 0M${cx+3} ${cy+4}q2.5 2 5 0"/>`
       :`<circle class="i" cx="${cx+(eyes==='side'?-8:-5.5)}" cy="${cy+1}" r="1.8"/><circle class="i" cx="${cx+(eyes==='side'?2:5.5)}" cy="${cy+1}" r="1.8"/>`;
-    return `<g transform="rotate(${tilt} ${cx} ${cy+16})"><ellipse class="f s" cx="${cx}" cy="${cy}" rx="14" ry="16"/><path class="hair" d="M${cx-14} ${cy-2}q-1-16 14-16q15 0 14 16q-5-7-14-8q-9 1-14 8z"/>${e}</g>`; },
+    return `<g transform="rotate(${tilt} ${cx} ${cy+16})"><ellipse class="f s skin" cx="${cx}" cy="${cy}" rx="14" ry="16"/><path class="hair" d="M${cx-14} ${cy-2}q-1-16 14-16q15 0 14 16q-5-7-14-8q-9 1-14 8z"/>${e}<path class="mouth" d="${eyes==='down'?`M${cx-3} ${cy+10}h6`:`M${cx-4} ${cy+8}q4 2.6 8 0`}"/></g>`; },
   // shoulders and torso behind a table, front view
-  body(cx=100){ return `<g transform="translate(${cx-100} 0)"><path class="f s" d="M64 108l3-26q3-16 33-17q30 1 33 17l3 26"/><path d="M100 65v-4"/></g>`; },
-  table:`<path class="f" d="M12 108h176v9H12z"/><path d="M12 108h176"/>`,
-  chair:`<path class="f" d="M66 60q34-12 68 0v48H66z"/>`,
+  body(cx=100){ return `<g transform="translate(${cx-100} 0)"><path class="f s suit" d="M64 108l3-26q3-16 33-17q30 1 33 17l3 26"/><path class="shirt" d="M92 66l8 12 8-12z"/><path d="M100 65v-4"/></g>`; },
+  table:`<path class="f wood" d="M12 108h176v9H12z"/><path d="M12 108h176"/>`,
+  chair:`<path class="f chair" d="M66 60q34-12 68 0v48H66z"/>`,
   handsFlat:`<path d="M70 86q-9 12-6 21q12 1 24 0M130 86q9 12 6 21q-12 1-24 0"/><ellipse class="f s" cx="90" cy="106" rx="6.5" ry="3.6"/><ellipse class="f s" cx="110" cy="106" rx="6.5" ry="3.6"/>`,
   wobble(x,dir){ return `<path class="m" d="M${x} 60q${-7*dir} 22 0 44M${x-8*dir} 68q${-5*dir} 14 0 28"/>`; },
-  bubble(x,y,w,txt,tailX){ return `<path class="f s" d="M${x+7} ${y}h${w-14}a7 7 0 0 1 7 7v7a7 7 0 0 1-7 7H${tailX+6}l-6 7v-7H${x+7}a7 7 0 0 1-7-7v-7a7 7 0 0 1 7-7z"/><text x="${x+w/2}" y="${y+14.5}" class="t">${txt}</text>`; },
-  paper(x,y,r=0){ return `<g transform="rotate(${r} ${x+10} ${y+7})"><path class="f s" d="M${x} ${y}h20v14h-20z"/><path class="m" d="M${x+4} ${y+5}h12M${x+4} ${y+9}h8"/></g>`; },
+  bubble(x,y,w,txt,tailX){ return `<path class="f s bub" d="M${x+7} ${y}h${w-14}a7 7 0 0 1 7 7v7a7 7 0 0 1-7 7H${tailX+6}l-6 7v-7H${x+7}a7 7 0 0 1-7-7v-7a7 7 0 0 1 7-7z"/><text x="${x+w/2}" y="${y+14.5}" class="t">${txt}</text>`; },
+  paper(x,y,r=0){ return `<g transform="rotate(${r} ${x+10} ${y+7})"><path class="f s obj" d="M${x} ${y}h20v14h-20z"/><path class="m" d="M${x+4} ${y+5}h12M${x+4} ${y+9}h8"/></g>`; },
   // a person seen from the side, facing right (bust), leaning by `lean` degrees
-  side(x,lean=0,{arm=''}={}){ return `<g transform="rotate(${lean} ${x} 122)"><path class="f s" d="M${x-16} 122v-34q0-16 16-17q15 1 16 17v34"/>${arm}
-      <ellipse class="f s" cx="${x+2}" cy="52" rx="13" ry="15"/><path class="hair" d="M${x-11} 50q-2-17 13-17q13 0 14 12q-8-5-15-3q-6 2-12 8z"/><circle class="i" cx="${x+9}" cy="52" r="1.8"/></g>`; },
+  side(x,lean=0,{arm=''}={}){ return `<g transform="rotate(${lean} ${x} 122)"><path class="f s suit" d="M${x-16} 122v-34q0-16 16-17q15 1 16 17v34"/>${arm}
+      <ellipse class="f s skin" cx="${x+2}" cy="52" rx="13" ry="15"/><path class="hair" d="M${x-11} 50q-2-17 13-17q13 0 14 12q-8-5-15-3q-6 2-12 8z"/><circle class="i" cx="${x+9}" cy="52" r="1.8"/><path class="mouth" d="M${x+8} 59.5q2.6 1.2 5 0"/></g>`; },
   laptop(x,y,h,{faces=true}={}){ return `<path class="f s" d="M${x} ${y}l7-${h}h44l-7 ${h}z"/><circle class="gf" cx="${x+29}" cy="${y-h+4.5}" r="2.2"/>${faces?`<circle class="m" cx="${x+19}" cy="${y-h/2+2}" r="4.5"/><circle class="m" cx="${x+34}" cy="${y-h/2+2}" r="4.5"/>`:''}<path d="M${x-6} ${y}h56"/>`; },
 };
 const ilDesk=(o={})=>`${IL.chair}${IL.body()}${o.hands??IL.handsFlat}${IL.head(100,o.y??44,o.eyes||'fwd',o.tilt||0)}${IL.table}${o.extra||''}`;
@@ -5838,9 +5951,9 @@ const ILLUS_SLA={
         b:ilDesk({extra:`<path class="m" d="M124 36q6 8 0 16M121 50l3 2 2-4"/>`}) },
   // Introduce yourself · a formal meeting abroad
   l5p2:{ a:`<path d="M8 122h184"/>${IL.side(62,0,{arm:`<path d="M64 84q22 2 40-6"/><ellipse class="f s" cx="107" cy="77" rx="5.5" ry="3.6"/>`})}
-          <g transform="translate(200 0) scale(-1 1)">${IL.side(62,-16)}</g>${IL.bubble(30,2,40,'Hi!',48)}`,
+          <g class="cl" transform="translate(200 0) scale(-1 1)">${IL.side(62,-16)}</g>${IL.bubble(30,2,40,'Hi!',48)}`,
         b:`<path d="M8 122h184"/>${IL.side(62,14,{arm:`<path d="M62 84q14 6 26 2M60 92q14 6 28 0"/>`})}<path class="gf" d="M92 80l16 3-3 10-16-3z"/>
-          <g transform="translate(200 0) scale(-1 1)">${IL.side(62,-14)}</g>` },
+          <g class="cl" transform="translate(200 0) scale(-1 1)">${IL.side(62,-14)}</g>` },
   // Look at the lens · your key point on a call
   l11p0:{ a:`${IL.side(50)}<path class="m" d="M60 53q30 12 72 24" stroke-dasharray="3 5"/>${IL.laptop(114,104,44)}<path d="M8 122h184M110 104h60v8h-60"/>`,
           b:`${IL.side(50)}<path class="m" d="M60 51q34-2 82 12" stroke-dasharray="3 5"/>${IL.laptop(114,104,44)}<path d="M8 122h184M110 104h60v8h-60"/>` },
@@ -5853,7 +5966,8 @@ const ILLUS_SLA={
   l15p1:{ a:`<g transform="translate(-46 0)">${IL.body()}${IL.head(100,44)}</g><g transform="translate(46 0)">${IL.body()}${IL.head(100,44,'side')}</g>${IL.table}${IL.bubble(124,2,40,'…',150)}${IL.bubble(6,2,74,'You mean…',48)}`,
           b:`<g transform="translate(-46 0)">${IL.body()}${IL.head(100,44)}</g><g transform="translate(46 0)">${IL.body()}${IL.head(100,44,'side')}</g>${IL.table}${IL.bubble(124,2,40,'…',150)}` },
 };
-const illusSVG=(key,side,label)=>ILLUS[key]?`<svg class="il" viewBox="0 0 200 130" role="img" aria-label="${esc(label||'')}">${ILLUS[key][side]}</svg>`:'';
+const IL_ROOM=`<rect class="room" x="0" y="0" width="200" height="130" rx="10"/><rect class="floor" x="0" y="117" width="200" height="13"/>`;
+const illusSVG=(key,side,label)=>ILLUS[key]?`<svg class="il" viewBox="0 0 200 130" role="img" aria-label="${esc(label||'')}">${IL_ROOM}${ILLUS[key][side]}</svg>`:'';
 
 const LICO=(()=>{ const P={door:'<path d="M6 21V4h12v17M4 21h16M14 12h.01"/>',chart:'<path d="M4 20h16M7 16v-5M12 16V7M17 16v-8"/>',
   law:'<path d="M12 4v16M5 20h14M6 8h12M6 8l-3 6h6zM18 8l-3 6h6z"/>',city:'<path d="M3 21h18M5 21V9l5-3v15M10 21V4h9v17M13 8h3M13 12h3M13 16h3"/>',
@@ -5873,8 +5987,8 @@ const AT_ILL={
   door:`<path d="M6 124h188"/><path class="f s" d="M40 124V20h120v104"/><rect class="f s" x="58" y="30" width="84" height="16" rx="2"/><text x="100" y="41.5" class="t" style="font-size:7.5px;letter-spacing:1.5px">REAL ESTATE</text>
     <path class="f s" d="M62 124V56h76v68"/><path d="M100 56v68M92 88v10M108 88v10"/><path class="m" d="M70 64l14 14M116 64l14 14"/><rect class="gf" x="74" y="118" width="52" height="6" rx="2"/>
     ${[22,178].map(x=>`<path class="f s" d="M${x-9} 124l2-16h14l2 16z"/><circle class="f s" cx="${x}" cy="96" r="9"/><circle class="f s" cx="${x-7}" cy="86" r="7"/><circle class="f s" cx="${x+7}" cy="86" r="7"/><circle class="f s" cx="${x}" cy="79" r="7"/>`).join('')}`,
-  push:`<path d="M8 122h184"/>${IL.side(58,6,{arm:`<path d="M62 86q22 0 38-8"/><path class="f s" d="M98 70l18-4 4 18-18 4z"/>`})}<g transform="translate(200 0) scale(-1 1)">${IL.side(52,-10)}</g>${IL.bubble(26,2,62,'Sign today!',50)}`,
-  listen:`<path d="M8 122h184"/>${IL.side(58,4,{arm:`<path d="M60 88q12 4 20 0"/><path class="f s" d="M78 80h14v14H78z"/><path class="m" d="M81 84h8M81 88h6"/>`})}<g transform="translate(200 0) scale(-1 1)">${IL.side(52,0)}</g>${IL.bubble(118,2,40,'…',152)}`,
+  push:`<path d="M8 122h184"/>${IL.side(58,6,{arm:`<path d="M62 86q22 0 38-8"/><path class="f s" d="M98 70l18-4 4 18-18 4z"/>`})}<g class="cl" transform="translate(200 0) scale(-1 1)">${IL.side(52,-10)}</g>${IL.bubble(26,2,62,'Sign today!',50)}`,
+  listen:`<path d="M8 122h184"/>${IL.side(58,4,{arm:`<path d="M60 88q12 4 20 0"/><path class="f s" d="M78 80h14v14H78z"/><path class="m" d="M81 84h8M81 88h6"/>`})}<g class="cl" transform="translate(200 0) scale(-1 1)">${IL.side(52,0)}</g>${IL.bubble(118,2,40,'…',152)}`,
   guess:ilDesk({extra:IL.bubble(112,4,84,'Probably 8%…',120)}),
   confirm:ilDesk({extra:IL.bubble(96,4,100,'Let me confirm that',110)}),
   u1:`<rect class="f s" x="40" y="14" width="120" height="104" rx="4"/><path d="M40 66h56v52"/>${bed(58,76)}<path class="m" d="M110 30h36v26h-36z"/>`,
@@ -5892,7 +6006,7 @@ const AT_ILL={
   'd-garden':`<path d="M8 122h184"/>${tower(40,120,100)}<rect class="f s" x="52" y="96" width="44" height="22"/><text x="74" y="111" class="t">G-02</text><path d="M110 118v-14"/><circle class="f s" cx="110" cy="96" r="9"/><circle class="f s" cx="103" cy="88" r="7"/><circle class="f s" cx="117" cy="88" r="7"/><path class="m" d="M112 118h48"/><path d="M40 96h120" stroke-dasharray="3 4"/>`,
   'd-title':doc(58,8,'STRATA TITLE?','Proof not provided',`<text x="100" y="86" class="t" style="font-size:26px;fill:var(--mute)">?</text>`),
   'd-bonus':`<path class="f s" d="M52 44h96v60H52z"/><path d="M52 44l48 34 48-34"/><circle class="gf" cx="150" cy="40" r="14"/><text x="150" y="44.5" class="t" style="font-size:13px">$</text>`,
-  'd-nominee':`<path d="M8 122h184"/>${IL.side(56)}<g transform="translate(200 0) scale(-1 1)">${IL.side(56)}</g><path class="f s" d="M84 60h32v40H84z"/><path class="m" d="M90 70h20M90 78h20M90 86h12"/><path d="M78 108q22 10 44 0" stroke-dasharray="3 4"/>`,
+  'd-nominee':`<path d="M8 122h184"/>${IL.side(56)}<g class="cl" transform="translate(200 0) scale(-1 1)">${IL.side(56)}</g><path class="f s" d="M84 60h32v40H84z"/><path class="m" d="M90 70h20M90 78h20M90 86h12"/><path d="M78 108q22 10 44 0" stroke-dasharray="3 4"/>`,
   'd-quota':`<path class="f s" d="M30 104a70 70 0 0 1 140 0"/><path class="gf" d="M30 104a70 70 0 0 1 128.6-38.4l-10 6A58 58 0 0 0 42 104z"/><path d="M100 104l40-40"/><circle class="f s" cx="100" cy="104" r="5"/><text x="100" y="124" class="t">68% of 70% foreign quota</text>`,
   'd-guarantee':ilDesk({extra:IL.bubble(100,4,94,'Guarantee 8%?',112)}),
   'sig-think':ilDesk({eyes:'down',tilt:-6,extra:IL.bubble(108,4,88,'I\'ll think…',118)}),
@@ -5906,12 +6020,14 @@ const AT_ILL={
   'msg-value':`<rect class="f s" x="66" y="4" width="68" height="122" rx="11"/><path d="M92 12h16"/><path class="f s" d="M74 34h52v44H74z"/><text x="100" y="46" class="t" style="font-size:9px">Quota 64%</text><rect class="gf" x="80" y="54" width="8" height="18"/><rect class="gf" x="92" y="60" width="8" height="12" opacity=".7"/><rect class="gf" x="104" y="64" width="8" height="8" opacity=".5"/><path class="m" d="M74 90h40M74 98h30"/>`,
 };
 function atSVG(key,label){ let m=String(key).match(/^sla:(\w+):([ab])$/); const body=m?(ILLUS_SLA[m[1]]||{})[m[2]]:AT_ILL[key];
-  return body?`<svg class="il" viewBox="0 0 200 130" role="img" aria-label="${esc(label||'')}">${body}</svg>`:''; }
+  return body?`<svg class="il" viewBox="0 0 200 130" role="img" aria-label="${esc(label||'')}">${IL_ROOM}${body}</svg>`:''; }
 
 function lessonCards(i){ const l=LESSONS[i], cards=[{type:'intro'}];
   if(l.decision){ l.decision.steps.forEach((x,k)=>cards.push({type:'decide',k})); cards.push({type:'principle'},{type:'done'}); return cards; }
   // one idea per screen: each section, then its "Which is the professional way?" choice, one card per rule, then picture questions
-  l.sections.forEach((x,k)=>{ cards.push({type:'sec',k}); const pk=l.pairs.findIndex(p=>p.sec===k); if(pk>=0) cards.push({type:'quiz',k:pk});
+  l.sections.forEach((x,k)=>{ cards.push({type:'sec',k});
+    if(x.flow){ x.flow.forEach((f,j)=>cards.push({type:'step',k,j})); if(atExtras(x,'rest').trim()) cards.push({type:'secx',k}); }
+    const pk=l.pairs.findIndex(p=>p.sec===k); if(pk>=0) cards.push({type:'quiz',k:pk});
     (x.rules||[]).forEach((r,j)=>cards.push({type:'rule',k,j}));
     (l.pics||[]).forEach((p,pi)=>{ if(p.after===k) cards.push({type:'pq',k:pi,sel:new Set()}); }); });
   if(l.roleplay){ cards.push({type:'rp'}); l.roleplay.turns.forEach((tn,j)=>cards.push({type:'say',them:tn.client,who:tn.who,text:tn.agent,id:`at${i}-t${j}`,clip:`at${i}-t${j}`,label:l.roleplay.scenario,title:'Your line',rp:j}));
@@ -5941,10 +6057,12 @@ function enterCard(){ stopAll(); cancelRec(); const c=lsess.cards[lsess.n], i=ls
   if(c.type==='breathe') cs('c-fx-breathe');
   if(c.type==='idea') cs(`c-lesson${i}-rule`);
   else if(c.type==='intro') cs(`c-at${i}-intro`);
-  else if(c.type==='pq') cs(`c-at${i}-pq${c.k}`);
+  else if(c.type==='pq') pqRead(t,i,c.k);
   else if(c.type==='decide') cs(`c-dc${i}-s${c.k}`);
   else if(c.type==='principle') cs(`c-dc${i}-pr`);
-  else if(c.type==='sec'){ if(LESSONS[i].sections[c.k].flow) flowRead(t,i,c.k); else cs(`c-at${i}-s${c.k}`); }
+  else if(c.type==='sec') readParts(t,i,c.k);
+  else if(c.type==='secx') readParts(t,i,c.k,false);
+  else if(c.type==='step'){ const on=document.querySelector('.at-steps li.on'); if(on) on.scrollIntoView({block:'nearest',behavior:'auto'}); cs(`c-at${i}-s${c.k}-f${c.j}`); }
   else if(c.type==='rule') cs(`c-at${i}-s${c.k}-r${c.j}`);
   else if(c.type==='rp') cs(`c-at${i}-rp`);
   else if(c.type==='debrief') cs(`c-at${i}-db`);
@@ -5953,14 +6071,29 @@ function enterCard(){ stopAll(); cancelRec(); const c=lsess.cards[lsess.n], i=ls
 /* A list of steps (flow) is read one step at a time: the coach introduces the section, then each step lights up while
    the coach reads it (clip c-at{i}-s{k}-f{j}); read steps stay, the rest wait faded. Tap any step to hear it again.
    With the coach off, every step simply shows. */
-async function flowRead(t,i,k){ const ol=document.querySelector('.at-flow'); if(!ol) return;
-  const items=[...ol.querySelectorAll('li')], done=()=>{ ol.classList.remove('fl-seq'); if(t===tok) items.forEach(li=>li.classList.remove('fl-now')); };   // a tap that interrupted us keeps its own highlight
-  if(!await wait(LEAD,t)||!await coachSay(`c-at${i}-s${k}`,t)) return done();
-  for(let j=0;j<items.length;j++){ if(t!==tok) return done();
-    items.forEach(li=>li.classList.remove('fl-now')); items[j].classList.add('fl-now','fl-seen');
-    items[j].scrollIntoView({block:'nearest',behavior:reduceMotion()?'auto':'smooth'});
-    if(!await wait(250,t)||!await coachSay(`c-at${i}-s${k}-f${j}`,t)) return done(); }
+/* A card is read one part at a time: the coach reads the heading and text, then each part (step, row, line, card,
+   warning) lights up while it is read; parts not read yet wait faded. Tap any part to hear just that part. */
+async function readParts(t,i,k,intro=true){ const card=document.querySelector('#main'), items=[...card.querySelectorAll('[data-rd]')];
+  const done=()=>{ card.classList.remove('rd-seq'); if(t===tok) items.forEach(el=>el.classList.remove('rd-now')); };
+  if(items.length) card.classList.add('rd-seq');
+  if(!await wait(LEAD,t)||intro&&!await coachSay(`c-at${i}-s${k}`,t)) return done();
+  for(const el of items){ if(t!==tok) return done();
+    items.forEach(x=>x.classList.remove('rd-now')); el.classList.add('rd-now','rd-seen');
+    el.scrollIntoView({block:'nearest',behavior:reduceMotion()?'auto':'smooth'});
+    if(!await wait(220,t)||!await coachSay(`c-at${i}-s${k}-${el.dataset.rd}`,t)) return done(); }
   done(); }
+/* A picture's caption, split for the voice: words in quotes are said by the person in the picture (the client in
+   the buying-signal pictures, otherwise the agent); the rest is the coach describing it. Same split as make_voice.py capParts(). */
+function capParts(cap,svg){ const out=[], who=/^sig-/.test(svg||'')?'client':'you', re=/[“"]([^”"]+)[”"]/g; let m, last=0;
+  const coach=x=>{ x=x.replace(/^[\s:,;.–-]+|[\s:,;–-]+$/g,''); if(x) out.push({who:'coach',text:x[0].toUpperCase()+x.slice(1)}); };
+  while((m=re.exec(cap))){ coach(cap.slice(last,m.index)); out.push({who,text:m[1]}); last=re.lastIndex; } coach(cap.slice(last)); return out; }
+async function pqRead(t,i,k){ if(!await wait(LEAD,t)||!await coachSay(`c-at${i}-pq${k}`,t)) return;
+  const opts=[...document.querySelectorAll('.ls-opt.pic')];
+  for(let n=0;n<opts.length;n++){ if(t!==tok||lsess.cards[lsess.n].pick!=null) return; opts[n].classList.add('reading');
+    const o=LESSONS[i].pics[k].options[n]; let ok=await wait(250,t);
+    for(const [m,p] of capParts(o.cap,o.svg).entries()){ if(!ok) break; const id=`c-at${i}-pq${k}-o${n}-p${m}`;
+      ok=useFiles()&&AUDIO[id]?await coachSay(id,t):hasTTS?await say(p.text,t,{voice:p.who==='coach'?themVoice(pickVoice()):pickVoice()}):true; }
+    opts[n].classList.remove('reading'); if(!ok) return; } }
 const reduceMotion=()=>matchMedia('(prefers-reduced-motion: reduce)').matches;
 const LEAD=500;   // ms of quiet before audio that starts by itself, so the screen settles first (a tap plays at once)
 async function lsListen(auto){ const c=lsess.cards[lsess.n]; stopAll(); c.step='listen'; render(); const t=++tok;
@@ -6006,9 +6139,9 @@ function lessonAct(a,btn){
   if(a==='ls-exit'){ const f=lsess.from; endLesson(); return go(f); }
   if(a==='ls-next'){ if(lsess.n<lsess.cards.length-1){ lsess.n++; enterCard(); } return; }
   if(a==='ls-why'){ c.why=true; return render(); }
-  if(a==='ls-flow'){ const j=+btn.dataset.f, ol=btn.closest('.at-flow'); stopAll(); const t=++tok;
-    ol.classList.remove('fl-seq'); ol.querySelectorAll('li').forEach(li=>li.classList.toggle('fl-now',li===btn));
-    coachSay(`c-at${lsess.i}-s${c.k}-f${j}`,t).then(()=>{ if(t===tok) btn.classList.remove('fl-now'); }); return; }
+  if(a==='ls-rd'){ stopAll(); const t=++tok; document.querySelector('#main').classList.remove('rd-seq');
+    document.querySelectorAll('[data-rd]').forEach(el=>el.classList.toggle('rd-now',el===btn));
+    coachSay(`c-at${lsess.i}-s${c.k}-${btn.dataset.rd}`,t).then(()=>{ if(t===tok) btn.classList.remove('rd-now'); }); return; }
   if(a==='ls-pick'){ if(c.pick) return; c.pick=btn.dataset.o; c.ok=c.pick==='b'; stopAll(); render(); quizVerdict(c.pick==='b',`c-lesson${lsess.i}-p${c.k}-note`); return; }
   if(a==='ls-qread') return quizRead();
   if(a==='ls-listen') return lsListen();
@@ -6042,18 +6175,20 @@ function lessonAct(a,btn){
 }
 /* Section extras: facts box, table, worked calculation, analogy, warning, and the two ownership diagrams. */
 const rpHow=rp=>{ const w=rp.turns.find(t=>t.client.length); return !w?'Hear the model line, then say it yourself.':`You're the agent. Hear ${w.who||'the client'}, hear the model answer, then say it yourself.`; };
-function atExtras(x){ let h='';
-  if(x.analogy) h+=`<div class="at-analogy"><span>Think of it like this</span>${esc(x.analogy)}</div>`;
-  if(x.box) h+=`<div class="card at-box">${x.box.title?`<p class="at-box-t">${esc(x.box.title)}</p>`:''}<ul>${x.box.lines.map(d=>`<li>${esc(d)}</li>`).join('')}</ul></div>`;
-  if(x.flow) h+=`<ol class="at-flow${coachOn()?' fl-seq':''}">${x.flow.map((f,j)=>`<li data-act="ls-flow" data-f="${j}" tabindex="0"><b>${esc(f.title)}</b><span>${esc(f.sub)}</span></li>`).join('')}</ol>`;
-  if(x.grid) h+=`<div class="at-grid">${x.grid.map(([t,d])=>`<div class="card"><b>${esc(t)}</b><p>${esc(d)}</p></div>`).join('')}</div>`;
-  if(x.bars) h+=`<div class="card at-bars"><p class="at-box-t">${esc(x.bars.title)}</p>${x.bars.bars.map(b=>`<div class="at-bar${b.dim?' dim':''}"><div class="at-bar-l"><span>${esc(b.label)}</span><b>${esc(b.valueLabel)}</b></div><i style="width:${b.pct}%"></i></div>`).join('')}</div>`;
-  if(x.data) h+=`<div class="card at-box">${x.dataTitle?`<p class="at-box-t">${esc(x.dataTitle)}</p>`:''}<ul>${x.data.map(d=>`<li>${esc(d)}</li>`).join('')}</ul></div>`;
-  if(x.table) h+=`<div class="at-table"><table><thead><tr>${x.table.headers.map(t=>`<th>${esc(t)}</th>`).join('')}</tr></thead><tbody>${x.table.rows.map(r=>`<tr>${r.map(t=>`<td>${esc(t)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
-  if(x.calc) h+=`<div class="card at-calc"><p class="at-box-t">${esc(x.calc.title)}</p>${x.calc.rows.map(r=>`<div class="at-calc-r${r.total?' tot':''}"><span>${esc(r.label)}</span><b>${esc(r.value)}</b></div>`).join('')}</div>`;
-  (x.diagrams||[]).forEach(d=>{ h+=d==='floors'?atFloors():d==='quota'?atQuota():''; });
-  if(x.source) h+=`<p class="at-src">${esc(x.source)}</p>`;
-  if(x.warning) h+=`<div class="at-warn"><span class="res-ic">${ICO.warn}</span><p>${esc(x.warning)}</p></div>`;
+/* Section extras. Every readable part has data-rd = its clip suffix (c-at{i}-s{k}-<rd>), numbered in screen order:
+   flow steps f0.., everything else x0.. (tools/make_voice.py extraUnits() builds the same list, in the same order). */
+function atExtras(x,mode){ let h='', n=0; const keep=mode!=='flow', rd=()=>`data-rd="x${n++}" data-act="ls-rd" tabindex="0"`, H=s=>{ if(keep) h+=s; };
+  if(x.analogy) H(`<div class="at-analogy rdi" ${rd()}><span>Think of it like this</span>${esc(x.analogy)}</div>`);
+  if(x.box) H(`<div class="card at-box">${x.box.title?`<p class="at-box-t">${esc(x.box.title)}</p>`:''}<ul>${x.box.lines.map(d=>`<li class="rdi" ${rd()}>${esc(d)}</li>`).join('')}</ul></div>`);
+  if(x.flow&&mode!=='rest') h+=`<ol class="at-flow">${x.flow.map((f,j)=>`<li class="rdi" data-rd="f${j}${mode==='flow'?'t':''}" data-act="ls-rd" tabindex="0"><div class="st-c"><b>${esc(f.title)}</b><span>${esc(f.sub)}</span></div></li>`).join('')}</ol>`;
+  if(x.grid) H(`<div class="at-grid">${x.grid.map(([t,d])=>`<div class="card rdi" ${rd()}><b>${esc(t)}</b><p>${esc(d)}</p></div>`).join('')}</div>`);
+  if(x.bars) H(`<div class="card at-bars"><p class="at-box-t">${esc(x.bars.title)}</p>${x.bars.bars.map(b=>`<div class="at-bar rdi${b.dim?' dim':''}" ${rd()}><div class="at-bar-l"><span>${esc(b.label)}</span><b>${esc(b.valueLabel)}</b></div><i style="width:${b.pct}%"></i></div>`).join('')}</div>`);
+  if(x.data) H(`<div class="card at-box">${x.dataTitle?`<p class="at-box-t">${esc(x.dataTitle)}</p>`:''}<ul>${x.data.map(d=>`<li class="rdi" ${rd()}>${esc(d)}</li>`).join('')}</ul></div>`);
+  if(x.table) H(`<div class="at-table"><table><thead><tr>${x.table.headers.map(t=>`<th>${esc(t)}</th>`).join('')}</tr></thead><tbody>${x.table.rows.map(r=>`<tr class="rdi" ${rd()}>${r.map(t=>`<td>${esc(t)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`);
+  if(x.calc) H(`<div class="card at-calc"><p class="at-box-t">${esc(x.calc.title)}</p>${x.calc.rows.map(r=>`<div class="at-calc-r rdi${r.total?' tot':''}" ${rd()}><span>${esc(r.label)}</span><b>${esc(r.value)}</b></div>`).join('')}</div>`);
+  if(keep) (x.diagrams||[]).forEach(d=>{ h+=d==='floors'?atFloors():d==='quota'?atQuota():''; });
+  if(x.source) H(`<p class="at-src">${esc(x.source)}</p>`);
+  if(x.warning) H(`<div class="at-warn rdi" ${rd()}><span class="res-ic">${ICO.warn}</span><p>${esc(x.warning)}</p></div>`);
   return h; }
 function atFloors(){ const fl=['4','3','2','1'];
   return `<div class="card at-diag"><p class="at-box-t">Which floors can a foreigner own in their own name?</p><div class="at-bld"><svg viewBox="0 0 90 150" aria-hidden="true">
@@ -6062,6 +6197,11 @@ function atFloors(){ const fl=['4','3','2','1'];
     <div class="at-legend"><p><b class="bad">✕ Ground floor</b>Not in a foreigner's own name. Only through a legal route.</p><p><b class="ok">✓ 1st floor and up</b>Foreigners can own these in their own name.</p></div></div></div>`; }
 function atQuota(){ return `<div class="card at-diag"><p class="at-box-t">How much of one building can foreigners own?</p>
   <div class="at-quota"><span class="f">Up to 70%</span><span class="l">At least 30%</span></div><div class="at-quota-cap"><span>Can be foreign-owned</span><span>Stays Cambodian-owned</span></div></div>`; }
+/* What kind of screen this is, shown as a coloured label so an agent always knows: learn, practise, decide, quiz. */
+const KIND={learn:['Learn','<path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5zM4 20.5A2.5 2.5 0 0 0 6.5 23H20v-5"/>'],
+  practice:['Practice','<path d="M4 5h16v10H9l-5 4z"/>'], decide:['Decide','<circle cx="12" cy="12" r="9"/><path d="M15.5 8.5l-2 5-5 2 2-5z"/>'],
+  quiz:['Quiz','<circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.7 2.7L16 10"/>'], reflect:['Your words','<path d="M4 20h4L19 9l-4-4L4 16zM13 7l4 4"/>']};
+const KIND_OF={intro:'learn',sec:'learn',step:'learn',secx:'learn',rule:'learn',debrief:'learn',rp:'practice',say:'practice',decide:'decide',principle:'decide',quiz:'quiz',q:'quiz',pq:'quiz',reflect:'reflect'};
 function viewLessonSession(){
   const i=lsess.i, l=lsess.kind==='lesson'?LESSONS[i]:null, c=lsess.cards[lsess.n], total=lsess.cards.length-1, pct=Math.round(lsess.n/total*100);
   const qListen=`<div class="q-listen"><button class="small-btn coach-btn" type="button" data-act="ls-qread">▶ Listen</button></div>`;
@@ -6101,7 +6241,14 @@ function viewLessonSession(){
       <p class="ctx" style="margin-top:14px">You'll learn</p><ul class="at-objs">${l.objectives.map(o=>`<li>${esc(o)}</li>`).join('')}</ul>`;
     ft=cont('Start'); }
   else if(c.type==='sec'){ const x=l.sections[c.k];
-    body=`<p class="ctx">${esc(x.label)}</p><h1 class="fx-title">${esc(x.heading)}</h1><div class="at-body">${x.body}</div>${atExtras(x)}`;
+    body=`<p class="ctx">${esc(x.label)}</p><h1 class="fx-title">${esc(x.heading)}</h1><div class="at-body">${x.body}</div>${atExtras(x,x.flow?'flow':undefined)}`;
+    ft=cont(); }
+  else if(c.type==='step'){ const x=l.sections[c.k];
+    body=`<p class="ctx">${esc(x.label)} · Step ${c.j+1} of ${x.flow.length}</p><h1 class="fx-title">${esc(x.heading)}</h1>
+      <ol class="at-flow at-steps">${x.flow.map((f,j)=>`<li class="${j===c.j?'on':j<c.j?'past':'later'}" data-rd="f${j}" data-act="ls-rd" tabindex="0"${j===c.j?' aria-current="step"':''}><div class="st-c"><b>${esc(f.title)}</b><span>${esc(f.sub)}</span></div></li>`).join('')}</ol>`;
+    ft=cont(); }
+  else if(c.type==='secx'){ const x=l.sections[c.k];
+    body=`<p class="ctx">${esc(x.label)}</p><h1 class="fx-title">${esc(x.calc?x.calc.title:x.heading)}</h1><div class="${x.calc?'no-calc-t':''}">${atExtras(x,'rest')}</div>`;
     ft=cont(); }
   else if(c.type==='rule'){ const x=l.sections[c.k], r=x.rules[c.j];
     body=`<p class="ctx">${esc(x.label)}${x.rules.length>1?` · ${c.j+1} of ${x.rules.length}`:''}</p><h1 class="fx-title">${esc(r.title)}</h1><p class="at-body">${esc(r.detail)}</p>
@@ -6189,7 +6336,10 @@ function viewLessonSession(){
     body=`<div class="done-wrap"><div class="done-badge">${LICO[i]}</div><h1 class="done-title">Lesson complete</h1>${starRow(c.stars||starsOf('l'+i),'dstars')}<p class="lead" style="margin:0 auto">${l.title}</p></div>`;
     ft=`<div class="fx-btns"><button class="ghost-btn" type="button" data-act="ls-again">Again</button>${pendingUnlock?`<button class="solid-btn" type="button" data-act="tomap">Continue</button>`:`<button class="solid-btn" type="button" data-act="nextup">${nx?`Next: ${esc(nx.title)}`:'Done'}</button>`}</div>`; }
   const col=lsess.kind==='lesson'?catColor(l.unit||'Foundation'):lsess.kind==='r3'?catColor(SCENARIOS[i].cat):'green';
-  return `<div class="u-${col}">${top}${body}</div>${ft?foot(cls,ft):''}`;
+  const kind=KIND_OF[c.type]&&!(c.type==='intro'&&l&&l.decision)?KIND_OF[c.type]:(l&&l.decision&&c.type!=='done'?'decide':null);
+  const pill=kind?`<span class="kind-pill"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true">${KIND[kind][1]}</svg>${KIND[kind][0]}</span>`:'';
+  const head=pill&&body.startsWith('<p class="ctx">')?body.replace('<p class="ctx">',`<p class="ctx has-pill">${pill}<span class="ctx-t">`).replace('</p>','</span></p>'):pill+body;
+  return `<div class="ls-card u-${col}${kind?' kind-'+kind:''}">${top}${head}</div>${ft?foot(cls,ft):''}`;
 }
 
 /* ---------------- GUIDED PRACTICE (scenarios) ----------------
