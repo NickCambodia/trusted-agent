@@ -371,6 +371,7 @@ body.focus main{ padding-top:16px; padding-bottom:calc(240px + env(safe-area-ins
   padding:6px 12px; border-radius:12px; background:color-mix(in srgb, var(--card) 70%, transparent); -webkit-backdrop-filter:blur(6px); backdrop-filter:blur(6px); }
 .msummit b{ display:block; font-family:var(--sans); font-size:.58rem; font-weight:600; text-transform:uppercase; letter-spacing:.16em; color:var(--dim); }
 .msummit.reached{ color:var(--gold-text); }
+.msummit.r{ translate:10px -50%; text-align:left; }
 .msheet{ position:absolute; left:12px; right:12px; bottom:12px; display:flex; justify-content:center; z-index:3; pointer-events:none; }
 .msheet[hidden]{ display:none; }
 .msheet .pop{ pointer-events:auto; margin:0; }
@@ -706,6 +707,33 @@ html{ font-size:17px; }
 tr[data-rd].rd-now{ box-shadow:none!important; background:none!important; }
 tr[data-rd].rd-now td{ background:color-mix(in srgb, var(--u,var(--gold)) 16%, var(--card))!important; color:var(--text); font-weight:600; }
 tr[data-rd].rd-now td:first-child{ box-shadow:inset 3px 0 0 var(--u,var(--gold)); }
+
+/* ---------- tables that fit a phone ---------- */
+@media (max-width:360px){ .at-table.num table{ font-size:.72rem!important; } .at-table.num th, .at-table.num td{ padding:7px 3px!important; } .at-table.num th:first-child, .at-table.num td:first-child{ padding-left:8px!important; } }
+.at-table.words td, .at-table th{ overflow-wrap:break-word; }
+@media (max-width:560px){
+  /* numbers stay a table, tighter, and the first column may wrap */
+  .at-table.num table{ font-size:.8rem; table-layout:auto; }
+  .at-table.num th, .at-table.num td{ padding:8px 6px; }
+  .at-table.num th{ font-size:.72rem!important; line-height:1.25; }
+  .at-table.num td:first-child{ white-space:normal; }
+  .at-table.num td:not(:first-child){ white-space:nowrap; overflow-wrap:normal; font-variant-numeric:tabular-nums; }
+  .at-table.num th, .at-table.num td{ padding:8px 5px; } .at-table.num th:first-child, .at-table.num td:first-child{ padding-left:10px; }
+  /* words become one card per row: the first cell is the title, each other cell has its column name above it */
+  .at-table.words{ background:none; border:none; box-shadow:none; overflow:visible; }
+  .at-table.words table, .at-table.words tbody, .at-table.words tr, .at-table.words td{ display:block; width:100%; }
+  .at-table.words thead{ display:none; }
+  .at-table.words tr{ background:var(--card); border:1px solid var(--line); border-radius:14px; box-shadow:var(--shadow); padding:12px 14px; margin-bottom:10px; }
+  .at-table.words td{ border:none!important; padding:0; font-size:.95rem; line-height:1.45; white-space:normal!important; }
+  .at-table.words td + td{ margin-top:8px; }
+  .at-table.words td:first-child{ font-weight:700; font-size:1rem; }
+  .at-table.words td + td::before{ content:attr(data-h); display:block; font-size:.78rem; font-weight:700; color:var(--mute); margin-bottom:1px; }
+  tr[data-rd].rd-now td:first-child{ box-shadow:none; }
+  .at-table.words tr[data-rd].rd-now{ background:linear-gradient(120deg, color-mix(in srgb, var(--u,var(--gold)) 11%, var(--card)), var(--card) 90%)!important;
+    box-shadow:0 12px 26px -18px color-mix(in srgb, var(--u,var(--gold)) 75%, transparent), 0 0 0 1px color-mix(in srgb, var(--u,var(--gold)) 18%, transparent)!important; }
+  .at-table.words tr[data-rd].rd-now td{ background:none!important; font-weight:inherit; }
+  .at-table.words tr[data-rd].rd-now td:first-child{ font-weight:700; }
+}
 </style>
 </head>
 <body>
@@ -5343,6 +5371,7 @@ function mtnApply(){ const st=$('mstage'); if(!st||!MTN) return; const W=st.clie
     if(kind==='camp'){ const w=el.offsetWidth||160, hh=(el.offsetHeight||40)/2; a=side>0?Math.min(a,W-w-8):Math.max(a,w+8);
       const x0=side>0?a:a-w, hits=yy=>dots.some(([dx,dy,r])=>dx+r>x0&&dx-r<x0+w&&dy+r>yy-hh&&dy-r<yy+hh);
       for(const off of [0,18,-18,36,-36,54,-54,72,-72]) if(!hits(b+off)){ b+=off; break; } }
+    if(kind==='summit'){ const w=el.offsetWidth||170, right=a-w-10<8; el.classList.toggle('r',right); if(right) a=Math.min(a+8,W-w-18); }   // no room on the left: the label goes right of the spire
     el.style.transform=`translate(${a.toFixed(1)}px,${b.toFixed(1)}px)`;
     if(kind==='step'){ const g=gap*c.s; el.classList.toggle('mini',g<34); el.style.setProperty('--ns',Math.max(30,Math.min(52,g*0.66)).toFixed(0)+'px'); }
     el.hidden=a<-60||a>W+60||b<-60||b>H+60||(kind==='camp'&&(b<54||!mine&&span*c.s<110)); });
@@ -6184,7 +6213,8 @@ function atExtras(x,mode){ let h='', n=0; const keep=mode!=='flow', rd=()=>`data
   if(x.grid) H(`<div class="at-grid">${x.grid.map(([t,d])=>`<div class="card rdi" ${rd()}><b>${esc(t)}</b><p>${esc(d)}</p></div>`).join('')}</div>`);
   if(x.bars) H(`<div class="card at-bars"><p class="at-box-t">${esc(x.bars.title)}</p>${x.bars.bars.map(b=>`<div class="at-bar rdi${b.dim?' dim':''}" ${rd()}><div class="at-bar-l"><span>${esc(b.label)}</span><b>${esc(b.valueLabel)}</b></div><i style="width:${b.pct}%"></i></div>`).join('')}</div>`);
   if(x.data) H(`<div class="card at-box">${x.dataTitle?`<p class="at-box-t">${esc(x.dataTitle)}</p>`:''}<ul>${x.data.map(d=>`<li class="rdi" ${rd()}>${esc(d)}</li>`).join('')}</ul></div>`);
-  if(x.table) H(`<div class="at-table"><table><thead><tr>${x.table.headers.map(t=>`<th>${esc(t)}</th>`).join('')}</tr></thead><tbody>${x.table.rows.map(r=>`<tr class="rdi" ${rd()}>${r.map(t=>`<td>${esc(t)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`);
+  if(x.table){ const hd=x.table.headers, num=x.table.rows.every(r=>r.slice(1).every(c=>/^[~$\d]/.test(c)));   // numbers: a compact grid; words: cards on a phone
+    H(`<div class="at-table ${num?'num':'words'}"><table><thead><tr>${hd.map(t=>`<th>${esc(t)}</th>`).join('')}</tr></thead><tbody>${x.table.rows.map(r=>`<tr class="rdi" ${rd()}>${r.map((t,j)=>`<td data-h="${esc(hd[j]||'')}">${esc(t)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`); }
   if(x.calc) H(`<div class="card at-calc"><p class="at-box-t">${esc(x.calc.title)}</p>${x.calc.rows.map(r=>`<div class="at-calc-r rdi${r.total?' tot':''}" ${rd()}><span>${esc(r.label)}</span><b>${esc(r.value)}</b></div>`).join('')}</div>`);
   if(keep) (x.diagrams||[]).forEach(d=>{ h+=d==='floors'?atFloors():d==='quota'?atQuota():''; });
   if(x.source) H(`<p class="at-src">${esc(x.source)}</p>`);

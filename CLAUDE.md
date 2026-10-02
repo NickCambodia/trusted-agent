@@ -41,6 +41,9 @@ text, one idea per card, natural voices, a journey home screen (a tower: each le
   as a pill on the same line as the topic, a soft wash in that colour at the top (`.ls-card`), a big bold heading and
   lighter body text. Continue is full width and centred on phones and tablets, bottom right on a computer.
   Base font 17px, `--mute` #646B75 (4.9:1), no tiny capitals.
+- Tables fit a phone (<=560px): number tables (`.at-table.num`) stay a table, tighter, numbers never break; word tables
+  (`.at-table.words`) become one card per row, each value under its column name (`td[data-h]`). The summit label moves
+  right of the spire when there is no room on the left (`.msummit.r`). Overflow check: every card at 320/375/768/1280.
 - The voice never reads markup: `flowing()` in make_voice.py turns pause dots into commas/full stops so each line is one
   natural sentence; `speakable()` says an abbreviation once ("Capital Gains Tax (CGT)" → the name), Realestate.com.kh
   as "Real Estate dot com dot K H", "$1 to $2" as "one to two dollars", "BKK1" as "B K K one".
