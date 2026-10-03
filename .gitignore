@@ -1,3 +1,10 @@
 .DS_Store
 __pycache__/
 CLAUDE.local.md
+
+# source documents (Realestate.com.kh and others): reference only, never publish
+*.pdf
+*.pptx
+*.docx
+*.xlsx
+sources/
