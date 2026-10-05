@@ -44,6 +44,12 @@ text, one idea per card, natural voices, a journey home screen (a tower: each le
 - Tables fit a phone (<=560px): number tables (`.at-table.num`) stay a table, tighter, numbers never break; word tables
   (`.at-table.words`) become one card per row, each value under its column name (`td[data-h]`). The summit label moves
   right of the spire when there is no room on the left (`.msummit.r`). Overflow check: every card at 320/375/768/1280, and every word drawn in a picture or the tower must sit inside its box with 2 units to spare (bubbles, documents, signs).
+- Pictures standard (2026-10-05, approved: "clean and pleasant", "easy to understand"): every explanatory
+  picture is realistic. Photo-style renders in `img/` (title certificates on a desk with the public-domain royal arms, real
+  Khmer headings and a SAMPLE mark, never real names or numbers; furnished floor plans), made from HTML scenes in headless
+  Chrome; or free-licence real photos (Wikimedia Commons) credited under the picture (`atPhoto`, `photo:{src,alt,credit}` on
+  a section or a flow step). Quiz/decision pictures use `pic('img/…')` in `AT_ILL`. Source documents (REAKH PDFs etc.) stay
+  out of git (.gitignore) and are drawn from, never copied. People scenes: polished illustrations (to do).
 - The voice never reads markup: `flowing()` in make_voice.py turns pause dots into commas/full stops so each line is one
   natural sentence; `speakable()` says an abbreviation once ("Capital Gains Tax (CGT)" → the name), Realestate.com.kh
   as "Real Estate dot com dot K H", "$1 to $2" as "one to two dollars", "BKK1" as "B K K one".

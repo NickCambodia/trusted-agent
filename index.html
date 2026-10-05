@@ -734,6 +734,30 @@ tr[data-rd].rd-now td:first-child{ box-shadow:inset 3px 0 0 var(--u,var(--gold))
   .at-table.words tr[data-rd].rd-now td{ background:none!important; font-weight:inherit; }
   .at-table.words tr[data-rd].rd-now td:first-child{ font-weight:700; }
 }
+
+/* title certificates */
+.il .paper-c{ fill:#FBF5DF; stroke:#D9CFAE; stroke-width:.8; } .il .paper-w{ fill:#FFFFFF; stroke:#CFCAC0; stroke-width:.8; }
+.il .cert-b{ fill:none; stroke:#5C4A8F; stroke-width:1.4; } .il .cert-b2{ fill:none; stroke:#5C4A8F; stroke-width:.6; }
+.il .soft-b{ fill:none; stroke:#6B7280; stroke-width:.7; }
+.il .arms *{ fill:#C9A04F; stroke:#8A6A2C; stroke-width:.5; }
+.il .kh{ fill:none; stroke:#6B6F78; stroke-width:.6; }
+.il text.cert-t{ font-size:7.6px!important; font-weight:700!important; fill:#2B2560!important; letter-spacing:.2px; }
+.il .plan{ fill:#FFFFFF; stroke:#4B4F58; stroke-width:.8; } .il .plan-l{ fill:none; stroke:#4B4F58; stroke-width:.6; }
+.il .unit{ fill:#9CC3E6; stroke:none; }
+.il .seal{ fill:none; stroke:#C8423B; stroke-width:1.1; } .il .stamp{ fill:none; stroke:#3B5BA9; stroke-width:1.1; }
+.il .sign{ fill:none; stroke:#2B3A8C; stroke-width:.9; }
+.il text.serial{ font:600 4.6px var(--sans); fill:#C8423B; text-anchor:end; stroke:none; }
+.il .ink{ fill:none; stroke:#3B5BA9; stroke-width:.8; }
+.il .hd{ fill:none; stroke:#2E3D8F; stroke-width:1.6; } .il .dots{ fill:none; stroke:#3B4A9C; stroke-width:.55; stroke-dasharray:.8 1.1; } .il .fill{ fill:none; stroke:#2E3D8F; stroke-width:.9; }
+.il text.soft-t{ font-size:7.6px!important; font-weight:700!important; fill:#2E3D8F!important; } .il .plot{ fill:#EEF1E6; stroke:#6B7280; stroke-width:.7; stroke-dasharray:2 1.5; }
+
+/* realistic pictures */
+.at-photo{ margin:4px 0 16px; border-radius:16px; overflow:hidden; background:var(--card); box-shadow:var(--shadow); border:1px solid var(--line); }
+.at-photo img{ display:block; width:100%; height:auto; aspect-ratio:800/520; object-fit:cover; }
+.at-photo figcaption{ font-size:.72rem!important; color:var(--mute); padding:6px 12px 8px; line-height:1.35; }
+.at-photo + .at-flow{ margin-top:14px; }
+.st-c .at-photo{ margin:10px 0 2px; border-radius:12px; box-shadow:none; } .st-c .at-photo img{ aspect-ratio:16/7; object-position:50% 40%; }
+.il image{ stroke:none; }
 </style>
 </head>
 <body>
@@ -1104,7 +1128,11 @@ const TRAINING = {
        }
       ]
      },
-     "warning": "This is one real, past result on one specific unit. Past results do not guarantee future ones. Always say \"this is what happened,\" never \"this is what will happen.\""
+     "warning": "This is one real, past result on one specific unit. Past results do not guarantee future ones. Always say \"this is what happened,\" never \"this is what will happen.\"",
+     "photo": {
+      "src": "img/plan-2br.jpg",
+      "alt": "A furnished two-bedroom floor plan"
+     }
     }
    ],
    "reflection": "Explain Capital Gains Tax (CGT) to a first-time investor, in your own words, using this example: bought for $100,000, sold for $200,000, $40,000 in documented costs.",
@@ -1243,7 +1271,11 @@ const TRAINING = {
       "Soft Title: registered only with a local authority, not the national government. Not legally valid nationwide. Only for Cambodian citizens. Never recommend it to a foreign client.",
       "Buildings from before 2010, or built without a strata licence, can't give a strata title, even if they sell units on a contract. Always check."
      ],
-     "warning": "If a developer cannot prove strata title for a condo, stop the conversation. Tell your manager before you say anything else to the client."
+     "warning": "If a developer cannot prove strata title for a condo, stop the conversation. Tell your manager before you say anything else to the client.",
+     "photo": {
+      "src": "img/title-trio.jpg",
+      "alt": "A hard title, a strata title and a soft title side by side (samples)"
+     }
     },
     {
      "label": "Foreign ownership rules",
@@ -1269,7 +1301,12 @@ const TRAINING = {
        "detail": "Every unit sold to a foreign client must have strata title. This was covered in the section above, and it matters enough to repeat here.",
        "action": "Check the title type for every unit, every time, before you mention it to a foreign client."
       }
-     ]
+     ],
+     "photo": {
+      "src": "img/photo-skyline.jpg",
+      "alt": "Condominium towers in Phnom Penh, December 2024",
+      "credit": "Photo: Looppty, Wikimedia Commons, CC BY-SA 4.0"
+     }
     },
     {
      "label": "The buying process",
@@ -1330,7 +1367,12 @@ const TRAINING = {
       },
       {
        "title": "Title registration",
-       "sub": "Once fully paid, the strata title is registered in the buyer's name with the Ministry of Land Management (MLMUPC)."
+       "sub": "Once fully paid, the strata title is registered in the buyer's name with the Ministry of Land Management (MLMUPC).",
+       "photo": {
+        "src": "img/photo-ministry.jpg",
+        "alt": "The Ministry of Land Management, Urban Planning and Construction, Phnom Penh",
+        "credit": "Photo: Kiensvay, Wikimedia Commons, CC BY-SA 3.0"
+       }
       }
      ],
      "calc": {
@@ -1359,7 +1401,12 @@ const TRAINING = {
        }
       ]
      },
-     "source": "Steps from Realestate.com.kh, Cambodia Condo Investment Guide 2026 (Buyer Toolbox)"
+     "source": "Steps from Realestate.com.kh, Cambodia Condo Investment Guide 2026 (Buyer Toolbox)",
+     "photo": {
+      "src": "img/photo-offplan.jpg",
+      "alt": "Off-plan towers under construction in Phnom Penh",
+      "credit": "Photo: I G, Wikimedia Commons, CC BY 2.0"
+     }
     }
    ],
    "reflection": "In your own simple words, explain the foreign ownership rules to a first-time buyer from Japan who has never bought property outside Japan before.",
@@ -6009,9 +6056,27 @@ const LICO=(()=>{ const P={door:'<path d="M6 21V4h12v17M4 21h16M14 12h.01"/>',ch
    Same ink style as the Speak Like a Leader drawings (theme colours, both sides of a choice in the same colours).
    atSVG('key') draws AT_ILL[key]; 'sla:<key>:<a|b>' reuses an approved Speak Like a Leader drawing. */
 const bed=(x,y)=>`<rect class="f s" x="${x}" y="${y}" width="26" height="34" rx="3"/><rect class="f s" x="${x+4}" y="${y+4}" width="18" height="8" rx="2"/>`;
+/* Title certificates, drawn from real ones (cream strata certificate with a purple double border, the royal arms,
+   a floor plan with the unit marked, a red Ministry seal; a soft title is a plain local paper with a blue stamp).
+   Drawn, not photographed: real certificates carry owners' names and numbers. */
+const arms=(cx,cy)=>`<g class="arms"><path d="M${cx-7} ${cy+5}h14l-2-3h-10z"/><path d="M${cx-4.5} ${cy+2}v-5h9v5z"/><path d="M${cx-2.5} ${cy-3}l2.5-5 2.5 5z"/><circle cx="${cx-7}" cy="${cy-1}" r="2"/><circle cx="${cx+7}" cy="${cy-1}" r="2"/></g>`;
+const khmer=(x,y,w,n=1,gap=4)=>Array.from({length:n},(_,k)=>`<path class="kh" d="M${x} ${y+k*gap}q1.5-.9 3 0t3 0 3 0 3 0 3 0 3 0 3 0 3 0 3 0 3 0 3 0 3 0 3 0 3 0 3 0 3 0 3 0 3 0 3 0 3 0 3 0 4 0 4 0 4 0 4 0 4 0 4 0 4 0 4 0 4 0 4 0 4 0 4 0 4 0 4 0" style="stroke-dasharray:${w} 99"/>`).join('');
+const certStrata=(title,{q=false}={})=>`<rect class="paper-c" x="60" y="6" width="80" height="116" rx="1.5"/>
+  <rect class="cert-b" x="63.5" y="9.5" width="73" height="109"/><rect class="cert-b2" x="65.5" y="11.5" width="69" height="105"/>
+  ${arms(100,20)}${khmer(84,30,32)}<text x="100" y="40.5" class="t cert-t">${title}</text>${khmer(72,46,56,3,4)}
+  <rect class="plan" x="74" y="60" width="52" height="30"/><path class="plan-l" d="M74 75h52M87 60v30M100 60v15M113 60v30M100 75v15"/>
+  ${q?'':'<rect class="unit" x="100.6" y="60.6" width="12.2" height="13.8"/>'}
+  ${khmer(72,95,30,2,3.5)}
+  ${q?'<text x="100" y="84" class="t" style="font-size:22px;fill:var(--mute)">?</text>':`<circle class="seal" cx="116" cy="104" r="7.5"/><circle class="seal" cx="116" cy="104" r="4.6"/><path class="sign" d="M106 108q4-6 7-1t6-3 5-2"/>`}
+  <text x="131" y="116.5" class="serial">No. 0000000</text>`;
+const certSoft=(title)=>`<rect class="paper-w" x="62" y="8" width="76" height="112" rx="1"/>
+  <path class="hd" d="M86 15h28M90 19h20"/><text x="100" y="30" class="t soft-t">${title}</text>
+  ${[36,41,46,51,56,61,66,71,76,81,86,91].map((y,k)=>`<path class="dots" d="M${k%4===0?68:72} ${y}h${k%4===0?62:58}"/>${k%3===1?`<path class="fill" d="M${76+(k*7)%30} ${y-1}h${10+(k*5)%12}"/>`:''}`).join('')}
+  <path class="hd" d="M68 98h22M110 98h22"/><path class="dots" d="M68 104h22M110 104h22M70 110h18M112 110h18"/>`;
 const doc=(x,y,title,sub,seal)=>`<path class="f s" d="M${x} ${y}h70l14 14v90h-84z"/><path d="M${x+70} ${y}v14h14"/><text x="${x+42}" y="${y+30}" class="t">${title}</text>
   <path class="m" d="M${x+12} ${y+44}h60M${x+12} ${y+54}h60M${x+12} ${y+64}h44"/><text x="${x+42}" y="${y+98}" class="t" style="font-size:7.5px;font-weight:500">${sub}</text>${seal}`;
 const tower=(x,w,h,extra='')=>`<path class="f s" d="M${x} 118V${118-h}h${w}V118"/>${Array.from({length:Math.floor((h-14)/14)},(_,k)=>`<path class="m" d="M${x+6} ${118-h+12+k*14}h${w-12}"/>`).join('')}${extra}`;
+const pic=src=>`<image href="${src}" x="0" y="0" width="200" height="130" preserveAspectRatio="xMidYMid slice"/>`;
 const AT_ILL={
   door:`<path d="M6 124h188"/><path class="f s" d="M40 124V20h120v104"/><rect class="f s" x="58" y="30" width="84" height="16" rx="2"/><text x="100" y="41.5" class="t" style="font-size:7.5px;letter-spacing:1.5px">REAL ESTATE</text>
     <path class="f s" d="M62 124V56h76v68"/><path d="M100 56v68M92 88v10M108 88v10"/><path class="m" d="M70 64l14 14M116 64l14 14"/><rect class="gf" x="74" y="118" width="52" height="6" rx="2"/>
@@ -6020,20 +6085,20 @@ const AT_ILL={
   listen:`<path d="M8 122h184"/>${IL.side(58,4,{arm:`<path d="M60 88q12 4 20 0"/><path class="f s" d="M78 80h14v14H78z"/><path class="m" d="M81 84h8M81 88h6"/>`})}<g class="cl" transform="translate(200 0) scale(-1 1)">${IL.side(52,0)}</g>${IL.bubble(118,2,40,'…',152)}`,
   guess:ilDesk({extra:IL.bubble(112,4,84,'Probably 8%…',120)}),
   confirm:ilDesk({extra:IL.bubble(88,4,110,'Let me confirm that',110)}),
-  u1:`<rect class="f s" x="40" y="14" width="120" height="104" rx="4"/><path d="M40 66h56v52"/>${bed(58,76)}<path class="m" d="M110 30h36v26h-36z"/>`,
-  u2:`<rect class="f s" x="40" y="14" width="120" height="104" rx="4"/><path d="M40 66h120M100 66v52"/>${bed(56,76)}${bed(118,76)}<path class="m" d="M60 30h80v22H60z"/>`,
-  u3:`<rect class="f s" x="30" y="14" width="140" height="104" rx="4"/><path d="M30 66h140M76 66v52M122 66v52"/>${bed(40,76)}${bed(86,76)}${bed(132,76)}<path class="m" d="M60 30h80v22H60z"/>`,
+  u1:pic('img/plan-1br.jpg'),
+  u2:pic('img/plan-2br.jpg'),
+  u3:pic('img/plan-3br.jpg'),
   cgtfull:`<rect class="f s" x="16" y="52" width="168" height="30" rx="4"/><rect class="gf" x="16" y="52" width="168" height="30" rx="4" opacity=".55"/><path d="M100 52v30M134 52v30"/>
     <text x="58" y="100" class="t">$100K paid</text><text x="117" y="100" class="t">$40K</text><text x="159" y="100" class="t">$60K</text><text x="100" y="40" class="t">Tax on $200,000</text>`,
   cgtgain:`<rect class="f s" x="16" y="52" width="168" height="30" rx="4"/><rect class="gf" x="134" y="52" width="50" height="30" rx="4" opacity=".55"/><path d="M100 52v30M134 52v30"/>
     <text x="58" y="100" class="t">$100K paid</text><text x="117" y="100" class="t">$40K</text><text x="159" y="100" class="t">$60K</text><text x="100" y="40" class="t">Tax on $60,000</text>`,
-  strata:doc(58,8,'STRATA TITLE','National registry',`<circle class="gf" cx="100" cy="80" r="9"/><circle cx="100" cy="80" r="12"/>`),
-  soft:doc(58,8,'SOFT TITLE','Local authority',`<rect class="m" x="92" y="74" width="16" height="10" rx="2"/>`),
+  strata:pic('img/title-strata.jpg'),
+  soft:pic('img/title-soft.jpg'),
   'pj-jt':`<path d="M20 118h160"/>${tower(80,40,104,`<path d="M100 14v-8"/><circle class="gf" cx="100" cy="6" r="2.5"/>`)}${tower(126,26,60)}${tower(48,26,48)}`,
   'pj-ts':`<path d="M20 118h160"/><path class="m" d="M20 124q10-4 20 0t20 0 20 0 20 0 20 0 20 0 20 0 20 0"/>${tower(70,60,44)}<path d="M150 118v-34"/><path class="f s" d="M150 84q-16-6-20 4q12-2 20-4q-2-14 12-16q-4 10-12 16q16-2 20 8q-14-6-20-8"/><circle class="gf" cx="40" cy="30" r="10"/>`,
   'pj-pen':`<path d="M20 118h160"/><path class="m" d="M20 124q10-4 20 0t20 0 20 0 20 0 20 0 20 0 20 0 20 0"/>${tower(64,34,96,`<path class="m" d="M70 30l22 -8"/>`)}${tower(102,34,80)}`,
   'd-garden':`<path d="M8 122h184"/>${tower(40,120,100)}<rect class="f s" x="52" y="96" width="44" height="22"/><text x="74" y="111" class="t">G-02</text><path d="M110 118v-14"/><circle class="f s" cx="110" cy="96" r="9"/><circle class="f s" cx="103" cy="88" r="7"/><circle class="f s" cx="117" cy="88" r="7"/><path class="m" d="M112 118h48"/><path d="M40 96h120" stroke-dasharray="3 4"/>`,
-  'd-title':doc(58,8,'STRATA TITLE?','Proof not provided',`<text x="100" y="86" class="t" style="font-size:26px;fill:var(--mute)">?</text>`),
+  'd-title':pic('img/title-missing.jpg'),
   'd-bonus':`<path class="f s" d="M52 44h96v60H52z"/><path d="M52 44l48 34 48-34"/><circle class="gf" cx="150" cy="40" r="14"/><text x="150" y="44.5" class="t" style="font-size:13px">$</text>`,
   'd-nominee':`<path d="M8 122h184"/>${IL.side(56)}<g class="cl" transform="translate(200 0) scale(-1 1)">${IL.side(56)}</g><path class="f s" d="M84 60h32v40H84z"/><path class="m" d="M90 70h20M90 78h20M90 86h12"/><path d="M78 108q22 10 44 0" stroke-dasharray="3 4"/>`,
   'd-quota':`<path class="f s" d="M30 104a70 70 0 0 1 140 0"/><path class="gf" d="M30 104a70 70 0 0 1 128.6-38.4l-10 6A58 58 0 0 0 42 104z"/><path d="M100 104l40-40"/><circle class="f s" cx="100" cy="104" r="5"/><text x="100" y="114.5" class="t" style="font-size:9.5px">68% of 70% foreign quota</text>`,
@@ -6206,6 +6271,8 @@ function lessonAct(a,btn){
 const rpHow=rp=>{ const w=rp.turns.find(t=>t.client.length); return !w?'Hear the model line, then say it yourself.':`You're the agent. Hear ${w.who||'the client'}, hear the model answer, then say it yourself.`; };
 /* Section extras. Every readable part has data-rd = its clip suffix (c-at{i}-s{k}-<rd>), numbered in screen order:
    flow steps f0.., everything else x0.. (tools/make_voice.py extraUnits() builds the same list, in the same order). */
+/* A realistic picture: a photo (free licence, credited under it) or a photo-style render (img/). */
+const atPhoto=ph=>ph?`<figure class="at-photo"><img src="${ph.src}" alt="${esc(ph.alt||'')}" loading="lazy" decoding="async">${ph.credit?`<figcaption>${esc(ph.credit)}</figcaption>`:''}</figure>`:'';
 function atExtras(x,mode){ let h='', n=0; const keep=mode!=='flow', rd=()=>`data-rd="x${n++}" data-act="ls-rd" tabindex="0"`, H=s=>{ if(keep) h+=s; };
   if(x.analogy) H(`<div class="at-analogy rdi" ${rd()}><span>Think of it like this</span>${esc(x.analogy)}</div>`);
   if(x.box) H(`<div class="card at-box">${x.box.title?`<p class="at-box-t">${esc(x.box.title)}</p>`:''}<ul>${x.box.lines.map(d=>`<li class="rdi" ${rd()}>${esc(d)}</li>`).join('')}</ul></div>`);
@@ -6271,11 +6338,11 @@ function viewLessonSession(){
       <p class="ctx" style="margin-top:14px">You'll learn</p><ul class="at-objs">${l.objectives.map(o=>`<li>${esc(o)}</li>`).join('')}</ul>`;
     ft=cont('Start'); }
   else if(c.type==='sec'){ const x=l.sections[c.k];
-    body=`<p class="ctx">${esc(x.label)}</p><h1 class="fx-title">${esc(x.heading)}</h1><div class="at-body">${x.body}</div>${atExtras(x,x.flow?'flow':undefined)}`;
+    body=`<p class="ctx">${esc(x.label)}</p><h1 class="fx-title">${esc(x.heading)}</h1>${atPhoto(x.photo)}<div class="at-body">${x.body}</div>${atExtras(x,x.flow?'flow':undefined)}`;
     ft=cont(); }
   else if(c.type==='step'){ const x=l.sections[c.k];
     body=`<p class="ctx">${esc(x.label)} · Step ${c.j+1} of ${x.flow.length}</p><h1 class="fx-title">${esc(x.heading)}</h1>
-      <ol class="at-flow at-steps">${x.flow.map((f,j)=>`<li class="${j===c.j?'on':j<c.j?'past':'later'}" data-rd="f${j}" data-act="ls-rd" tabindex="0"${j===c.j?' aria-current="step"':''}><div class="st-c"><b>${esc(f.title)}</b><span>${esc(f.sub)}</span></div></li>`).join('')}</ol>`;
+      <ol class="at-flow at-steps">${x.flow.map((f,j)=>`<li class="${j===c.j?'on':j<c.j?'past':'later'}" data-rd="f${j}" data-act="ls-rd" tabindex="0"${j===c.j?' aria-current="step"':''}><div class="st-c"><b>${esc(f.title)}</b><span>${esc(f.sub)}</span>${j===c.j?atPhoto(f.photo):''}</div></li>`).join('')}</ol>`;
     ft=cont(); }
   else if(c.type==='secx'){ const x=l.sections[c.k];
     body=`<p class="ctx">${esc(x.label)}</p><h1 class="fx-title">${esc(x.calc?x.calc.title:x.heading)}</h1><div class="${x.calc?'no-calc-t':''}">${atExtras(x,'rest')}</div>`;
