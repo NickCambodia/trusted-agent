@@ -95,6 +95,21 @@ window.AUDIO_FILES = {
 "voice": "af_heart",
 "h": "e15fb227138c"
 },
+"c-fx-br-in": {
+"url": "audio/c-fx-br-in.m4a",
+"voice": "af_heart",
+"h": "722748babfd7"
+},
+"c-fx-br-out": {
+"url": "audio/c-fx-br-out.m4a",
+"voice": "af_heart",
+"h": "b3b59f8e9c81"
+},
+"c-fx-br-done": {
+"url": "audio/c-fx-br-done.m4a",
+"voice": "af_heart",
+"h": "99980b513533"
+},
 "c-at0-intro": {
 "url": "audio/c-at0-intro.m4a",
 "voice": "af_heart",
@@ -1553,7 +1568,7 @@ window.AUDIO_FILES = {
 "qz4-b": {
 "url": "audio/qz4-b.m4a",
 "voice": "af_heart",
-"h": "91af74282eb0"
+"h": "1922ead5dd2a"
 },
 "c-lesson4-p0-note": {
 "url": "audio/c-lesson4-p0-note.m4a",
@@ -1588,7 +1603,7 @@ window.AUDIO_FILES = {
 "at4-t0": {
 "url": "audio/at4-t0.m4a",
 "voice": "am_michael",
-"h": "a06f5e41c1bf"
+"h": "082490d34018"
 },
 "at4-t1-c0": {
 "url": "audio/at4-t1-c0.m4a",
@@ -1978,7 +1993,7 @@ window.AUDIO_FILES = {
 "qz7-b": {
 "url": "audio/qz7-b.m4a",
 "voice": "af_heart",
-"h": "e8061f958f70"
+"h": "eb059e4719fe"
 },
 "c-lesson7-p0-note": {
 "url": "audio/c-lesson7-p0-note.m4a",
@@ -2003,7 +2018,7 @@ window.AUDIO_FILES = {
 "at7-t0": {
 "url": "audio/at7-t0.m4a",
 "voice": "am_michael",
-"h": "07ab08e22bb8"
+"h": "edaa4046a681"
 },
 "at7-t1-c0": {
 "url": "audio/at7-t1-c0.m4a",
