@@ -79,6 +79,18 @@ def cap_parts(cap, svg):
         coach(cap[last:m.start()]); out.append((who, m.group(1))); last = m.end()
     coach(cap[last:]); return out
 
+def actions(t, coach):
+    """[an action] is something you do, not something you say. The model voice skips it (a pause instead); the coach
+    describes it, then reads the words: "Breathe out slowly. Then say: Thank you for your time." """
+    acts = re.findall(r"\[([^\]]*)\]", t)
+    if not acts: return t
+    said = re.sub(r"\s*\[[^\]]*\]\s*", " ‧‧‧‧‧ " if not coach else " ", t).strip(" ‧")
+    if not coach: return said
+    act = ", then ".join(a.strip().rstrip("….") for a in acts); act = act[0].upper() + act[1:]
+    said = said.strip()
+    if not said: return act + "."
+    return f"{act}. Then say: {said}" if t.strip().startswith("[") else f"{said} Then {act[0].lower() + act[1:]}."
+
 def extra_units(x):
     """The spoken text of each readable part of a section, in the order index.html's atExtras() numbers them (x0, x1..)."""
     out = []
@@ -164,7 +176,7 @@ def main():
         m = re.search(r"=\s*(\{.*\})\s*;?\s*$", open(mf, encoding="utf-8").read(), re.S)
         if m: old = json.loads(m.group(1))
     for lid, voice, speed, text in jobs():
-        text = speakable(flowing(text))
+        text = speakable(flowing(actions(text, voice == COACH[0])))
         h = hashlib.sha1(f"kokoro|norm1|lead{mv.LEAD}|{voice}|{speed}|{mv.SHORT}|{mv.LONG}|{text}".encode()).hexdigest()[:12]
         fn = f"{lid}.m4a"; path = os.path.join(OUT, fn)
         if old.get(lid, {}).get("h") == h and os.path.exists(path):

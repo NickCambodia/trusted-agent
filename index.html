@@ -467,10 +467,27 @@ main.home{ padding-bottom:0; }
 .br-circle{ width:210px; height:210px; border-radius:50%; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:4px;
   background:radial-gradient(circle, color-mix(in srgb, var(--pri) 22%, var(--card)) 0%, var(--pri-soft) 70%); border:1.5px solid color-mix(in srgb, var(--pri) 40%, transparent);
   transform:scale(.62); transition:transform 1s ease-in-out; }
-.br-circle.in{ transform:scale(1); transition-duration:4s; } .br-circle.out{ transform:scale(.62); transition-duration:6s; }
+.br-circle.in{ transform:scale(1); transition-duration:4s; transition-timing-function:ease-out; } .br-circle.out{ transform:scale(.62); transition-duration:6s; transition-timing-function:ease-in-out; }
+.br-stage{ position:relative; width:min(300px,78vw); aspect-ratio:1; display:flex; align-items:center; justify-content:center; margin:8px 0 4px; }
+.br-stage .br-circle{ width:84%; height:84%; }
+.br-text{ position:absolute; inset:0; z-index:2; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2px; pointer-events:none; }
+.br-text span{ font-size:1.05rem; font-weight:700; color:var(--pri); } .br-text b{ font-size:3.6rem; font-weight:800; line-height:1; color:var(--pri); font-variant-numeric:tabular-nums; }
+.br-stage:has(.br-circle.in) .br-text span, .br-stage:has(.br-circle.in) .br-text b{ color:var(--blue); }
+.br-stage .br-circle{ position:relative; z-index:1; }
+.br-ring{ position:absolute; inset:0; width:100%; height:100%; transform:rotate(-90deg); }
+.br-track{ fill:none; stroke:color-mix(in srgb, var(--text) 8%, transparent); stroke-width:6; }
+.br-prog{ fill:none; stroke:var(--blue); stroke-width:6; stroke-linecap:round; stroke-dasharray:100; stroke-dashoffset:100; transition:stroke-dashoffset 1s linear; }
+.br-prog.out{ stroke:var(--pri); }
+.br-circle.in{ background:radial-gradient(circle, color-mix(in srgb, var(--blue) 22%, var(--card)) 0%, var(--blue-soft) 70%); border-color:color-mix(in srgb, var(--blue) 40%, transparent); }
+.br-circle.in span, .br-circle.in b{ color:var(--blue); }
+.br-circle.ready, .br-circle.done{ transform:scale(.8); transition-duration:.6s; }
+.br-circle span{ font-size:1rem!important; font-weight:700!important; } .br-circle b{ font-size:3.4rem!important; font-family:var(--sans)!important; font-weight:800!important; font-variant-numeric:tabular-nums; }
+.br-dots{ display:flex; justify-content:center; gap:10px; margin:6px 0 6px; } .br-dots i{ width:12px; height:12px; border-radius:50%; background:color-mix(in srgb, var(--text) 12%, transparent); transition:background .3s; }
+.br-dots i.now{ background:var(--blue); } .br-dots i.on{ background:var(--pri); }
+.br-round{ font-size:1rem!important; font-weight:600; }
 .br-circle span{ font-size:.8rem; font-weight:600; color:var(--pri); } .br-circle b{ font-family:var(--serif); font-size:2.4rem; font-weight:600; color:var(--pri); line-height:1; }
 .br-round{ text-align:center; color:var(--dim); font-size:.9rem; }
-@media (prefers-reduced-motion: reduce){ .br-circle{ transition:none; } }
+@media (prefers-reduced-motion: reduce){ .br-circle{ transition:none!important; transform:none!important; } .br-prog{ transition:none; } }
 .u-slate{ --u:#4A6378; --u-d:#324555; } .u-moss{ --u:#5E6B34; --u-d:#434D24; } .u-ruby{ --u:#A23B34; --u-d:#732823; } .u-plum{ --u:#7B3F73; --u-d:#562B50; } .u-indigo{ --u:#474F8C; --u-d:#2F3566; }
 .qchip.stress-on{ border-color:var(--gold); background:var(--gold-soft); box-shadow:inset 0 -2px 0 var(--gold); }
 .kp{ display:flex; flex-wrap:wrap; gap:8px; } .kp span, .kpb{ font:600 .86rem var(--sans); color:var(--text); padding:7px 12px; border-radius:999px; background:var(--bg-2); border:1px solid var(--line); }
@@ -777,6 +794,12 @@ tr[data-rd].rd-now td:first-child{ box-shadow:inset 3px 0 0 var(--u,var(--gold))
 html[lang="km"] body{ font-family:'Inter','Noto Sans Khmer',system-ui,sans-serif; }
 html[lang="km"] .fx-title, html[lang="km"] .page-title, html[lang="km"] .j-rank, html[lang="km"] .done-title, html[lang="km"] .row-title{ font-family:'Spectral','Noto Serif Khmer',Georgia,serif; line-height:1.45; }
 html[lang="km"] .at-body, html[lang="km"] .ls-opt, html[lang="km"] .at-box li, html[lang="km"] .fb-tip{ line-height:1.85; }
+
+/* quiz answers: action vs words */
+.q-act{ display:inline-flex; align-items:center; gap:6px; padding:4px 12px 4px 8px; margin:0 0 8px; border-radius:999px; background:color-mix(in srgb, var(--text) 7%, transparent); color:var(--dim); font-family:var(--sans); font-size:.86rem; font-weight:600; font-style:normal; }
+.q-act svg, .q-say svg{ width:18px; height:18px; flex:0 0 18px; fill:none; stroke:currentColor; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
+.q-say{ display:flex; align-items:flex-start; gap:8px; } .q-say svg{ margin-top:.25em; opacity:.55; }
+.sr{ position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); }
 </style>
 </head>
 <body>
@@ -1814,7 +1837,8 @@ const TRAINING = {
      "photo": {
       "src": "img/learn-4-0.jpg",
       "alt": "Breathe out longer than you breathe in"
-     }
+     },
+     "breathe": true
     },
     {
      "label": "Sitting down",
@@ -6947,7 +6971,10 @@ const COACH_FX = {
  "wrong": "Not quite.",
  "say": "Listen, then say it.",
  "ldone": "Lesson complete. Well done.",
- "breathe": "Breathe with the circle. In for four. Out for six."
+ "breathe": "Breathe with the circle. In for four. Out for six.",
+ "br-in": "Breathe in.",
+ "br-out": "And out, slowly.",
+ "br-done": "Good. Now you are ready."
 };
 const plainText=h=>String(h).replace(/<[^>]+>/g,'').replace(/\s+/g,' ').trim();
 function coachText(k){ let m;
@@ -7155,10 +7182,22 @@ function firstRow(f,act){ if(!f) return ''; const d=new Date(f.at).toLocaleDateS
 
 /* ---------------- BREATHING CARD ----------------
    Three guided breaths (in 4, out 6) before the first drill line of "Calm your nerves". */
-function breatheStart(){ let s=0; const tick=()=>{ const el=$('brc'); if(!el){ clearInterval(timerId); timerId=null; return; }
-    if(s>=30){ clearInterval(timerId); timerId=null; el.className='br-circle'; $('brLabel').textContent='Ready'; $('brCount').textContent=''; $('brRound').textContent='Now say it, calm and slow.'; return; }
-    const inP=(s%10)<4; el.className='br-circle '+(inP?'in':'out'); $('brLabel').textContent=inP?'Breathe in':'Breathe out';
-    $('brCount').textContent=inP?4-(s%10):10-(s%10); $('brRound').textContent=`Breath ${Math.floor(s/10)+1} of 3`; s++; };
+async function breatheStart(intro){ clearInterval(timerId); const t=++tok; let s=-3;   // 3 seconds to get ready, then 3 breaths of 10 seconds
+  const IN=4, OUT=6, N=3, total=N*(IN+OUT);
+  const tick=()=>{ const el=$('brc'); if(!el||t!==tok){ clearInterval(timerId); timerId=null; return; }
+    const prog=$('brProg'), dots=[...document.querySelectorAll('#brDots i')];
+    if(s<0){ el.className='br-circle ready'; $('brLabel').textContent='Get ready'; $('brCount').textContent=-s; prog.style.strokeDashoffset=100; s++; return; }
+    if(s>=total){ clearInterval(timerId); timerId=null; el.className='br-circle done'; $('brLabel').textContent='Ready'; $('brCount').textContent='✓';
+      prog.style.strokeDashoffset=0; dots.forEach(d=>d.className='on'); $('brRound').textContent='Calm and slow. You are ready to speak.'; if(coachOn()) coachSay('c-fx-br-done',t); return; }
+    const k=s%(IN+OUT), inP=k<IN, left=inP?IN-k:IN+OUT-k, len=inP?IN:OUT, done=inP?k:k-IN;
+    el.className='br-circle '+(inP?'in':'out'); $('brLabel').textContent=inP?'Breathe in':'Breathe out'; $('brCount').textContent=left;
+    prog.classList.toggle('out',!inP); prog.style.transitionDuration='0s'; prog.style.strokeDashoffset=100-done/len*100; void prog.getBoundingClientRect();
+    prog.style.transitionDuration='1s'; prog.style.strokeDashoffset=100-(done+1)/len*100;
+    dots.forEach((d,i)=>d.className=i<Math.floor(s/(IN+OUT))?'on':i===Math.floor(s/(IN+OUT))?'now':'');
+    $('brRound').textContent=`Breath ${Math.floor(s/(IN+OUT))+1} of ${N}`;
+    if(coachOn()&&(k===0||k===IN)) coachSay(k===0?'c-fx-br-in':'c-fx-br-out',t);
+    s++; };
+  if(intro&&coachOn()){ $('brCount').textContent=''; if(!await wait(LEAD,t)||!await coachSay('c-fx-breathe',t)||t!==tok) return; }
   tick(); timerId=setInterval(tick,1000); }
 
 /* ---------------- ROUND 3 · MEETING PREP · BREATHE ----------------
@@ -7418,7 +7457,7 @@ function examCards(i){ const pool=LESSONS.map((l,j)=>[j,(LESSON_QUIZ[j]||[]).fil
 function lessonCards(i){ const l=LESSONS[i], cards=[{type:'intro'}]; if(l.assessment) return examCards(i);
   if(l.decision){ l.decision.steps.forEach((x,k)=>cards.push({type:'decide',k})); cards.push({type:'principle'},{type:'done'}); return cards; }
   // one idea per screen: each section, then its "Which is the professional way?" choice, one card per rule, then picture questions
-  l.sections.forEach((x,k)=>{ cards.push({type:'sec',k});
+  l.sections.forEach((x,k)=>{ cards.push({type:'sec',k}); if(x.breathe) cards.push({type:'breathe'});
     if(x.flow){ x.flow.forEach((f,j)=>cards.push({type:'step',k,j})); if(atExtras(x,'rest').trim()) cards.push({type:'secx',k}); }
     const pk=l.pairs.findIndex(p=>p.sec===k); if(pk>=0) cards.push({type:'quiz',k:pk});
     (x.rules||[]).forEach((r,j)=>cards.push({type:'rule',k,j}));
@@ -7445,11 +7484,10 @@ function enterCard(){ stopAll(); cancelRec(); const c=lsess.cards[lsess.n], i=ls
   const t=++tok;
   if(c.type==='say') return lsListen(true);
   if(c.type==='r3') return r3Listen(true);
-  if(c.type==='breathe') breatheStart();
+  if(c.type==='breathe') return breatheStart(true);
   if(!coachOn()) return;
   if(c.type==='q'||c.type==='quiz') return quizRead(true);
   const cs=k=>wait(LEAD,t).then(ok=>ok&&coachSay(k,t));
-  if(c.type==='breathe') cs('c-fx-breathe');
   if(c.type==='idea') cs(`c-lesson${i}-rule`);
   else if(c.type==='intro') cs(`c-at${i}-intro`);
   else if(c.type==='pq') pqRead(t,i,c.k);
@@ -7525,7 +7563,11 @@ async function lsRecord(){ const c=lsess.cards[lsess.n], key=lsess.n; stopAll();
   mr.start(); c.step='rec'; render(); }
 const capText=t=>{ t=personal(t); const act=(t.match(/\[([^\]]*)\]/g)||[]).map(x=>x.slice(1,-1)).join(', '), said=t.replace(/\[[^\]]*\]/g,'').replace(/[‧↘*]/g,'').replace(/\s+/g,' ').trim();
   const x=act&&said?`${act}: “${said}”`:act||said; return esc(x.charAt(0).toUpperCase()+x.slice(1)); };   // picture captions: the action, then what you say
-const quizText=t=>esc(personal(t).replace(/[‧↘*]/g,'').replace(/\s+/g,' ').trim()).replace(/\[([^\]]*)\]/g,'<i>$1</i>');
+/* A quiz answer: what the person DOES (a grey action label with a body icon), then what they SAY (in quotes, with a speech icon). */
+const quizText=t=>{ t=personal(t); const act=(t.match(/\[([^\]]*)\]/g)||[]).map(x=>x.slice(1,-1)).join(', '), said=t.replace(/\[[^\]]*\]/g,'').replace(/[‧↘*]/g,'').replace(/\s+/g,' ').trim();
+  const up=x=>x.charAt(0).toUpperCase()+x.slice(1);
+  return (act?`<span class="q-act"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="5" r="2.5"/><path d="M12 8v7M8 11l4-2 4 2M9 21l3-6 3 6"/></svg><span class="sr">Action: </span>${esc(up(act))}</span>`:'')
+    +(said?`<span class="q-say"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/></svg><span>“${esc(said)}”</span></span>`:''); };
 function lessonAct(a,btn){
   if(a==='nextup') return nextUp();
   if(a==='ls-start') return startLesson(+btn.dataset.i);
@@ -7544,6 +7586,7 @@ function lessonAct(a,btn){
   if(a==='ls-rec') return lsRecord();
   if(a==='ls-stop') return stopRec();
   if(a==='ls-again'&&c.type==='done') return startLesson(lsess.i);
+  if(a==='br-again'){ stopAll(); return breatheStart(false); }
   if(a==='cert-save'){ const n=$('certName'); if(n&&!n.value.trim()){ n.focus(); n.classList.add('need'); return; } return certSave(); }
   if(a==='ls-again'){ stopAll(); cancelRec(); c.step='ready'; c.err=null; return render(); }
   if(a==='ls-pmodel') return runBtn(btn,t=>lsModel(t));
@@ -7600,7 +7643,7 @@ function atQuota(){ return `<div class="card at-diag"><p class="at-box-t">How mu
 const KIND={learn:['Learn','<path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5zM4 20.5A2.5 2.5 0 0 0 6.5 23H20v-5"/>'],
   practice:['Practice','<path d="M4 5h16v10H9l-5 4z"/>'], decide:['Decide','<circle cx="12" cy="12" r="9"/><path d="M15.5 8.5l-2 5-5 2 2-5z"/>'],
   quiz:['Quiz','<circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.7 2.7L16 10"/>'], reflect:['Your words','<path d="M4 20h4L19 9l-4-4L4 16zM13 7l4 4"/>']};
-const KIND_OF={intro:'learn',sec:'learn',step:'learn',secx:'learn',rule:'learn',debrief:'learn',rp:'practice',say:'practice',decide:'decide',principle:'decide',quiz:'quiz',q:'quiz',pq:'quiz',reflect:'reflect'};
+const KIND_OF={breathe:'practice',intro:'learn',sec:'learn',step:'learn',secx:'learn',rule:'learn',debrief:'learn',rp:'practice',say:'practice',decide:'decide',principle:'decide',quiz:'quiz',q:'quiz',pq:'quiz',reflect:'reflect'};
 function viewLessonSession(){
   const i=lsess.i, l=lsess.kind==='lesson'?LESSONS[i]:null, c=lsess.cards[lsess.n], total=lsess.cards.length-1, pct=Math.round(lsess.n/total*100);
   const qListen=`<div class="q-listen"><button class="small-btn coach-btn" type="button" data-act="ls-qread">▶ Listen</button></div>`;
@@ -7679,9 +7722,13 @@ function viewLessonSession(){
       ft=`<div class="res" role="status"><span class="res-ic">${c.ok?ICO.check:ICO.warn}</span><div><div class="res-t">${c.ok?'Right':'Not quite'}</div><p class="fb-tip">${esc(q.why)}</p></div></div>${cont()}`; }
     else if(q.type==='weak') ft=`<div class="fx-btns"><span></span><button class="solid-btn" type="button" data-act="ls-qcheck" ${c.sel&&c.sel.size?'':'disabled'}>Check</button></div>`; }
   else if(c.type==='breathe'){
-    body=`<p class="eyebrow">Before you speak</p><h1 class="fx-title">Three slow breaths</h1>
-      <div class="br-wrap"><div class="br-circle" id="brc"><span id="brLabel">Breathe in</span><b id="brCount">4</b></div></div><p class="br-round" id="brRound">Breath 1 of 3</p>`;
-    ft=cont(); }
+    body=`<p class="ctx">Before you speak</p><h1 class="fx-title">Breathe with the circle</h1>
+      <div class="br-wrap"><div class="br-stage">
+        <svg class="br-ring" viewBox="0 0 240 240" aria-hidden="true"><circle cx="120" cy="120" r="112" class="br-track"/><circle cx="120" cy="120" r="112" class="br-prog" id="brProg" pathLength="100"/></svg>
+        <div class="br-circle" id="brc"></div><div class="br-text"><span id="brLabel">Get ready</span><b id="brCount">3</b></div></div></div>
+      <div class="br-dots" id="brDots">${[0,1,2].map(k=>`<i data-k="${k}"></i>`).join('')}</div>
+      <p class="br-round" id="brRound">In for 4 · out for 6 · three times</p>`;
+    ft=`<div class="fx-btns"><button class="ghost-btn" type="button" data-act="br-again">Again</button><button class="solid-btn" type="button" data-act="ls-next">Continue</button></div>`; }
   else if(c.type==='say'){ const st=c.step;
     const card=`<div class="say"><button class="spk" type="button" data-act="${st==='review'?'ls-pmodel':'ls-listen'}" aria-label="Listen">${ICO.spk}</button><div class="say-body"><div class="say-text">${parseLine(c.text).map((s,si)=>segHTML(s,'L',si)).join(' ')}</div></div></div>`;
     body=`${c.moment?`<p class="ctx">${esc(c.moment)}</p>`:`<p class="${c.them?'ctx':'eyebrow'}">${esc(c.label)}</p>`}${(c.them||[]).map(t=>`<div class="at-client"><span class="at-av" aria-hidden="true">${c.who?esc(c.who[0]):'C'}</span><p>${c.who?`<b class="at-who">${esc(c.who)}</b>`:''}${esc(t)}</p></div>`).join('')}<h1 class="fx-title">${c.title}</h1>${card}`;
