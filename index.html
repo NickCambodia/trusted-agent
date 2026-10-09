@@ -518,8 +518,8 @@ main.home{ padding-bottom:0; }
 @keyframes nowPulse{ 50%{ box-shadow:0 0 0 8px color-mix(in srgb, var(--u) 22%, transparent), 0 12px 24px -10px var(--u); } }
 .node.justdone{ animation:doneBounce .6s cubic-bezier(.3,1.6,.5,1); }
 @keyframes doneBounce{ 40%{ transform:scale(1.25); } }
-.mstars.pop svg, .dstars.pop svg{ animation:starIn .45s cubic-bezier(.3,1.7,.5,1) both; }
-.mstars.pop svg:nth-child(1), .dstars svg:nth-child(1){ animation-delay:.25s; } .mstars.pop svg:nth-child(2), .dstars svg:nth-child(2){ animation-delay:.45s; } .mstars.pop svg:nth-child(3), .dstars svg:nth-child(3){ animation-delay:.65s; }
+.mstars.spop svg, .dstars.spop svg{ animation:starIn .45s cubic-bezier(.3,1.7,.5,1) both; }
+.mstars.spop svg:nth-child(1), .dstars svg:nth-child(1){ animation-delay:.25s; } .mstars.spop svg:nth-child(2), .dstars svg:nth-child(2){ animation-delay:.45s; } .mstars.spop svg:nth-child(3), .dstars svg:nth-child(3){ animation-delay:.65s; }
 @keyframes starIn{ from{ transform:scale(0) rotate(-40deg); opacity:0; } }
 .node.unlock{ animation:unlockRing 1s ease-out; }
 @keyframes unlockRing{ 0%{ box-shadow:0 0 0 0 color-mix(in srgb, var(--gold) 70%, transparent); } 100%{ box-shadow:0 0 0 22px transparent; } }
@@ -538,7 +538,7 @@ main.home{ padding-bottom:0; }
 .gate .solid-btn{ width:100%; }
 @keyframes fadeIn{ from{ opacity:0; } }
 @keyframes gateUp{ from{ transform:translateY(24px) scale(.96); opacity:0; } }
-@media (prefers-reduced-motion: reduce){ .mn.is-now .node, .node.justdone, .node.unlock, .mstars.pop svg, .dstars svg, .gate, .gate-card{ animation:none; } }
+@media (prefers-reduced-motion: reduce){ .mn.is-now .node, .node.justdone, .node.unlock, .mstars.spop svg, .dstars svg, .gate, .gate-card{ animation:none; } }
 
 .il{ display:block; width:100%; height:auto; --il-fill:color-mix(in srgb, var(--bg-2) 70%, var(--card)); }
 .il *{ fill:none; stroke:var(--text); stroke-width:2.1; stroke-linecap:round; stroke-linejoin:round; }
@@ -6785,7 +6785,7 @@ let pendingUnlock=null;
 const STAR='<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2.8l2.8 5.7 6.3.9-4.6 4.4 1.1 6.2L12 17l-5.6 3 1.1-6.2-4.6-4.4 6.3-.9z"/></svg>';
 const starsOf=key=>(state.stars||{})[key]||3;
 const starRow=(n,cls)=>`<span class="${cls}">${[1,2,3].map(k=>STAR.replace('<svg',`<svg class="${k<=n?'on':'off'}"`)).join('')}</span>`;
-function starsHTML(key,pop){ return starRow(starsOf(key),'mstars'+(pop?' pop':'')); }
+function starsHTML(key,pop){ return starRow(starsOf(key),'mstars'+(pop?' spop':'')); }   // not "pop": that is the popup card style
 function scoreStars(got,all){ const r=all?got/all:1; return r>=0.85?3:r>=0.5?2:1; }
 function award(key,n,first){ state.stars=state.stars||{}; const was=state.stars[key]||0; if(n>was) state.stars[key]=n; if(first) pendingUnlock=key; return n; }
 function gateHTML(k){ const top=k>=UNIT_DEF.length;
