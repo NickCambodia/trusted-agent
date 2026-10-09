@@ -118,6 +118,8 @@ def jobs():
                 add(f"c-dc{i}-s{k}", COACH, dot(x["prompt"]) + " " + " Or: ".join(dot(o["t"]) for o in x["options"]))
                 for n, o in enumerate(x["options"]): add(f"c-dc{i}-s{k}-o{n}", COACH, o["result"])
             add(f"c-dc{i}-pr", COACH, "The professional way: " + d["principle"]); continue
+        if l.get("assessment"):   # the final assessment: an intro; its questions reuse each lesson's quiz clips
+            add(f"c-at{i}-intro", COACH, f"{dot(l['title'])} Fifteen questions from every level. Get twelve right to pass, and earn your certificate."); continue
         add(f"c-at{i}-intro", COACH, f"{dot(l['title'])} In this lesson: " + " ".join(dot(o) for o in l["objectives"]))
         for k, p in enumerate(l.get("pics", [])):
             add(f"c-at{i}-pq{k}", COACH, p["prompt"]); add(f"c-at{i}-pq{k}-why", COACH, p["why"])

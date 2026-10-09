@@ -15,7 +15,7 @@
 <meta name="theme-color" content="#0F1216" media="(prefers-color-scheme: dark)">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600&family=Noto+Sans+Khmer:wght@400;600;700&family=Noto+Serif+Khmer:wght@600&display=swap" rel="stylesheet">
 <style>:root{
   --bg:#F6F4EF; --bg-2:#EFECE5; --card:#FFFFFF; --line:#E5E0D6; --line-d:#D8D1C4; --text:#1B2129; --dim:#5F6670; --mute:#9A9FA6;
   --ink:#1B2430; --ink-d:#0B1017; --on-ink:#FFFFFF;
@@ -761,6 +761,22 @@ tr[data-rd].rd-now td:first-child{ box-shadow:inset 3px 0 0 var(--u,var(--gold))
 .il image{ stroke:none; }
 .at-pic{ padding:0!important; overflow:hidden; } .at-pic .il{ max-height:none!important; }
 .ls-opt.pic .il{ border-radius:10px; overflow:hidden; }
+
+/* certificate */
+.cert{ margin:4px 0 8px; padding:10px; border-radius:18px; background:linear-gradient(135deg,#E8D3A3,#C9A04F 50%,#E8D3A3); box-shadow:var(--shadow); }
+.cert-in{ background:#FBF8F1; border-radius:12px; border:1px solid #D9C28C; padding:22px 18px 18px; text-align:center; color:#1B2430; }
+.cert-k{ font-size:.78rem; font-weight:700; color:#8A6626; letter-spacing:.06em; }
+.cert-brand{ font-family:var(--serif); font-size:1.7rem; font-weight:600; margin:4px 0 14px; }
+.cert-name span{ display:block; font-size:.78rem; font-weight:600; color:#5C6470; margin-bottom:4px; }
+.cert-name input{ width:100%; text-align:center; font-family:var(--serif); font-size:1.35rem; font-weight:600; color:#1B2430; background:transparent; border:none; border-bottom:2px solid #C9A04F; padding:6px 4px; outline:none; }
+.cert-name input.need{ border-bottom-color:#B0412E; }
+.cert-line{ font-size:.92rem; line-height:1.5; color:#3B4450; margin:14px 0 10px; }
+.cert-foot{ font-size:.82rem; font-weight:600; color:#5C6470; }
+
+/* Khmer: Khmer fonts after the Latin ones, a little more line height for the stacked vowels */
+html[lang="km"] body{ font-family:'Inter','Noto Sans Khmer',system-ui,sans-serif; }
+html[lang="km"] .fx-title, html[lang="km"] .page-title, html[lang="km"] .j-rank, html[lang="km"] .done-title, html[lang="km"] .row-title{ font-family:'Spectral','Noto Serif Khmer',Georgia,serif; line-height:1.45; }
+html[lang="km"] .at-body, html[lang="km"] .ls-opt, html[lang="km"] .at-box li, html[lang="km"] .fb-tip{ line-height:1.85; }
 </style>
 </head>
 <body>
@@ -782,6 +798,7 @@ const TRAINING = {
   "1.7": "Tough Calls",
   "2": "Client & Advisory Skills",
   "3": "Advanced Advisory",
+  "3.5": "Growing Your Business",
   "4": "Performance"
  },
  "lessons": [
@@ -807,7 +824,12 @@ const TRAINING = {
       "Legal safety: the right title, a real contract",
       "Fast, reliable replies",
       "No pressure to decide"
-     ]
+     ],
+     "short": "Clients can't check titles, prices or developers, so they rely on you. Be an advisor first: honest, even when the answer is “don't buy this one.”",
+     "photo": {
+      "src": "img/learn-0-0.jpg",
+      "alt": "Clients can't easily check what you tell them"
+     }
     },
     {
      "label": "Your job title",
@@ -827,7 +849,12 @@ const TRAINING = {
        "detail": "When a client's goals do not match a property, tell them clearly. A client who trusts you today will come back later, or send you a friend.",
        "action": "If a property does not fit the client's stated goal (income, family home, etc.), say so out loud before showing them anything else."
       }
-     ]
+     ],
+     "short": "A salesperson closes. An advisor gives honest advice. Same title, different job.",
+     "photo": {
+      "src": "img/learn-0-1.jpg",
+      "alt": "You are an advisor, not a salesperson"
+     }
     },
     {
      "label": "The 3 rules",
@@ -849,7 +876,12 @@ const TRAINING = {
        "detail": "A good process exists for a reason. Skipping steps because you are in a hurry causes mistakes.",
        "action": "Before you close a conversation, check: did I follow every step for today's stage?"
       }
-     ]
+     ],
+     "short": "Three rules, every conversation, every client. No exceptions.",
+     "photo": {
+      "src": "img/learn-0-2.jpg",
+      "alt": "3 rules every professional agent follows, always"
+     }
     }
    ],
    "reflection": "What do you think is the hardest part about being an advisor instead of a salesperson? Write 2-3 sentences.",
@@ -988,7 +1020,12 @@ const TRAINING = {
       "Buyers: 22% Cambodian, up from 19% a year before. The largest foreign groups: American 12%, Russian 9.6%, Polish 9.1%, French 7.4%",
       "Supply: 64,000 condo units across Cambodia in 2025. Four major projects launched in early 2026",
       "The trend: a flight to quality. Buyers choose trusted developers, good locations and fair prices"
-     ]
+     ],
+     "short": "Every number here comes from the Realestate.com.kh 2026 report. Say where a number comes from, and it becomes trustworthy.",
+     "photo": {
+      "src": "img/learn-1-0.jpg",
+      "alt": "Realestate.com.kh (REAKH): where the numbers come from"
+     }
     },
     {
      "label": "Prices and rent by district",
@@ -1060,6 +1097,11 @@ const TRAINING = {
         "$950"
        ]
       ]
+     },
+     "short": "Buy prices are per square meter of gross floor area. Rents are for newer buildings with a pool and gym.",
+     "photo": {
+      "src": "img/learn-1-1.jpg",
+      "alt": "Learn these numbers. Clients will test you."
      }
     },
     {
@@ -1099,7 +1141,12 @@ const TRAINING = {
        "detail": "A client who thinks CGT applies to the full $200,000 will panic. Once they see it only applies to the $60,000 gain, the number feels manageable.",
        "action": "Walk through the calculation out loud with the client's own numbers, every time CGT comes up."
       }
-     ]
+     ],
+     "short": "Capital Gains Tax is on the profit, not the full sale price. Show it with real numbers.",
+     "photo": {
+      "src": "img/learn-1-2.jpg",
+      "alt": "The tax a client pays when they sell: a worked example"
+     }
     },
     {
      "label": "A real, verified result",
@@ -1135,7 +1182,8 @@ const TRAINING = {
      "photo": {
       "src": "img/plan-2br.jpg",
       "alt": "A furnished two-bedroom floor plan"
-     }
+     },
+     "short": "A real BKK1 result from the 2026 report. Use it as evidence, never as a promise."
     }
    ],
    "reflection": "Explain Capital Gains Tax (CGT) to a first-time investor, in your own words, using this example: bought for $100,000, sold for $200,000, $40,000 in documented costs.",
@@ -1278,7 +1326,8 @@ const TRAINING = {
      "photo": {
       "src": "img/title-trio.jpg",
       "alt": "A hard title, a strata title and a soft title side by side (samples)"
-     }
+     },
+     "short": "The title proves who owns a property. The wrong title can mean owning nothing."
     },
     {
      "label": "Foreign ownership rules",
@@ -1309,7 +1358,8 @@ const TRAINING = {
       "src": "img/photo-skyline.jpg",
       "alt": "Condominium towers in Phnom Penh, December 2024",
       "credit": "Photo: Looppty, Wikimedia Commons, CC BY-SA 4.0"
-     }
+     },
+     "short": "Foreigners can own property under 3 rules. Clients ask about this in almost every meeting."
     },
     {
      "label": "The buying process",
@@ -1409,7 +1459,8 @@ const TRAINING = {
       "src": "img/photo-offplan.jpg",
       "alt": "Off-plan towers under construction in Phnom Penh",
       "credit": "Photo: I G, Wikimedia Commons, CC BY 2.0"
-     }
+     },
+     "short": "Most condos follow these same 6 steps. Only the payments and timing change."
     }
    ],
    "reflection": "In your own simple words, explain the foreign ownership rules to a first-time buyer from Japan who has never bought property outside Japan before.",
@@ -1568,7 +1619,12 @@ const TRAINING = {
      "now": {
       "text": "Before I show you anything, can I ask three quick questions? Then I'll show you the two or three that fit."
      },
-     "pairWhy": "Showing everything first is what a catalog does. Three questions first is what an advisor does, and the client feels it."
+     "pairWhy": "Showing everything first is what a catalog does. Three questions first is what an advisor does, and the client feels it.",
+     "short": "Know the client type first, then match the project. Never the other way around.",
+     "photo": {
+      "src": "img/learn-3-0.jpg",
+      "alt": "One approach does not fit every client"
+     }
     },
     {
      "label": "The 5 client types",
@@ -1595,7 +1651,12 @@ const TRAINING = {
        "Other foreign investors",
        "American, Russian, Polish, French and more: the fastest-growing groups. Hands-off rental. Wants: yield and management quality. Best fit: well-managed rental condos in BKK1 and Toul Tompoung."
       ]
-     ]
+     ],
+     "short": "Five types of condo client, each with a different goal and best-fit property.",
+     "photo": {
+      "src": "img/learn-3-1.jpg",
+      "alt": "Know each profile clearly"
+     }
     },
     {
      "label": "The 5-minute test",
@@ -1631,7 +1692,12 @@ const TRAINING = {
        "detail": "\"What would make this the wrong decision for you?\" It shows risk tolerance, decision criteria and hidden worries all at once.",
        "action": "Ask it word for word. It is the most useful sentence in this lesson."
       }
-     ]
+     ],
+     "short": "Three questions in the first 5 minutes tell you who you're talking to.",
+     "photo": {
+      "src": "img/learn-3-2.jpg",
+      "alt": "Three questions, in order, tell you the type"
+     }
     }
    ],
    "roleplay": {
@@ -1743,7 +1809,12 @@ const TRAINING = {
        "detail": "Saying you're nervous makes the client notice it. Say nothing, breathe, pause, then begin.",
        "action": "Before every meeting: three slow breaths, in for 4, out for 6."
       }
-     ]
+     ],
+     "short": "In for 4, out for 6. Three times before you walk in, once before a hard question.",
+     "photo": {
+      "src": "img/learn-4-0.jpg",
+      "alt": "Breathe out longer than you breathe in"
+     }
     },
     {
      "label": "Sitting down",
@@ -1755,7 +1826,12 @@ const TRAINING = {
        "detail": "Folder and phone first. Then look at the client and begin.",
        "action": "At your next meeting: sit, arrange, breathe out, look up, then say good morning."
       }
-     ]
+     ],
+     "short": "Settle, breathe out, look up, then speak. Three calm seconds look like control.",
+     "photo": {
+      "src": "img/learn-4-1.jpg",
+      "alt": "Take three seconds to settle"
+     }
     }
    ],
    "roleplay": {
@@ -1865,7 +1941,12 @@ const TRAINING = {
        "detail": "Who you help and what they get. A client should be able to repeat it to their partner at dinner.",
        "action": "Write your own line, and say it until it sounds natural, not like a slogan."
       }
-     ]
+     ],
+     "short": "Your name, your title, one line about how you help. Advisor, not salesperson.",
+     "photo": {
+      "src": "img/learn-5-0.jpg",
+      "alt": "Your name, your title, one clear line"
+     }
     },
     {
      "label": "The setting",
@@ -1877,7 +1958,12 @@ const TRAINING = {
        "detail": "With Japanese and many Asian clients, the card exchange is part of the respect. Offer yours facing them, with both hands.",
        "action": "Keep cards in a case, not your pocket, and read their card before you put it away."
       }
-     ]
+     ],
+     "short": "At a table: name, then your line. With Japanese clients: a slight bow, card with both hands.",
+     "photo": {
+      "src": "img/learn-5-1.jpg",
+      "alt": "Match the setting"
+     }
     }
    ],
    "roleplay": {
@@ -1971,7 +2057,12 @@ const TRAINING = {
        "detail": "Numbers are what clients remember and repeat. Pause just before the number, say it clearly, then stop.",
        "action": "When you give a price or a yield, pause before it. Then stop talking."
       }
-     ]
+     ],
+     "short": "Speak about 20% slower, and keep your volume to the last word. It is usually the important one.",
+     "photo": {
+      "src": "img/learn-6-0.jpg",
+      "alt": "Slower, lower, steady to the last word"
+     }
     }
    ],
    "roleplay": {
@@ -2041,7 +2132,12 @@ const TRAINING = {
        "detail": "A two-second pause looks thoughtful. Fillers like um and so look lost.",
        "action": "Before you answer a hard question, breathe out and pause instead of saying um."
       }
-     ]
+     ],
+     "short": "State the price, then wait. Two seconds feels long to you, and normal to the client.",
+     "photo": {
+      "src": "img/learn-7-0.jpg",
+      "alt": "Say the price. Then stop."
+     }
     }
    ],
    "roleplay": {
@@ -2148,7 +2244,12 @@ const TRAINING = {
        "detail": "Being certain is not the same as persuading. You can recommend clearly and still say “don't buy” when it doesn't fit.",
        "action": "In your next meeting, count how many times you say “I think” or “just”."
       }
-     ]
+     ],
+     "short": "Drop “I think”, “maybe” and “just”. Say your recommendation straight, and let your voice fall at the end.",
+     "photo": {
+      "src": "img/learn-8-0.jpg",
+      "alt": "Cut the words that take your authority away"
+     }
     }
    ],
    "roleplay": {
@@ -2227,7 +2328,12 @@ const TRAINING = {
        "detail": "When a client challenges you, a calm question sounds more secure than any defense, and it finds the real doubt.",
        "action": "When you're challenged, answer with a question: “Which part concerns you most?”"
       }
-     ]
+     ],
+     "short": "Answer first. Give one reason. Then stop.",
+     "photo": {
+      "src": "img/learn-9-0.jpg",
+      "alt": "Answer first. Then stop."
+     }
     }
    ],
    "roleplay": {
@@ -2585,7 +2691,12 @@ const TRAINING = {
      "now": {
       "text": "Here's what the data shows, and here's the main risk. Take the time you need."
      },
-     "pairWhy": "No advisor can promise what a market will do. Data and an honest risk build trust. A promise and a push destroy it."
+     "pairWhy": "No advisor can promise what a market will do. Data and an honest risk build trust. A promise and a push destroy it.",
+     "short": "Ask more than you tell. Explain risk before return. That calm approach builds trust.",
+     "photo": {
+      "src": "img/learn-16-0.jpg",
+      "alt": "Calm questions build more trust than talking"
+     }
     },
     {
      "label": "The 5 mistakes",
@@ -2617,7 +2728,12 @@ const TRAINING = {
        "detail": "A conversation is forgotten. A written summary shows professionalism and gives the client something to check later.",
        "action": "Send it the same day. Every time."
       }
-     ]
+     ],
+     "short": "Five common habits that damage your credibility. None is acceptable.",
+     "photo": {
+      "src": "img/learn-16-1.jpg",
+      "alt": "What destroys trust instantly"
+     }
     }
    ],
    "roleplay": {
@@ -2726,7 +2842,12 @@ const TRAINING = {
        "4. Risk comfort",
        "What worries them most?"
       ]
-     ]
+     ],
+     "short": "The wrong project is a failure, even if the client buys it. Find out four things first.",
+     "photo": {
+      "src": "img/learn-17-0.jpg",
+      "alt": "Showing the wrong project is worse than showing nothing"
+     }
     },
     {
      "label": "The questions",
@@ -2760,7 +2881,12 @@ const TRAINING = {
        "detail": "\"What would make this investment a mistake for you?\" It is the most honest question you can ask, and it shows real risk tolerance at once.",
        "action": "Ask it word for word. Don't soften it."
       }
-     ]
+     ],
+     "short": "Ask open questions. They sound like curiosity, not an interrogation.",
+     "photo": {
+      "src": "img/learn-17-1.jpg",
+      "alt": "Open questions, not closed ones"
+     }
     },
     {
      "label": "Warning signs",
@@ -2782,7 +2908,12 @@ const TRAINING = {
        "detail": "A client who wants to hold property in a Cambodian national's name must be stopped. It is a legal risk no professional agent supports.",
        "action": "Explain the risk clearly, then the legal routes: a licensed trust, or a company at least 51% Cambodian-owned, set up with an independent lawyer."
       }
-     ]
+     ],
+     "short": "Not every client is right for you. Spot these signs early.",
+     "photo": {
+      "src": "img/learn-17-2.jpg",
+      "alt": "Know when to slow down, or step back"
+     }
     }
    ],
    "roleplay": {
@@ -2899,7 +3030,12 @@ const TRAINING = {
        "title": "Next step",
        "sub": "One clear action, no pressure"
       }
-     ]
+     ],
+     "short": "Five stages, always in this order. Risks come before options.",
+     "photo": {
+      "src": "img/learn-18-0.jpg",
+      "alt": "Five stages, every client, every time"
+     }
     },
     {
      "label": "Each stage",
@@ -2931,7 +3067,12 @@ const TRAINING = {
        "detail": "Propose one clear action: a site visit, a contract review, a meeting with a specialist. Never end a meeting without one.",
        "action": "Suggest exactly one next step, not a list."
       }
-     ]
+     ],
+     "short": "Each stage has one job. Doing two at once breaks the flow.",
+     "photo": {
+      "src": "img/learn-18-1.jpg",
+      "alt": "Know the goal of each stage before you enter it"
+     }
     },
     {
      "label": "Language",
@@ -2971,7 +3112,12 @@ const TRAINING = {
      "now": {
       "text": "Based on current data, net yield is 5 to 7%. Here are the risks before we look at options."
      },
-     "pairWhy": "Guarantees and scarcity are sales tactics. A range, the data and the risks are what an advisor offers."
+     "pairWhy": "Guarantees and scarcity are sales tactics. A range, the data and the risks are what an advisor offers.",
+     "short": "The words you choose matter as much as the order.",
+     "photo": {
+      "src": "img/learn-18-2.jpg",
+      "alt": "What professional agents say, and never say"
+     }
     }
    ],
    "roleplay": {
@@ -3088,7 +3234,12 @@ const TRAINING = {
      "now": {
       "text": "About 5.5 to 6.5% net, after management fees and vacancy. The developer's 8% is gross."
      },
-     "pairWhy": "A single gross number misleads. A net range with the costs named is honest, and clients trust it more."
+     "pairWhy": "A single gross number misleads. A net range with the costs named is honest, and clients trust it more.",
+     "short": "Yield is the number most often used to mislead. Always say net yield.",
+     "photo": {
+      "src": "img/learn-19-0.jpg",
+      "alt": "Gross or net: say it clearly, every time"
+     }
     },
     {
      "label": "Tone by client type",
@@ -3127,13 +3278,23 @@ const TRAINING = {
         "Yield data, management quality, how to sell later"
        ]
       ]
+     },
+     "short": "Your standards never change. Your tone fits the person in front of you.",
+     "photo": {
+      "src": "img/learn-19-1.jpg",
+      "alt": "Same standards, different tone"
      }
     },
     {
      "label": "The absolute rule",
      "heading": "Never pass on a gross yield as if it were net",
      "body": "This is short because it must be remembered exactly.",
-     "warning": "Quoting a gross yield without saying it is gross is a misrepresentation. If a developer gives you a gross figure, convert it to net and say so before it reaches any client."
+     "warning": "Quoting a gross yield without saying it is gross is a misrepresentation. If a developer gives you a gross figure, convert it to net and say so before it reaches any client.",
+     "short": "Short, because it must be remembered exactly.",
+     "photo": {
+      "src": "img/learn-19-2.jpg",
+      "alt": "Never pass on a gross yield as if it were net"
+     }
     }
    ],
    "roleplay": {
@@ -3232,7 +3393,12 @@ const TRAINING = {
        "Stall signals",
        "\"I need to think about it\" with no concern named. Vague answers to direct questions. Delays the next meeting. Asks the same question in different ways. Goes quiet after a strong first meeting."
       ]
-     ]
+     ],
+     "short": "Clients rarely say “I'm ready.” They show it. Learn to read the signals.",
+     "photo": {
+      "src": "img/learn-20-0.jpg",
+      "alt": "Read what a client is really saying"
+     }
     },
     {
      "label": "Responding to hesitation",
@@ -3259,7 +3425,12 @@ const TRAINING = {
        "detail": "Re-qualify gently with a message that brings new information, not pressure: \"I wanted to share an update on the project. Let me know if it's still relevant for you.\"",
        "action": "Always add something new. Never just \"following up.\""
       }
-     ]
+     ],
+     "short": "An unsure client is not a lost client. Pushing will lose them; curiosity won't.",
+     "photo": {
+      "src": "img/learn-20-1.jpg",
+      "alt": "Curiosity beats pressure, every time"
+     }
     }
    ],
    "pics": [
@@ -3403,7 +3574,12 @@ const TRAINING = {
      "now": {
       "text": "Let me show you costs first, then income, then what happens when you sell."
      },
-     "pairWhy": "Leading with costs gives the client the honest number. They trust it more than an attractive one."
+     "pairWhy": "Leading with costs gives the client the honest number. They trust it more than an attractive one.",
+     "short": "Developers advertise gross yield. Net is what reaches the client's bank account.",
+     "photo": {
+      "src": "img/learn-21-0.jpg",
+      "alt": "The number that matters is net"
+     }
     },
     {
      "label": "The full cost",
@@ -3462,6 +3638,11 @@ const TRAINING = {
         "Paid by the seller"
        ]
       ]
+     },
+     "short": "The price is only part of the cost. Know the full picture before the client asks.",
+     "photo": {
+      "src": "img/learn-21-1.jpg",
+      "alt": "What a client pays, start to finish"
      }
     },
     {
@@ -3494,7 +3675,12 @@ const TRAINING = {
        }
       ]
      },
-     "warning": "These are estimates for one example, not a promise. Say \"this is how the numbers work\", never \"this is what you will earn.\""
+     "warning": "These are estimates for one example, not a promise. Say \"this is how the numbers work\", never \"this is what you will earn.\"",
+     "short": "Seven years of owning one unit, from purchase to sale.",
+     "photo": {
+      "src": "img/learn-21-2.jpg",
+      "alt": "Walk through this example with any client"
+     }
     }
    ],
    "roleplay": {
@@ -3598,6 +3784,11 @@ const TRAINING = {
        "Decision style: structured, evidence-based, often with the family",
        "Best fit: completed buildings by a Japanese developer or with Japanese management, and a verified delivery record"
       ]
+     },
+     "short": "Usually 40 to 65, high income, low risk tolerance. Stability over high returns, and evidence before deciding.",
+     "photo": {
+      "src": "img/learn-22-0.jpg",
+      "alt": "Who you're talking to"
      }
     },
     {
@@ -3637,7 +3828,12 @@ const TRAINING = {
        "detail": "\"I need to discuss this with my family\" is normal, not a stall. Respect it and set up a second meeting.",
        "action": "Say: \"Of course. Take the time you need. I'll prepare a written summary for that conversation.\""
       }
-     ]
+     ],
+     "short": "With Japanese investors the order never changes. Yield before risk ends the trust.",
+     "photo": {
+      "src": "img/learn-22-1.jpg",
+      "alt": "This exact order, every time"
+     }
     },
     {
      "label": "Language and evidence",
@@ -3677,7 +3873,12 @@ const TRAINING = {
      "now": {
       "text": "This developer has a verified delivery record. Here are the facts."
      },
-     "pairWhy": "Enthusiasm and social pressure make a Japanese investor cautious. Verified facts make them comfortable."
+     "pairWhy": "Enthusiasm and social pressure make a Japanese investor cautious. Verified facts make them comfortable.",
+     "short": "Precision matters more with this client than with any other.",
+     "photo": {
+      "src": "img/learn-22-2.jpg",
+      "alt": "What to say, and never say"
+     }
     }
    ],
    "roleplay": {
@@ -3788,7 +3989,12 @@ const TRAINING = {
        "Key support",
        "A colleague who specializes in these clients, if your agency has one"
       ]
-     ]
+     ],
+     "short": "Analytical and skeptical of promotional words. They want structure, numbers and an honest downside.",
+     "photo": {
+      "src": "img/learn-23-0.jpg",
+      "alt": "Logic and precision, not lifestyle words"
+     }
     },
     {
      "label": "Their 3 real questions",
@@ -3826,7 +4032,12 @@ const TRAINING = {
        "detail": "A strata title, registered with the government. The 70% foreign quota keeps Cambodian owners in the majority of every building. An independent contract review is standard.",
        "action": "Always present an independent legal review as a normal step, not an extra."
       }
-     ]
+     ],
+     "short": "They rarely ask these out loud, but they are always thinking them.",
+     "photo": {
+      "src": "img/learn-23-1.jpg",
+      "alt": "Answer these before they ask"
+     }
     },
     {
      "label": "Common mistakes",
@@ -3848,7 +4059,12 @@ const TRAINING = {
        "detail": "European clients expect depth on numbers and law. If your agency has a specialist, bring them in from the second conversation.",
        "action": "Offer a specialist or a lawyer by the second meeting."
       }
-     ]
+     ],
+     "short": "These habits end a European client's confidence fast.",
+     "photo": {
+      "src": "img/learn-23-2.jpg",
+      "alt": "What breaks trust with this client fastest"
+     }
     }
    ],
    "pics": [
@@ -3965,7 +4181,12 @@ const TRAINING = {
        "Overseas Cambodian",
        "30 to 55, lives abroad (USA, France, Australia, Canada). Wants an investment, a family connection and safe capital. Often decides faster. Needs a clear remote process, video calls and documents they can trust without seeing the unit."
       ]
-     ]
+     ],
+     "short": "Local Khmer buyers and overseas Cambodians are two different clients.",
+     "photo": {
+      "src": "img/learn-24-0.jpg",
+      "alt": "\"Khmer client\" is not one profile. It's two"
+     }
     },
     {
      "label": "Local Khmer clients",
@@ -3994,7 +4215,12 @@ const TRAINING = {
      "now": {
       "text": "Of course. I'll prepare a simple summary your family can read, and I'm happy to meet them too."
      },
-     "pairWhy": "For Khmer buyers, the family is part of the decision. Helping that conversation wins more deals than trying to go around it."
+     "pairWhy": "For Khmer buyers, the family is part of the decision. Helping that conversation wins more deals than trying to go around it.",
+     "short": "For local Khmer buyers, family and community come before yield.",
+     "photo": {
+      "src": "img/learn-24-1.jpg",
+      "alt": "Community and family come before yield"
+     }
     },
     {
      "label": "Overseas Cambodians",
@@ -4016,7 +4242,12 @@ const TRAINING = {
        "detail": "These clients often message outside Phnom Penh office hours. A slow reply loses them to a competitor.",
        "action": "Reply as fast as you can, even outside normal hours."
       }
-     ]
+     ],
+     "short": "Overseas buyers decide faster, but worry about what they can't see.",
+     "photo": {
+      "src": "img/learn-24-2.jpg",
+      "alt": "Remote buyers need more support, not lower standards"
+     }
     }
    ],
    "roleplay": {
@@ -4136,7 +4367,12 @@ const TRAINING = {
      "now": {
       "text": "That's a fair concern. Which risk worries you most: the market, the developer, or something else?"
      },
-     "pairWhy": "Arguing tells the client you aren't listening. Acknowledge, then ask. The answer shows you the real concern."
+     "pairWhy": "Arguing tells the client you aren't listening. Acknowledge, then ask. The answer shows you the real concern.",
+     "short": "An objection carries information. Listen for the real meaning, and answer that.",
+     "photo": {
+      "src": "img/learn-25-0.jpg",
+      "alt": "Information, not rejection"
+     }
     },
     {
      "label": "The common objections",
@@ -4168,7 +4404,12 @@ const TRAINING = {
        "detail": "Ask: \"Of course. Is there a part you'd like to think through more?\" Then answer the real concern.",
        "action": "Never accept it as final without asking what's behind it."
       }
-     ]
+     ],
+     "short": "Prepare these answers with facts, not memorized scripts.",
+     "photo": {
+      "src": "img/learn-25-1.jpg",
+      "alt": "Know the answer before you hear the question"
+     }
     }
    ],
    "roleplay": {
@@ -4299,7 +4540,12 @@ const TRAINING = {
        "title": "Prepare your answers",
        "detail": "Expect the 2 or 3 concerns most likely for this client's profile, and prepare the data before you walk in."
       }
-     ]
+     ],
+     "short": "Preparation decides most of the visit, before a single door opens.",
+     "photo": {
+      "src": "img/learn-26-0.jpg",
+      "alt": "Preparation is the visit"
+     }
     },
     {
      "label": "During the visit",
@@ -4322,7 +4568,12 @@ const TRAINING = {
        "title": "No urgency on site",
        "detail": "\"Only 3 units left on this floor\" is a pressure tactic serious buyers see at once. If stock really is low, say it once, as a fact."
       }
-     ]
+     ],
+     "short": "The visit is the client's chance to check. Guide, don't sell.",
+     "photo": {
+      "src": "img/learn-26-1.jpg",
+      "alt": "What to do, and what never to say"
+     }
     },
     {
      "label": "After the visit",
@@ -4345,7 +4596,12 @@ const TRAINING = {
        "title": "Send a written summary within 24 hours",
        "detail": "The unit you saw, what you noticed, open questions and the agreed next step. Standard after every visit."
       }
-     ]
+     ],
+     "short": "The 15 minutes after the visit are the most valuable advisory time.",
+     "photo": {
+      "src": "img/learn-26-2.jpg",
+      "alt": "The debrief is where deals are won"
+     }
     }
    ],
    "pics": [
@@ -4471,6 +4727,11 @@ const TRAINING = {
        "Every qualified investor: a written proposal within 48 hours of the first meeting",
        "Clear, structured, data-led. No marketing language, no pressure"
       ]
+     },
+     "short": "Conversations are forgotten. The written summary is what the client decides with.",
+     "photo": {
+      "src": "img/learn-27-0.jpg",
+      "alt": "The document is the professional"
      }
     },
     {
@@ -4520,7 +4781,12 @@ const TRAINING = {
        "title": "One next step",
        "detail": "One action: \"I suggest a contract review with our legal team this week.\" Not a list of options."
       }
-     ]
+     ],
+     "short": "A proposal is an advisory document, not a brochure. Every section has a job.",
+     "photo": {
+      "src": "img/learn-27-1.jpg",
+      "alt": "What a professional proposal must contain"
+     }
     },
     {
      "label": "Follow-up principles",
@@ -4539,7 +4805,12 @@ const TRAINING = {
        "title": "After silence",
        "detail": "After 7 to 10 days with no reply: \"I wanted to reach out, not to push, but to check if anything has changed in your timeline. I'm happy to send anything new that helps.\" \"Are you still interested?\" is not professional."
       }
-     ]
+     ],
+     "short": "Every follow-up adds something: an update, a useful number, an answer. Never just “checking in.”",
+     "photo": {
+      "src": "img/learn-27-2.jpg",
+      "alt": "Add value or stay silent"
+     }
     }
    ],
    "pics": [
@@ -4697,6 +4968,11 @@ const TRAINING = {
         "A light update every 4 to 6 weeks"
        ]
       ]
+     },
+     "short": "Know what each client needs next. 20 leads managed well beat 50 managed loosely.",
+     "photo": {
+      "src": "img/learn-28-0.jpg",
+      "alt": "Every client is at a stage. Know which one"
      }
     },
     {
@@ -4720,7 +4996,12 @@ const TRAINING = {
        "title": "Close politely",
        "detail": "No clear budget, unrealistic yield (15% net or more) or a nominee request. Close politely and don't invest time."
       }
-     ]
+     ],
+     "short": "Put your time where it moves a deal forward. The rest get a light touch.",
+     "photo": {
+      "src": "img/learn-28-1.jpg",
+      "alt": "Who deserves your time this week"
+     }
     },
     {
      "label": "Weekly review",
@@ -4751,7 +5032,12 @@ const TRAINING = {
        "Pipeline value",
        "The total value of all active qualified leads. Know this number"
       ]
-     ]
+     ],
+     "short": "Know your weekly numbers before anyone asks.",
+     "photo": {
+      "src": "img/learn-28-2.jpg",
+      "alt": "Know your numbers before you're asked"
+     }
     }
    ],
    "roleplay": {
@@ -4872,7 +5158,12 @@ const TRAINING = {
        "Conversion rate",
        "Closings divided by qualified leads, over the last 4 weeks"
       ]
-     ]
+     ],
+     "short": "Performance is results and the quality of your process, not hours worked.",
+     "photo": {
+      "src": "img/learn-29-0.jpg",
+      "alt": "The numbers that define performance"
+     }
     },
     {
      "label": "Quality standards",
@@ -4895,7 +5186,12 @@ const TRAINING = {
        "title": "Risk disclosure",
        "detail": "Every investor hears the risks before any recommendation: how fast they could sell, realistic yield, the developer's record and Capital Gains Tax. Named, not hinted."
       }
-     ]
+     ],
+     "short": "2 deals from 6 well-handled leads beats 2 from 40 unmanaged ones.",
+     "photo": {
+      "src": "img/learn-29-1.jpg",
+      "alt": "The standard is not the average"
+     }
     },
     {
      "label": "Self-review",
@@ -4914,7 +5210,12 @@ const TRAINING = {
        "title": "When to ask for help",
        "detail": "Ask at once about: an unclear strata title, a foreign quota near its limit, an off-plan project from an unverified developer, a nominee request, or any legal question. Don't guess."
       }
-     ]
+     ],
+     "short": "Find the one change that will make the biggest difference in the next 4 weeks.",
+     "photo": {
+      "src": "img/learn-29-2.jpg",
+      "alt": "Honest review, not self-criticism"
+     }
     }
    ],
    "roleplay": {
@@ -5026,7 +5327,12 @@ const TRAINING = {
        "Operations and performance",
        "Channels, site visits, proposals, pipeline, standards"
       ]
-     ]
+     ],
+     "short": "You've climbed every level. Now use everything together.",
+     "photo": {
+      "src": "img/learn-30-0.jpg",
+      "alt": "Every level. One standard"
+     }
     },
     {
      "label": "The professional standard",
@@ -5075,7 +5381,12 @@ const TRAINING = {
        "title": "Ask about what you don't know",
        "detail": "Legal questions, strata titles, foreign quotas or a developer's credibility go to your manager or a lawyer at once. Confidence without knowledge is the most dangerous thing in advice."
       }
-     ]
+     ],
+     "short": "These principles define a trusted agent. Not just in training. Always.",
+     "photo": {
+      "src": "img/learn-30-1.jpg",
+      "alt": "Non-negotiable, every day"
+     }
     },
     {
      "label": "After training",
@@ -5098,7 +5409,12 @@ const TRAINING = {
        "title": "Ask for help early",
        "detail": "A hard objection, a legal question, an unusual request: if you're unsure, ask your manager or a lawyer. That is how professionals keep their standard high."
       }
-     ]
+     ],
+     "short": "The training ends. Staying current is now your job.",
+     "photo": {
+      "src": "img/learn-30-2.jpg",
+      "alt": "The training ends. The standard doesn't"
+     }
     }
    ],
    "roleplay": {
@@ -5181,6 +5497,958 @@ const TRAINING = {
     }
    ],
    "reflection": "Write one specific commitment, not a list. One thing you will do in every client conversation from now on. Be precise: not \"I will be more professional\" but \"I will always give net yield and name every cost before any return figure.\""
+  },
+  {
+   "id": 21,
+   "week": "3.5",
+   "title": "Finding leads & first contact",
+   "short": "Leads & First Contact",
+   "objectives": [
+    "Know where good leads come from",
+    "Reply to a new lead within the hour, the professional way",
+    "Turn a first message into a short qualifying call"
+   ],
+   "sections": [
+    {
+     "label": "Where leads come from",
+     "heading": "Good leads come from trust, not volume",
+     "body": "Portals like Realestate.com.kh, referrals from happy clients, your own content and walk-ins all bring leads. Referrals usually convert best, because trust arrives with them. Write down where every lead comes from, so you know where your time pays off.",
+     "short": "Portals, referrals, your content and walk-ins. Referrals convert best, because trust comes with them.",
+     "grid": [
+      [
+       "Portals",
+       "Fast volume. Many people are only browsing."
+      ],
+      [
+       "Referrals",
+       "Fewer, but trust comes with them. Your best leads."
+      ],
+      [
+       "Your content",
+       "People who already know how you think."
+      ],
+      [
+       "Walk-ins and events",
+       "Local, and ready to talk now."
+      ]
+     ],
+     "rules": [
+      {
+       "title": "Ask for referrals at the right moment",
+       "detail": "Ask once, after a good outcome, not before. A happy client at handover is the best moment.",
+       "action": "After a good result, ask: \"Who else do you know who should hear this?\""
+      }
+     ],
+     "photo": {
+      "src": "img/learn-31-0.jpg",
+      "alt": "Good leads come from trust, not volume"
+     }
+    },
+    {
+     "label": "The first reply",
+     "heading": "Reply within the hour, with one useful thing",
+     "body": "Speed matters more than polish. A lead that waits a day usually talks to another agent. Reply within the hour: thank them, answer what they asked, and ask one question that starts qualifying.",
+     "short": "Reply within the hour. Answer what they asked, then ask one question.",
+     "before": {
+      "text": "Hi! Many units available, very good price, when you want to see?"
+     },
+     "now": {
+      "text": "Thanks for your message. The 1-bedroom is 56 square meters, about $105,000. Is it to live in, or for rental income?"
+     },
+     "pairWhy": "A real answer and one open question show you listen. A generic pitch shows you don't.",
+     "rules": [
+      {
+       "title": "Answer the question they asked",
+       "detail": "Give the number or fact they asked for, clearly. Then ask one question.",
+       "action": "One answer, one question. Nothing else."
+      },
+      {
+       "title": "Move to a short call",
+       "detail": "Messages are slow for qualifying. A ten-minute call does what twenty messages cannot.",
+       "action": "Offer two call times."
+      }
+     ],
+     "photo": {
+      "src": "img/learn-31-1.jpg",
+      "alt": "Reply within the hour, with one useful thing"
+     }
+    },
+    {
+     "label": "Respect their data",
+     "heading": "Protect the client's details, and your name",
+     "body": "Clients trust you with their phone number, budget and plans. Never share or sell them, and never add anyone to a mass message list without asking first.",
+     "short": "Never share or sell a client's details. Ask before you add anyone to a list.",
+     "warning": "Buying contact lists or sending unrequested mass messages damages your name, and can break privacy and anti-spam rules. Ask your manager what your agency allows.",
+     "rules": [
+      {
+       "title": "Ask before sending updates",
+       "detail": "Updates are welcome only when the client agreed to receive them.",
+       "action": "Ask: \"May I send you a market update once a month?\""
+      }
+     ],
+     "photo": {
+      "src": "img/learn-31-2.jpg",
+      "alt": "Protect the client's details, and your name"
+     }
+    }
+   ],
+   "roleplay": {
+    "scenario": "A new lead asks about a listing",
+    "turns": [
+     {
+      "client": [
+       "Hi, I saw your listing. Is the 1-bedroom still available?"
+      ],
+      "agent": "*Yes*, ‧‧‧ it's available. ‧‧‧ It's *56* square meters, ‧‧‧ about *105* thousand dollars. ‧‧‧ Is it to *live* in, ‧‧‧ or for *rental* income?"
+     },
+     {
+      "client": [
+       "For rental. What yield can I get?"
+      ],
+      "agent": "I'll send you the *net* numbers ‧‧‧ for this exact *unit*. ‧‧‧ Can we do a *ten*-minute call ‧‧‧ to see if it *fits* you?"
+     },
+     {
+      "client": [
+       "Sure, tomorrow works."
+      ],
+      "agent": "*Great*. ‧‧‧ *Ten* or *three* o'clock? ‧‧‧ You'll have the *numbers* before we talk."
+     }
+    ],
+    "note": "Did the agent answer first, then ask one question, and move to a call without pressure?",
+    "debrief": "Fast, useful, and one question at a time. That is how a message becomes a client."
+   },
+   "quiz": [
+    {
+     "q": "Which lead source usually converts best?",
+     "opts": [
+      "Bought contact lists",
+      "Referrals from happy clients",
+      "Mass messages",
+      "Cold calls to random numbers"
+     ],
+     "correct": 1,
+     "explain": "Trust arrives with a referral. That is why it converts best."
+    },
+    {
+     "q": "A lead messages at 9 in the morning. When should you reply?",
+     "opts": [
+      "Within the hour",
+      "Tomorrow",
+      "When you have a project to push",
+      "After the weekend"
+     ],
+     "correct": 0,
+     "explain": "Speed wins. A lead that waits a day usually talks to another agent."
+    },
+    {
+     "q": "What should a first reply contain?",
+     "opts": [
+      "Every project you sell",
+      "The answer they asked for, and one question",
+      "A discount offer",
+      "Your full career story"
+     ],
+     "correct": 1,
+     "explain": "One useful answer and one question shows you listen."
+    },
+    {
+     "q": "A colleague offers you a list of 5,000 phone numbers. What do you do?",
+     "opts": [
+      "Send them all a promotion",
+      "Decline: you only contact people who asked",
+      "Sell it on",
+      "Use only the first 100"
+     ],
+     "correct": 1,
+     "explain": "Unrequested mass messages damage your name and can break privacy rules."
+    }
+   ],
+   "reflection": "Where did your last five leads come from, and which source deserves more of your time?"
+  },
+  {
+   "id": 22,
+   "week": "3.5",
+   "title": "Listings & sellers",
+   "short": "Listings & Sellers",
+   "objectives": [
+    "Check the seller and the title before you list",
+    "Price a listing with evidence, not hope",
+    "Agree clear terms with the seller in writing"
+   ],
+   "sections": [
+    {
+     "label": "Check before you list",
+     "heading": "No title check, no listing",
+     "body": "Before you list a property, see the original title, check that the seller's ID matches the name on it, and ask whether a bank holds the title for a loan. Listing a property the seller can't legally sell harms every buyer who sees it.",
+     "short": "See the original title, match the seller's ID, and ask about loans. Then list.",
+     "flow": [
+      {
+       "title": "See the original title",
+       "sub": "Not a photo, not a copy"
+      },
+      {
+       "title": "Match the ID",
+       "sub": "The seller's ID matches the name on the title"
+      },
+      {
+       "title": "Ask about loans",
+       "sub": "Does a bank hold the title?"
+      },
+      {
+       "title": "Check the building",
+       "sub": "Title type, foreign quota, management fees"
+      }
+     ],
+     "rules": [
+      {
+       "title": "The seller must be the owner",
+       "detail": "If someone sells \"for a relative\", ask for a legal power of attorney, and have a lawyer check it.",
+       "action": "No owner and no power of attorney: no listing."
+      }
+     ],
+     "photo": {
+      "src": "img/learn-32-0.jpg",
+      "alt": "No title check, no listing"
+     }
+    },
+    {
+     "label": "Pricing with evidence",
+     "heading": "Price from real sales, not from hope",
+     "body": "Sellers often want the highest number they have heard. Show recent prices per square meter for similar units in the same building or area, and agree a price that will actually sell.",
+     "short": "Show recent prices per square meter nearby. Agree a price that will actually sell.",
+     "before": {
+      "text": "Sure, we can list it at $180,000. Let's see what happens."
+     },
+     "now": {
+      "text": "Similar units here sold at $1,900 to $2,000 per square meter. At 65 square meters, that's about $124,000 to $130,000."
+     },
+     "pairWhy": "Evidence protects the seller from months on the market, and protects your name.",
+     "rules": [
+      {
+       "title": "Bring three comparables",
+       "detail": "Three recent sales or listings in the same building or street, per square meter.",
+       "action": "Bring a one-page price sheet to the meeting."
+      }
+     ],
+     "photo": {
+      "src": "img/learn-32-1.jpg",
+      "alt": "Price from real sales, not from hope"
+     }
+    },
+    {
+     "label": "Terms in writing",
+     "heading": "Agree the terms before the first viewing",
+     "body": "Write down the asking price, your commission and who pays it, whether the listing is exclusive, and for how long. Clear terms prevent arguments at the worst moment: when a buyer appears.",
+     "short": "Price, commission, exclusive or not, and for how long. In writing, before any viewing.",
+     "box": {
+      "title": "The listing agreement",
+      "lines": [
+       "Asking price, and the lowest price the seller accepts",
+       "Your commission, and who pays it (usually the seller)",
+       "Exclusive or open, and for how long",
+       "Who holds the keys and arranges viewings"
+      ]
+     },
+     "photo": {
+      "src": "img/learn-32-2.jpg",
+      "alt": "Agree the terms before the first viewing"
+     }
+    }
+   ],
+   "roleplay": {
+    "scenario": "A seller wants a price the market won't pay",
+    "turns": [
+     {
+      "client": [
+       "My neighbor says I can get $180,000 for my condo."
+      ],
+      "agent": "I *understand*. ‧‧‧ Let me show you *real* sales. ‧‧‧ Similar units here sold at about *1,900* to *2,000* dollars per square meter."
+     },
+     {
+      "client": [
+       "So what does that mean for me?"
+      ],
+      "agent": "At *65* square meters, ‧‧‧ about *124* to *130* thousand. ‧‧‧ Priced *there*, ‧‧‧ it can sell in *weeks*, ‧‧‧ not months."
+     },
+     {
+      "client": [
+       "And if I want more?"
+      ],
+      "agent": "We can *start* a little higher. ‧‧‧ I'll share every buyer's *feedback* with you, ‧‧‧ every *week*."
+     }
+    ],
+    "note": "Did the agent use evidence instead of opinion, and stay calm?",
+    "debrief": "Numbers move a seller. Opinions start an argument."
+   },
+   "quiz": [
+    {
+     "q": "Before listing a condo, what must you see?",
+     "opts": [
+      "A photo of the title",
+      "The original title and the seller's ID",
+      "Only the floor plan",
+      "The developer's brochure"
+     ],
+     "correct": 1,
+     "explain": "The original title, and an ID that matches it. Photos and copies can be faked."
+    },
+    {
+     "q": "A man wants to sell his sister's unit for her. What do you need?",
+     "opts": [
+      "Nothing, his word is enough",
+      "A legal power of attorney, checked by a lawyer",
+      "Only his ID",
+      "A deposit from him"
+     ],
+     "correct": 1,
+     "explain": "Only the owner, or someone with a valid power of attorney, can sell."
+    },
+    {
+     "q": "How do you agree a price with a seller?",
+     "opts": [
+      "Use the highest price they heard",
+      "Show recent prices per square meter for similar units",
+      "Promise any price to win the listing",
+      "Let the buyer decide"
+     ],
+     "correct": 1,
+     "explain": "Evidence sets a price that sells, and keeps your name clean."
+    },
+    {
+     "q": "Why put the listing terms in writing?",
+     "opts": [
+      "It's optional",
+      "To avoid arguments when a buyer appears",
+      "To charge more later",
+      "Only for foreign sellers"
+     ],
+     "correct": 1,
+     "explain": "Written terms protect the seller, the buyer and you."
+    }
+   ],
+   "reflection": "Think of a seller you met. What evidence would you bring to agree a realistic price?"
+  },
+  {
+   "id": 23,
+   "week": "3.5",
+   "title": "Rentals & landlords",
+   "short": "Rentals & Landlords",
+   "objectives": [
+    "Set up a rental clearly: lease, deposit and inventory",
+    "Screen tenants fairly and carefully",
+    "Give landlords the real numbers"
+   ],
+   "sections": [
+    {
+     "label": "The lease",
+     "heading": "A clear lease prevents most problems",
+     "body": "Most rental problems come from things nobody wrote down. A good lease states the rent, the deposit, the length, who pays for what, and how either side can end it.",
+     "short": "Rent, deposit, length, who pays what, and how to end it. All written down.",
+     "box": {
+      "title": "Every lease should state",
+      "lines": [
+       "Monthly rent, the due date, and how it is paid",
+       "The deposit (often one or two months' rent), and when it is returned",
+       "The length (often 6 or 12 months), and the notice to end it",
+       "Who pays utilities, internet, repairs and building fees"
+      ]
+     },
+     "photo": {
+      "src": "img/learn-33-0.jpg",
+      "alt": "A clear lease prevents most problems"
+     }
+    },
+    {
+     "label": "The inventory",
+     "heading": "Photos on day one, photos on the last day",
+     "body": "Walk through the unit with the tenant before they move in. Photograph every room, list the furniture and any damage, and both sign. At the end, the same walk-through settles the deposit fairly.",
+     "short": "Walk through, photograph every room, list furniture and damage, and both sign.",
+     "flow": [
+      {
+       "title": "Walk through together",
+       "sub": "Tenant, and the landlord or you"
+      },
+      {
+       "title": "Photograph every room",
+       "sub": "With the date"
+      },
+      {
+       "title": "List furniture and damage",
+       "sub": "Room by room"
+      },
+      {
+       "title": "Both sign",
+       "sub": "A copy for each side"
+      }
+     ],
+     "rules": [
+      {
+       "title": "The same check at move-out",
+       "detail": "Compare with the day-one photos. Normal wear is not damage.",
+       "action": "Return the deposit on the agreed date, with a written list of any deductions."
+      }
+     ],
+     "photo": {
+      "src": "img/learn-33-1.jpg",
+      "alt": "Photos on day one, photos on the last day"
+     }
+    },
+    {
+     "label": "Landlords and tenants",
+     "heading": "Real numbers for landlords, fair checks for tenants",
+     "body": "Landlords care about rent, vacancy and tax. Rental income tax is 10% for residents and 14% for owners living abroad. Many agencies charge one month's rent for a 12-month lease: confirm your agency's rate in writing before you start.",
+     "short": "Show landlords rent after tax and vacancy. Confirm your fee in writing.",
+     "rules": [
+      {
+       "title": "Screen every tenant the same way",
+       "detail": "Check ID, work or income, and a reference from a past landlord. The same checks for everyone.",
+       "action": "Never refuse a tenant because of nationality, religion or gender."
+      }
+     ],
+     "photo": {
+      "src": "img/learn-33-2.jpg",
+      "alt": "Real numbers for landlords, fair checks for tenants"
+     }
+    }
+   ],
+   "roleplay": {
+    "scenario": "A landlord asks what their unit will rent for",
+    "turns": [
+     {
+      "client": [
+       "How much can I get for my 1-bedroom in BKK1?"
+      ],
+      "agent": "Similar 1-bedrooms in *BKK1* ‧‧‧ rent for about *800* dollars a month, ‧‧‧ in buildings with a *pool* and *gym*."
+     },
+     {
+      "client": [
+       "And what do I actually keep?"
+      ],
+      "agent": "Less, ‧‧‧ after *management*, ‧‧‧ *vacancy*, ‧‧‧ and *rental* tax. ‧‧‧ I'll write the *full* numbers for you ‧‧‧ *today*."
+     },
+     {
+      "client": [
+       "What do you charge?"
+      ],
+      "agent": "*One* month's rent ‧‧‧ for a *twelve*-month lease. ‧‧‧ It's all in the *agreement*, ‧‧‧ before we start."
+     }
+    ],
+    "note": "Did the agent give a real number, then the costs, then the fee in writing?",
+    "debrief": "Landlords trust the agent who shows what they keep, not just what the tenant pays."
+   },
+   "quiz": [
+    {
+     "q": "What prevents most rental disputes?",
+     "opts": [
+      "A friendly tenant",
+      "A clear written lease and an inventory",
+      "A low rent",
+      "A verbal agreement"
+     ],
+     "correct": 1,
+     "explain": "What is written and photographed can't be argued about later."
+    },
+    {
+     "q": "At move-out, a sofa shows normal wear. What do you do?",
+     "opts": [
+      "Deduct it from the deposit",
+      "Treat it as normal wear, not damage",
+      "Charge for a new sofa",
+      "Keep the whole deposit"
+     ],
+     "correct": 1,
+     "explain": "Normal wear is expected. Only damage beyond it can be deducted."
+    },
+    {
+     "q": "Rental income tax for an owner living abroad is:",
+     "opts": [
+      "10%",
+      "14%",
+      "0%",
+      "20%"
+     ],
+     "correct": 1,
+     "explain": "14% for owners living abroad, 10% for residents."
+    },
+    {
+     "q": "How should you screen tenants?",
+     "opts": [
+      "By nationality",
+      "The same checks for everyone: ID, income, references",
+      "No checks, it's faster",
+      "By how they look"
+     ],
+     "correct": 1,
+     "explain": "Fair, equal checks protect the landlord and treat every tenant with respect."
+    }
+   ],
+   "reflection": "What would you put in the inventory for a furnished 1-bedroom?"
+  },
+  {
+   "id": 24,
+   "week": "3.5",
+   "title": "Closing & after-sales",
+   "short": "Closing & After-sales",
+   "objectives": [
+    "Take a client from yes to signed, step by step",
+    "Keep the client's money safe",
+    "Keep the client after the sale"
+   ],
+   "sections": [
+    {
+     "label": "From yes to signed",
+     "heading": "A clear plan after the client says yes",
+     "body": "When a client says yes, slow down, don't speed up. Write the next steps, who does each one, and by when. Clients feel safe when they can see the whole path.",
+     "short": "After a yes, write the steps: what happens, who does it, and by when.",
+     "flow": [
+      {
+       "title": "Confirm unit and price",
+       "sub": "In writing"
+      },
+      {
+       "title": "Booking",
+       "sub": "With an official receipt"
+      },
+      {
+       "title": "Contract review",
+       "sub": "By the client's lawyer, if they want one"
+      },
+      {
+       "title": "Sign and pay",
+       "sub": "Only to the company account"
+      },
+      {
+       "title": "Title transfer",
+       "sub": "Follow it to the end"
+      }
+     ],
+     "photo": {
+      "src": "img/learn-34-0.jpg",
+      "alt": "A clear plan after the client says yes"
+     }
+    },
+    {
+     "label": "Money safety",
+     "heading": "Money goes to the company, never to a person",
+     "body": "Deposits and payments go only to the developer's or seller's official company account, with an official receipt. Never take cash yourself, and never ask a client to pay a personal account.",
+     "short": "Payments go only to the official company account, with a receipt. Never to a person.",
+     "warning": "If anyone asks for payment to a personal account, stop and check with your manager. This is how much property fraud starts.",
+     "rules": [
+      {
+       "title": "Check the account name",
+       "detail": "The account name must match the company or the title holder.",
+       "action": "Read the account name with the client before they transfer."
+      }
+     ],
+     "photo": {
+      "src": "img/learn-34-1.jpg",
+      "alt": "Money goes to the company, never to a person"
+     }
+    },
+    {
+     "label": "After the sale",
+     "heading": "The sale is the start of the relationship",
+     "body": "Clients remember how you treated them after they paid. Follow the handover, help with the first tenant, and check in on the anniversary. Happy clients are your best source of referrals.",
+     "short": "Follow the handover, help with the first tenant, and check in on the anniversary.",
+     "rules": [
+      {
+       "title": "Three after-sales touches",
+       "detail": "At handover, after the first month, and on the anniversary.",
+       "action": "Put all three dates in your calendar the day they sign."
+      }
+     ],
+     "photo": {
+      "src": "img/learn-34-2.jpg",
+      "alt": "The sale is the start of the relationship"
+     }
+    }
+   ],
+   "roleplay": {
+    "scenario": "The client says yes",
+    "turns": [
+     {
+      "client": [
+       "OK, let's do it. I'll take the unit."
+      ],
+      "agent": "*Thank* you. ‧‧‧ Let's go *step* by step. ‧‧‧ First, ‧‧‧ I'll confirm the unit and price ‧‧‧ in *writing*, ‧‧‧ *today*."
+     },
+     {
+      "client": [
+       "Can I just send the deposit to you?"
+      ],
+      "agent": "Please *never* pay a person. ‧‧‧ Pay only the *company* account, ‧‧‧ and we'll check the *name* together."
+     },
+     {
+      "client": [
+       "Good. What happens after that?"
+      ],
+      "agent": "I'll send a *one*-page plan: ‧‧‧ every *step*, ‧‧‧ who does it, ‧‧‧ and by *when*."
+     }
+    ],
+    "note": "Did the agent slow down after the yes, and protect the client's money?",
+    "debrief": "A calm, written plan after the yes is what makes a client feel safe."
+   },
+   "quiz": [
+    {
+     "q": "A client says yes. What's next?",
+     "opts": [
+      "Push for payment today",
+      "Write the next steps, who does each, and by when",
+      "Celebrate and wait",
+      "Ask for a referral first"
+     ],
+     "correct": 1,
+     "explain": "A written plan keeps the client calm and the deal on track."
+    },
+    {
+     "q": "Where should a client send a deposit?",
+     "opts": [
+      "Your personal account",
+      "The developer's or seller's official company account",
+      "Cash in an envelope",
+      "Any account the seller names"
+     ],
+     "correct": 1,
+     "explain": "Only the official company account, with an official receipt."
+    },
+    {
+     "q": "When are the three after-sales touches?",
+     "opts": [
+      "Never",
+      "At handover, after the first month, and on the anniversary",
+      "Only if they complain",
+      "Every day"
+     ],
+     "correct": 1,
+     "explain": "Three planned touches keep the relationship, and bring referrals."
+    },
+    {
+     "q": "Someone asks the client to pay a personal account \"to save fees\". You:",
+     "opts": [
+      "Agree",
+      "Stop, and check with your manager",
+      "Split the payment",
+      "Ignore it"
+     ],
+     "correct": 1,
+     "explain": "Payment to a personal account is a classic fraud sign. Stop and check."
+    }
+   ],
+   "reflection": "What would your one-page closing plan look like for your next client?"
+  },
+  {
+   "id": 25,
+   "week": "3.5",
+   "title": "Your personal brand",
+   "short": "Personal Brand",
+   "objectives": [
+    "Build a name clients trust before they meet you",
+    "Share useful content, not adverts",
+    "Handle reviews honestly"
+   ],
+   "sections": [
+    {
+     "label": "Reputation",
+     "heading": "Your name arrives before you do",
+     "body": "Clients search for you before they reply. What they find should match how you work: clear, honest and useful. One accurate profile beats five noisy ones.",
+     "short": "Clients look you up first. Keep one clear, honest, up-to-date profile.",
+     "rules": [
+      {
+       "title": "A clean profile",
+       "detail": "Your real name, photo, agency, your license if you hold one, and one line on how you help.",
+       "action": "Check every profile you have this week. Remove what is out of date."
+      }
+     ],
+     "photo": {
+      "src": "img/learn-35-0.jpg",
+      "alt": "Your name arrives before you do"
+     }
+    },
+    {
+     "label": "Useful content",
+     "heading": "Teach, don't advertise",
+     "body": "Posts that only say \"hot deal, buy now\" are ignored. Posts that explain what clients worry about, like net yield or title types, build trust with people who aren't ready yet.",
+     "short": "Explain what clients worry about. Skip the \"hot deal\" posts.",
+     "before": {
+      "text": "HOT DEAL! Best price, guaranteed 10% return, buy now!"
+     },
+     "now": {
+      "text": "Gross or net yield? Three lines, and one real example."
+     },
+     "pairWhy": "Explaining builds trust. Promising returns breaks it, and can mislead.",
+     "grid": [
+      [
+       "Explain",
+       "Net yield, titles, full costs"
+      ],
+      [
+       "Show",
+       "A real handover, with the client's permission"
+      ],
+      [
+       "Update",
+       "Monthly market numbers, with a source"
+      ],
+      [
+       "Answer",
+       "The question clients asked you this week"
+      ]
+     ],
+     "photo": {
+      "src": "img/learn-35-1.jpg",
+      "alt": "Teach, don't advertise"
+     }
+    },
+    {
+     "label": "Reviews",
+     "heading": "Ask for honest reviews, and answer every one",
+     "body": "Ask happy clients for a short review. Answer criticism calmly in public, and fix the problem in private. Never write fake reviews, or pay for them.",
+     "short": "Ask for honest reviews. Answer criticism calmly. Never fake or buy reviews.",
+     "rules": [
+      {
+       "title": "Answer criticism calmly",
+       "detail": "Thank them, own what went wrong, and offer to talk.",
+       "action": "Reply within one day, without arguing."
+      }
+     ],
+     "photo": {
+      "src": "img/learn-35-2.jpg",
+      "alt": "Ask for honest reviews, and answer every one"
+     }
+    }
+   ],
+   "roleplay": {
+    "scenario": "Someone asks about a \"guaranteed 10%\" post",
+    "turns": [
+     {
+      "client": [
+       "I saw a post saying 10% guaranteed. Is that true?"
+      ],
+      "agent": "I can't *promise* a return. ‧‧‧ Nobody honestly *can*. ‧‧‧ I'll show you the *real* numbers ‧‧‧ for any unit you like."
+     },
+     {
+      "client": [
+       "Then why do people post that?"
+      ],
+      "agent": "Some quote *gross* yield, ‧‧‧ or a developer's *guarantee*, ‧‧‧ which has *conditions*. ‧‧‧ I'll show you the *terms*, ‧‧‧ so you can *judge*."
+     }
+    ],
+    "note": "Did the agent stay calm, avoid a promise, and offer evidence?",
+    "debrief": "Your brand is how you answer the hard question, in public and in private."
+   },
+   "quiz": [
+    {
+     "q": "Which post builds the most trust?",
+     "opts": [
+      "HOT DEAL, buy now",
+      "A short explanation of gross and net yield",
+      "A guaranteed 10% return",
+      "Ten photos with no text"
+     ],
+     "correct": 1,
+     "explain": "Useful explanations build trust with clients who aren't ready yet."
+    },
+    {
+     "q": "A client leaves a critical review. You:",
+     "opts": [
+      "Argue in public",
+      "Reply calmly, own the issue, and offer to talk",
+      "Delete your profile",
+      "Ask friends for fake reviews"
+     ],
+     "correct": 1,
+     "explain": "A calm public answer shows every future client how you handle problems."
+    },
+    {
+     "q": "Is it acceptable to pay for reviews?",
+     "opts": [
+      "Yes, everyone does",
+      "No, never",
+      "Only small amounts",
+      "Only for new agents"
+     ],
+     "correct": 1,
+     "explain": "Fake or paid reviews mislead clients and destroy trust when found."
+    },
+    {
+     "q": "What belongs on your profile?",
+     "opts": [
+      "Your real name, photo, agency and how you help",
+      "Guaranteed returns",
+      "Other agents' listings",
+      "Nothing at all"
+     ],
+     "correct": 0,
+     "explain": "Clear, true and current. That is what clients look for."
+    }
+   ],
+   "reflection": "What question do clients often ask you that you could explain in a short post?"
+  },
+  {
+   "id": 26,
+   "week": "3.5",
+   "title": "Fraud & money-laundering red flags",
+   "short": "Fraud & AML Red Flags",
+   "objectives": [
+    "Spot the most common property fraud before money moves",
+    "Recognize money-laundering red flags",
+    "Know who to tell: your manager, never the client"
+   ],
+   "sections": [
+    {
+     "label": "Property fraud",
+     "heading": "Most fraud is visible before the money moves",
+     "body": "Fake or copied titles, a \"seller\" who isn't the owner, a unit sold twice, and payment to a personal account are the most common traps. Each one can be caught by checking documents before any money moves.",
+     "short": "Fake titles, fake sellers, units sold twice, personal accounts. Check before money moves.",
+     "grid": [
+      [
+       "Fake title",
+       "See the original, and have it verified"
+      ],
+      [
+       "Not the owner",
+       "The seller's ID must match the title"
+      ],
+      [
+       "Sold twice",
+       "Ask the developer to confirm in writing that the unit is free"
+      ],
+      [
+       "Personal account",
+       "Payments go only to the company account"
+      ]
+     ],
+     "photo": {
+      "src": "img/learn-36-0.jpg",
+      "alt": "Most fraud is visible before the money moves"
+     }
+    },
+    {
+     "label": "Money-laundering red flags",
+     "heading": "Some money should make you stop and ask",
+     "body": "Cambodia's anti-money-laundering law covers real estate. Watch for money that doesn't fit the client's story. Unusual is not proof of a crime, but it is a reason to ask, write it down, and tell your manager.",
+     "short": "Money that doesn't fit the client's story is a reason to ask, write it down, and tell your manager.",
+     "box": {
+      "title": "Red flags",
+      "lines": [
+       "Large cash payments, or one payment split into many small ones",
+       "A third party pays for the buyer, with no clear reason",
+       "The buyer doesn't care about price, location or yield",
+       "The buyer refuses to show ID or explain where the money comes from",
+       "Rushed deals, with the buyer's name changing"
+      ]
+     },
+     "photo": {
+      "src": "img/learn-36-1.jpg",
+      "alt": "Some money should make you stop and ask"
+     }
+    },
+    {
+     "label": "Tell your manager",
+     "heading": "Report inside your agency. Never warn the client",
+     "body": "If something feels wrong, write down what you saw and tell your manager or your agency's compliance person the same day. They decide whether to report it to the authorities. Never tell the client: warning them can break the law.",
+     "short": "Write down what you saw. Tell your manager the same day. Never warn the client.",
+     "warning": "Never help anyone hide where money comes from, or split payments to avoid checks. Stop, and tell your manager.",
+     "rules": [
+      {
+       "title": "Write it down",
+       "detail": "Date, what was said, amounts and names. Facts, not opinions.",
+       "action": "Give your notes to your manager the same day."
+      }
+     ],
+     "photo": {
+      "src": "img/learn-36-2.jpg",
+      "alt": "Report inside your agency. Never warn the client"
+     }
+    }
+   ],
+   "roleplay": {
+    "scenario": "A buyer wants to pay in cash, in pieces",
+    "turns": [
+     {
+      "client": [
+       "I'll pay the deposit in cash, in a few smaller payments. Easier for me."
+      ],
+      "agent": "I *understand*. ‧‧‧ Payments go only to the *company* account, ‧‧‧ by bank *transfer*, ‧‧‧ with an *official* receipt."
+     },
+     {
+      "client": [
+       "My business partner will pay part of it."
+      ],
+      "agent": "Then we'll need his *details* too, ‧‧‧ and the *reason*. ‧‧‧ It's a *standard* check ‧‧‧ for every buyer."
+     },
+     {
+      "client": [
+       "That's a lot of questions."
+      ],
+      "agent": "It *protects* you. ‧‧‧ A *clean* record now ‧‧‧ keeps your *title* safe later."
+     }
+    ],
+    "note": "Did the agent stay polite, insist on the standard process, and not accuse? Afterwards: write it down and tell the manager.",
+    "debrief": "Stay calm and standard with the client. Then tell your manager the same day."
+   },
+   "quiz": [
+    {
+     "q": "Which is a money-laundering red flag?",
+     "opts": [
+      "A client asks about yield",
+      "A third party pays, with no clear reason",
+      "A client brings family to a viewing",
+      "A client asks for the contract"
+     ],
+     "correct": 1,
+     "explain": "Money from someone with no clear link to the buyer is a classic red flag."
+    },
+    {
+     "q": "You suspect something is wrong. Who do you tell?",
+     "opts": [
+      "The client",
+      "Your manager or compliance person",
+      "Nobody",
+      "Social media"
+     ],
+     "correct": 1,
+     "explain": "Tell your manager the same day. Never warn the client."
+    },
+    {
+     "q": "A buyer wants to split a cash deposit into many small payments. You:",
+     "opts": [
+      "Agree, it's easier",
+      "Insist on a bank transfer to the company account, and tell your manager",
+      "Take the cash yourself",
+      "Split it further"
+     ],
+     "correct": 1,
+     "explain": "Splitting payments to avoid checks is a red flag. Keep the standard process, and report inside."
+    },
+    {
+     "q": "How do you catch a fake seller?",
+     "opts": [
+      "Trust their word",
+      "Match their ID to the original title",
+      "Ask for a bigger deposit",
+      "Look at their car"
+     ],
+     "correct": 1,
+     "explain": "The seller's ID must match the name on the original title."
+    }
+   ],
+   "reflection": "Which red flag would be hardest for you to notice, and how will you check for it?"
+  },
+  {
+   "id": 27,
+   "week": 4,
+   "title": "Final assessment",
+   "short": "Final Assessment",
+   "assessment": true,
+   "objectives": [
+    "15 questions from every level",
+    "Score 12 or more to pass",
+    "Then get your Trusted Agent certificate"
+   ],
+   "sections": [],
+   "quiz": [],
+   "reflection": ""
   }
  ]
 };
@@ -5251,7 +6519,7 @@ function lastRating(i){ const r=state.ratings[i]; return r&&r.length?r[r.length-
 /* Home is a learning path: one unit for the lessons, then one unit per scenario category. */
 /* Units in climbing order. Foundation holds the lessons without a unit; other units gather lessons with that
    "unit" and scenarios with that "cat". Each unit is a camp on the mountain. */
-const UNIT_DEF=[{name:'Foundation',color:'green'},{name:'Professional Presence',color:'ruby'},{name:'Tough Calls',color:'plum'},{name:'Client & Advisory Skills',color:'blue'},{name:'Advanced Advisory',color:'purple'},{name:'Performance',color:'teal'}];
+const UNIT_DEF=[{name:'Foundation',color:'green'},{name:'Professional Presence',color:'ruby'},{name:'Tough Calls',color:'plum'},{name:'Client & Advisory Skills',color:'blue'},{name:'Advanced Advisory',color:'purple'},{name:'Growing Your Business',color:'orange'},{name:'Performance',color:'teal'}];
 const CATS=UNIT_DEF.map(u=>u.name).filter(n=>SCENARIOS.some(s=>s.cat===n));
 const catColor=cat=>(UNIT_DEF.find(u=>u.name===cat)||UNIT_DEF[0]).color;
 const ICO={
@@ -5284,9 +6552,9 @@ function units(){
 }
 /* The home path is a climb: base camp at the bottom, the summit at the top.
    Each unit is a camp at a higher altitude, and a rank is earned at each one. */
-const RANKS=['Trainee','Associate','Advisor','Trusted Advisor','Senior Advisor','Lead Advisor','Certified Agent'];
-const CAMPS=['Level 1','Level 2','Level 3','Level 4','Level 5','Level 6'];
-const ALTS=[1,5,9,13,17,21,27];   // floors: each level of the tower, the rooftop is floor 27
+const RANKS=['Trainee','Associate','Advisor','Trusted Advisor','Senior Advisor','Lead Advisor','Principal Advisor','Certified Agent'];
+const CAMPS=['Level 1','Level 2','Level 3','Level 4','Level 5','Level 6','Level 7'];
+const ALTS=[1,5,9,13,17,21,25,29];   // floors: each level of the tower, the rooftop is floor 29
 const fmtM=m=>m>=ALTS[ALTS.length-1]?'Rooftop':`Floor ${Math.round(m)}`;
 function climb(us){ // a level counts as reached when every lesson in it that exists is done ("coming soon" ones don't block you)
   const open=u=>u.items.filter(x=>!x.stub), r0=us.findIndex(u=>!open(u).length||!open(u).every(x=>x.done)), r=r0<0?us.length:r0;
@@ -5852,7 +7120,7 @@ async function qzPlay(id,text,coach,t){ const c=(useFiles()&&AUDIO[id])||pvClip(
     if(type==='pause'||type==='pause-long'){ if(!await wait((type==='pause'?650:1300)/state.rate,t)) return false; continue; }
     if(txt&&!await say(txt,t,{pitch:type==='down'?0.88:1})) return false; }
   return t===tok; }
-async function quizRead(auto){ const c=lsess&&lsess.cards[lsess.n]; if(!c||c.pick||c.checked) return; stopAll(); const t=++tok, i=lsess.i, l=LESSONS[i];
+async function quizRead(auto){ const c=lsess&&lsess.cards[lsess.n]; if(!c||c.pick||c.checked) return; stopAll(); const t=++tok, i=c.si??lsess.i, l=LESSONS[i];
   if(auto&&!await wait(LEAD,t)) return;
   let items=[];
   if(c.type==='quiz'){ const p=l.pairs[c.k]; items=[...document.querySelectorAll('.ls-opt[data-act="ls-pick"]')].map(el=>({el,id:`qz${i}-${el.dataset.o}`,text:el.dataset.o==='a'?p.normal:p.better})); }
@@ -5871,7 +7139,7 @@ function quizPick(c,n){ const q=c.q; if(c.checked) return;
   c.pick=n; quizCheck(c); }
 function quizCheck(c){ const q=c.q; c.checked=true;
   c.ok=q.type==='weak'?c.sel.size===q.answer.length&&q.answer.every(n=>c.sel.has(n)):c.pick===q.answer;
-  stopAll(); render(); quizVerdict(c.ok,`c-lesson${lsess.i}-q${c.k}-why`); }
+  stopAll(); render(); quizVerdict(c.ok,`c-lesson${c.si??lsess.i}-q${c.k}-why`); }
 
 /* ---------------- FIRST TRY vs TODAY ----------------
    Every recorded line keeps its first take and its latest one (IndexedDB store "history", this device).
@@ -6124,7 +7392,30 @@ function atSVG(key,label){ const sk=String(key).replace(/^sla:(\w+):([ab])$/,'sl
   let m=String(key).match(/^sla:(\w+):([ab])$/); const body=m?(ILLUS_SLA[m[1]]||{})[m[2]]:AT_ILL[key];
   return body?`<svg class="il" viewBox="0 0 200 130" role="img" aria-label="${esc(label||'')}">${IL_ROOM}${body}</svg>`:''; }
 
-function lessonCards(i){ const l=LESSONS[i], cards=[{type:'intro'}];
+const PASS=12, EXAM_N=15;
+const certDate=d=>new Date((d||new Date().toISOString().slice(0,10))+'T12:00:00').toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'});
+function certHTML(){ const c=state.cert||{}; return `<div class="cert"><div class="cert-in"><p class="cert-k">Certificate of completion</p><p class="cert-brand">Trusted Agent</p>
+  <label class="cert-name"><span>Name on the certificate</span><input id="certName" value="${esc(c.name||'')}" placeholder="Your full name" autocomplete="name"></label>
+  <p class="cert-line">has completed every level of the Trusted Agent professional training for real estate agents in Cambodia, and passed the final assessment.</p>
+  <p class="cert-foot">${certDate(c.date)} · Score ${c.score||0} of ${c.total||EXAM_N}</p></div></div>`; }
+function certPNG(){ const c=state.cert||{}, W=1600, H=1130, cv=document.createElement('canvas'); cv.width=W; cv.height=H; const g=cv.getContext('2d');
+  g.fillStyle='#FBF8F1'; g.fillRect(0,0,W,H); g.strokeStyle='#B8893B'; g.lineWidth=10; g.strokeRect(40,40,W-80,H-80); g.lineWidth=2; g.strokeRect(62,62,W-124,H-124);
+  const ctr=(t,y,font,col)=>{ g.font=font; g.fillStyle=col; g.textAlign='center'; g.fillText(t,W/2,y); };
+  ctr('CERTIFICATE OF COMPLETION',250,'600 34px Inter, Arial, sans-serif','#8A6626'); ctr('Trusted Agent',360,'600 96px Spectral, Georgia, serif','#1B2430');
+  ctr(c.name||'',560,'600 76px Spectral, Georgia, serif','#1B2430'); g.fillStyle='#B8893B'; g.fillRect(W/2-300,600,600,3);
+  const lines=['has completed every level of the Trusted Agent professional training','for real estate agents in Cambodia, and passed the final assessment.'];
+  lines.forEach((t,k)=>ctr(t,690+k*52,'400 34px Inter, Arial, sans-serif','#3B4450'));
+  ctr(`${certDate(c.date)}  ·  Score ${c.score||0} of ${c.total||EXAM_N}`,900,'600 30px Inter, Arial, sans-serif','#5C6470');
+  g.beginPath(); g.arc(W/2,1000,44,0,Math.PI*2); g.fillStyle='#B8893B'; g.fill(); ctr('✓',1016,'700 50px Inter, Arial, sans-serif','#FFFFFF');
+  return cv.toDataURL('image/png'); }
+function certSave(){ const url=certPNG(), bin=atob(url.split(',')[1]), arr=new Uint8Array(bin.length); for(let k=0;k<bin.length;k++) arr[k]=bin.charCodeAt(k);
+  const name=`Trusted-Agent-certificate-${(state.cert&&state.cert.name||'').replace(/[^A-Za-z0-9]+/g,'-')||'me'}.png`, file=new File([arr],name,{type:'image/png'});
+  if(navigator.canShare&&navigator.canShare({files:[file]})) return navigator.share({files:[file],title:'Trusted Agent certificate'}).catch(()=>{});
+  const a=document.createElement('a'); a.href=url; a.download=name; document.body.appendChild(a); a.click(); a.remove(); }
+function examCards(i){ const pool=LESSONS.map((l,j)=>[j,(LESSON_QUIZ[j]||[]).filter(q=>q.type==='choice')]).filter(([j,qs])=>j!==i&&qs.length);
+  for(let n=pool.length-1;n>0;n--){ const m=Math.floor(Math.random()*(n+1)); [pool[n],pool[m]]=[pool[m],pool[n]]; }
+  return [{type:'intro'},...pool.slice(0,EXAM_N).map(([j,qs])=>{ const q=qs[Math.floor(Math.random()*qs.length)]; return {type:'q',q,k:LESSON_QUIZ[j].indexOf(q),si:j}; }),{type:'done'}]; }
+function lessonCards(i){ const l=LESSONS[i], cards=[{type:'intro'}]; if(l.assessment) return examCards(i);
   if(l.decision){ l.decision.steps.forEach((x,k)=>cards.push({type:'decide',k})); cards.push({type:'principle'},{type:'done'}); return cards; }
   // one idea per screen: each section, then its "Which is the professional way?" choice, one card per rule, then picture questions
   l.sections.forEach((x,k)=>{ cards.push({type:'sec',k});
@@ -6145,7 +7436,9 @@ function endLesson(){ if(!lsess) return; stopAll(); cancelRec(); lsess.cards.for
 function enterCard(){ stopAll(); cancelRec(); const c=lsess.cards[lsess.n], i=lsess.i;
   if(c.url) URL.revokeObjectURL(c.url); if(c.first) URL.revokeObjectURL(c.first.url); Object.assign(c,{step:null,res:null,err:null,url:null,first:null,checked:false,pick:null,sel:new Set(),dpick:null});
   if(c.type==='done'){ const k=lsess.kind; markDay();
-    if(k==='lesson'){ const sc=lsess.cards.filter(x=>x.type==='quiz'||x.type==='q'||x.type==='say'||x.type==='pq'||x.type==='decide'), got=sc.filter(x=>x.type==='say'?x.good:x.ok).length;
+    if(k==='lesson'&&LESSONS[i].assessment){ const qs=lsess.cards.filter(x=>x.type==='q'); c.score=qs.filter(x=>x.ok).length; c.total=qs.length; c.pass=c.score>=PASS;
+      if(c.pass){ c.stars=award('l'+i,scoreStars(c.score,c.total),!state.done[i]); state.done[i]=true; state.cert={name:(state.cert&&state.cert.name)||state.intro.name||'',date:new Date().toISOString().slice(0,10),score:c.score,total:c.total}; } }
+    else if(k==='lesson'){ const sc=lsess.cards.filter(x=>x.type==='quiz'||x.type==='q'||x.type==='say'||x.type==='pq'||x.type==='decide'), got=sc.filter(x=>x.type==='say'?x.good:x.ok).length;
       c.stars=award('l'+i,scoreStars(got,sc.length),!state.done[i]); state.done[i]=true; } else if(k==='r3'){ state.scR3=state.scR3||{}; state.scR3[i]=true; }
     else if(k==='prep'){ const m=preps().find(x=>x.id===lsess.id); if(m) m.reps=(m.reps||0)+1; } save(); }
   render(); window.scrollTo(0,0);
@@ -6251,6 +7544,7 @@ function lessonAct(a,btn){
   if(a==='ls-rec') return lsRecord();
   if(a==='ls-stop') return stopRec();
   if(a==='ls-again'&&c.type==='done') return startLesson(lsess.i);
+  if(a==='cert-save'){ const n=$('certName'); if(n&&!n.value.trim()){ n.focus(); n.classList.add('need'); return; } return certSave(); }
   if(a==='ls-again'){ stopAll(); cancelRec(); c.step='ready'; c.err=null; return render(); }
   if(a==='ls-pmodel') return runBtn(btn,t=>lsModel(t));
   if(a==='ls-pme') return runBtn(btn,t=>playUrl(c.url,t));
@@ -6346,7 +7640,7 @@ function viewLessonSession(){
       <p class="ctx" style="margin-top:14px">You'll learn</p><ul class="at-objs">${l.objectives.map(o=>`<li>${esc(o)}</li>`).join('')}</ul>`;
     ft=cont('Start'); }
   else if(c.type==='sec'){ const x=l.sections[c.k];
-    body=`<p class="ctx">${esc(x.label)}</p><h1 class="fx-title">${esc(x.heading)}</h1>${atPhoto(x.photo)}<div class="at-body">${x.body}</div>${atExtras(x,x.flow?'flow':undefined)}`;
+    body=`<p class="ctx">${esc(x.label)}</p><h1 class="fx-title">${esc(x.heading)}</h1>${atPhoto(x.photo)}<div class="at-body">${x.short?esc(x.short):x.body}</div>${atExtras(x,x.flow?'flow':undefined)}`;
     ft=cont(); }
   else if(c.type==='step'){ const x=l.sections[c.k];
     body=`<p class="ctx">${esc(x.label)} · Step ${c.j+1} of ${x.flow.length}</p><h1 class="fx-title">${esc(x.heading)}</h1>
@@ -6437,6 +7731,11 @@ function viewLessonSession(){
       ft=`<div class="fx-btns"><button class="ghost-btn" type="button" data-act="pp-breathe">Breathe first</button><button class="solid-btn" type="button" data-act="ls-exit">Done</button></div>`; }
     else { body=`<div class="done-wrap"><div class="done-badge">${LICO[0]}</div><h1 class="done-title">Calm and ready</h1><p class="lead" style="margin:0 auto">Go in slow. Let the first pause work.</p></div>`;
       ft=`<div class="fx-btns"><span></span><button class="solid-btn" type="button" data-act="ls-exit">Done</button></div>`; } }
+  else if(c.type==='done'&&l.assessment){ const nx=nextItem(); if(c.score==null){ c.score=0; c.total=EXAM_N; c.pass=false; }
+    if(c.pass){ body=`<div class="done-wrap"><div class="done-badge">${ICO.check}</div><h1 class="done-title">You passed</h1><p class="lead" style="margin:0 auto 18px">${c.score} of ${c.total} right</p></div>${certHTML()}`;
+      ft=`<div class="fx-btns"><button class="ghost-btn" type="button" data-act="cert-save">Save certificate</button>${pendingUnlock?`<button class="solid-btn" type="button" data-act="tomap">Continue</button>`:`<button class="solid-btn" type="button" data-act="nextup">${nx?`Next: ${esc(nx.title)}`:'Done'}</button>`}</div>`; }
+    else { body=`<div class="done-wrap"><div class="done-badge" style="background:linear-gradient(145deg,#C9CED4,#9AA3AD)">${ICO.warn}</div><h1 class="done-title">${c.score} of ${c.total}</h1><p class="lead" style="margin:0 auto">You need ${PASS} to pass. Review the lessons you missed, then try again.</p></div>`;
+      ft=`<div class="fx-btns"><button class="ghost-btn" type="button" data-act="tomap">Back to the tower</button><button class="solid-btn" type="button" data-act="ls-again">Try again</button></div>`; } }
   else if(c.type==='done'){ const nx=nextItem();
     body=`<div class="done-wrap"><div class="done-badge">${LICO[i]}</div><h1 class="done-title">Lesson complete</h1>${starRow(c.stars||starsOf('l'+i),'dstars')}<p class="lead" style="margin:0 auto">${l.title}</p></div>`;
     ft=`<div class="fx-btns"><button class="ghost-btn" type="button" data-act="ls-again">Again</button>${pendingUnlock?`<button class="solid-btn" type="button" data-act="tomap">Continue</button>`:`<button class="solid-btn" type="button" data-act="nextup">${nx?`Next: ${esc(nx.title)}`:'Done'}</button>`}</div>`; }
@@ -6653,9 +7952,25 @@ function viewScenario(i){
   <div class="end-nav">${pv!=null?`<button class="ghost-btn" type="button" data-go="scenario" data-i="${pv}">‹ Step ${stepNo('scenario',pv)}</button>`:'<span></span>'}${nx!=null?`<button class="ghost-btn" type="button" data-go="scenario" data-i="${nx}">Step ${stepNo('scenario',nx)} ›</button>`:''}</div>`;
 }
 
+/* ---------------- KHMER (draft) ----------------
+   Settings → Language. A draft for a native speaker to review: the interface, every level and lesson title, and lesson 1.
+   Text not translated yet stays in English. The voice stays English for now. Exact strings are swapped on screen. */
+const KM={"Foundation": "មូលដ្ឋានគ្រឹះ", "Professional Presence": "ឥរិយាបថវិជ្ជាជីវៈ", "Tough Calls": "ការសម្រេចចិត្តលំបាក", "Client & Advisory Skills": "ជំនាញអតិថិជន និងការប្រឹក្សា", "Advanced Advisory": "ការប្រឹក្សាកម្រិតខ្ពស់", "Growing Your Business": "ពង្រីកអាជីវកម្មរបស់អ្នក", "Performance": "លទ្ធផលការងារ", "The professional agent": "ភ្នាក់ងារអាជីព", "The Phnom Penh property market": "ទីផ្សារអចលនទ្រព្យភ្នំពេញ", "How real estate works in Cambodia": "របៀបដែលអចលនទ្រព្យដំណើរការនៅកម្ពុជា", "Who our clients are": "អតិថិជនរបស់យើងជានរណា", "Calm your nerves": "រក្សាភាពស្ងប់ស្ងាត់", "Introduce yourself": "ណែនាំខ្លួនឯង", "Slow down": "និយាយយឺតៗ", "Use silence": "ប្រើភាពស្ងៀមស្ងាត់", "Sound certain": "និយាយដោយទំនុកចិត្ត", "Say less": "និយាយតិច", "The ground-floor unit": "បន្ទប់ជាន់ផ្ទាល់ដី", "The missing title": "ប្លង់ដែលបាត់", "The extra commission": "កម្រៃជើងសារបន្ថែម", "“Just use my friend's name”": "«ដាក់ឈ្មោះមិត្តខ្ញុំទៅ»", "The quota is almost full": "កូតាជិតពេញហើយ", "“Guarantee me 8%”": "«ធានាឲ្យខ្ញុំ ៨%»", "The advisor mindset": "ផ្នត់គំនិតរបស់ទីប្រឹក្សា", "Qualifying clients correctly": "វាយតម្លៃអតិថិជនឲ្យបានត្រឹមត្រូវ", "The advisory conversation flow": "លំដាប់នៃការសន្ទនាប្រឹក្សា", "Language & communication standards": "ស្តង់ដារភាសា និងការប្រាស្រ័យទាក់ទង", "Reading client signals": "អានសញ្ញារបស់អតិថិជន", "Yield, ROI & cost of ownership": "ទិន្នផល ផលចំណេញ និងថ្លៃកាន់កាប់", "The Japanese investor protocol": "របៀបធ្វើការជាមួយវិនិយោគិនជប៉ុន", "The European & German investor protocol": "របៀបធ្វើការជាមួយវិនិយោគិនអឺរ៉ុប និងអាល្លឺម៉ង់", "Serving Khmer & overseas Cambodian clients": "បម្រើអតិថិជនខ្មែរ និងខ្មែរនៅបរទេស", "Handling objections": "ដោះស្រាយការជំទាស់", "Site visits & property presentations": "ការទស្សនាទីតាំង និងការបង្ហាញអចលនទ្រព្យ", "Writing proposals & follow-ups": "សរសេរសំណើ និងការតាមដាន", "Pipeline & deal management": "ការគ្រប់គ្រងអតិថិជន និងកិច្ចព្រមព្រៀង", "Performance standards & self-evaluation": "ស្តង់ដារការងារ និងការវាយតម្លៃខ្លួនឯង", "Graduation: the professional standard": "បញ្ចប់ការសិក្សា៖ ស្តង់ដារវិជ្ជាជីវៈ", "Finding leads & first contact": "ស្វែងរកអតិថិជនសក្តានុពល និងទំនាក់ទំនងដំបូង", "Listings & sellers": "ការដាក់លក់ និងម្ចាស់ផ្ទះ", "Rentals & landlords": "ការជួល និងម្ចាស់ផ្ទះជួល", "Closing & after-sales": "ការបិទកិច្ចព្រមព្រៀង និងសេវាក្រោយលក់", "Your personal brand": "កេរ្តិ៍ឈ្មោះផ្ទាល់ខ្លួន", "Fraud & money-laundering red flags": "សញ្ញាព្រមាននៃការក្លែងបន្លំ និងការលាងប្រាក់", "Final assessment": "ការវាយតម្លៃចុងក្រោយ", "Know why professionalism matters so much in Cambodian property": "ដឹងថាហេតុអ្វីវិជ្ជាជីវៈសំខាន់ខ្លាំងក្នុងវិស័យអចលនទ្រព្យកម្ពុជា", "Understand the difference between an advisor and a salesperson": "យល់ពីភាពខុសគ្នារវាងទីប្រឹក្សា និងអ្នកលក់", "Know the 3 rules every professional agent follows, with no exceptions": "ដឹងពីច្បាប់ ៣ ដែលភ្នាក់ងារអាជីពគ្រប់រូបអនុវត្ត ដោយគ្មានករណីលើកលែង", "Why it matters": "ហេតុអ្វីវាសំខាន់", "Clients can't easily check what you tell them": "អតិថិជនមិនងាយផ្ទៀងផ្ទាត់អ្វីដែលអ្នកប្រាប់ទេ", "Clients can't check titles, prices or developers, so they rely on you. Be an advisor first: honest, even when the answer is “don't buy this one.”": "អតិថិជនមិនអាចពិនិត្យប្លង់ តម្លៃ ឬក្រុមហ៊ុនអភិវឌ្ឍន៍បានទេ ដូច្នេះពួកគេពឹងលើអ្នក។ ត្រូវជាទីប្រឹក្សាជាមុនសិន៖ និយាយត្រង់ ទោះបីចម្លើយគឺ «កុំទិញមួយនេះ» ក៏ដោយ។", "Honest answers, even when the answer is no": "ចម្លើយស្មោះត្រង់ ទោះចម្លើយគឺ «ទេ» ក៏ដោយ", "Clear numbers: net, not gross": "តួលេខច្បាស់លាស់៖ សុទ្ធ មិនមែនដុល", "Legal safety: the right title, a real contract": "សុវត្ថិភាពផ្លូវច្បាប់៖ ប្លង់ត្រឹមត្រូវ កិច្ចសន្យាពិតប្រាកដ", "Fast, reliable replies": "ឆ្លើយតបលឿន និងគួរឲ្យទុកចិត្ត", "No pressure to decide": "មិនបង្ខំឲ្យសម្រេចចិត្ត", "What clients want most from an agent": "អ្វីដែលអតិថិជនចង់បានបំផុតពីភ្នាក់ងារ", "Your job title": "តួនាទីរបស់អ្នក", "You are an advisor, not a salesperson": "អ្នកជាទីប្រឹក្សា មិនមែនជាអ្នកលក់ទេ", "A salesperson closes. An advisor gives honest advice. Same title, different job.": "អ្នកលក់ព្យាយាមបិទការលក់។ ទីប្រឹក្សាផ្តល់ដំបូន្មានស្មោះត្រង់។ ឈ្មោះតួនាទីដូចគ្នា ការងារខុសគ្នា។", "You will lose some sales. That is correct.": "អ្នកនឹងខកការលក់ខ្លះ។ នោះគឺត្រឹមត្រូវហើយ។", "When a client's goals do not match a property, tell them clearly. A client who trusts you today will come back later, or send you a friend.": "ពេលគោលដៅអតិថិជនមិនត្រូវនឹងអចលនទ្រព្យ ចូរប្រាប់គាត់ឲ្យច្បាស់។ អតិថិជនដែលទុកចិត្តអ្នកថ្ងៃនេះ នឹងត្រឡប់មកវិញ ឬណែនាំមិត្តភក្តិមករកអ្នក។", "If a property does not fit the client's stated goal (income, family home, etc.), say so out loud before showing them anything else.": "បើអចលនទ្រព្យមិនត្រូវនឹងគោលដៅដែលអតិថិជនបានប្រាប់ (ចំណូល ផ្ទះគ្រួសារ ។ល។) ចូរនិយាយឲ្យច្បាស់ មុនបង្ហាញអ្វីផ្សេងទៀត។", "Make the sale happen. If the client is unsure, convince them. Every conversation moves toward \"yes.\"": "ធ្វើយ៉ាងណាឲ្យលក់បាន។ បើអតិថិជនស្ទាក់ស្ទើរ ត្រូវបញ្ចុះបញ្ចូល។ រាល់ការសន្ទនាត្រូវឆ្ពោះទៅរក «បាទ/ចាស»។", "Find out if this property is right for the client. If it is not right, say so, even if that means no sale today.": "ស្វែងយល់ថាអចលនទ្រព្យនេះសមនឹងអតិថិជនឬទេ។ បើមិនសម ចូរប្រាប់ត្រង់ៗ ទោះបីថ្ងៃនេះមិនបានលក់ក៏ដោយ។", "The 3 rules": "ច្បាប់ ៣", "3 rules every professional agent follows, always": "ច្បាប់ ៣ ដែលភ្នាក់ងារអាជីពអនុវត្តជានិច្ច", "Three rules, every conversation, every client. No exceptions.": "ច្បាប់បី គ្រប់ការសន្ទនា គ្រប់អតិថិជន។ គ្មានករណីលើកលែង។", "Be clear, not persuasive": "និយាយឲ្យច្បាស់ កុំបញ្ចុះបញ្ចូល", "If you cannot explain something in a simple, honest sentence, do not say it at all. Go find the correct answer first.": "បើអ្នកមិនអាចពន្យល់អ្វីមួយជាប្រយោគសាមញ្ញ និងស្មោះត្រង់បានទេ កុំនិយាយវាឲ្យសោះ។ ទៅស្វែងរកចម្លើយត្រឹមត្រូវជាមុនសិន។", "If you don't know an answer, say \"let me confirm that for you.\" Never guess.": "បើអ្នកមិនដឹងចម្លើយ ចូរនិយាយថា «ខ្ញុំសូមផ្ទៀងផ្ទាត់ជូនបន្តិច»។ កុំទាយ។", "Trust is the real product": "ការទុកចិត្ត គឺជាផលិតផលពិតប្រាកដ", "Your most valuable asset is not any single listing. It is your reputation. One client who feels pressured will tell other people not to trust you.": "ទ្រព្យសម្បត្តិមានតម្លៃបំផុតរបស់អ្នក មិនមែនជាអចលនទ្រព្យណាមួយទេ គឺកេរ្តិ៍ឈ្មោះរបស់អ្នក។ អតិថិជនម្នាក់ដែលមានអារម្មណ៍ថាត្រូវបានបង្ខំ នឹងប្រាប់អ្នកដទៃកុំឲ្យទុកចិត្តអ្នក។", "If you feel tempted to rush a client toward a decision, stop and slow down instead.": "បើអ្នកចង់ប្រញាប់ឲ្យអតិថិជនសម្រេចចិត្ត ចូរឈប់ ហើយបន្ថយល្បឿនវិញ។", "Follow the system, every time": "អនុវត្តតាមប្រព័ន្ធ គ្រប់ពេល", "A good process exists for a reason. Skipping steps because you are in a hurry causes mistakes.": "ដំណើរការល្អមានមូលហេតុរបស់វា។ ការរំលងជំហានដោយសារប្រញាប់ នាំឲ្យមានកំហុស។", "Before you close a conversation, check: did I follow every step for today's stage?": "មុនបញ្ចប់ការសន្ទនា ចូរពិនិត្យ៖ តើខ្ញុំបានអនុវត្តគ្រប់ជំហានសម្រាប់ដំណាក់កាលថ្ងៃនេះហើយឬនៅ?", "How should a professional agent see their role?": "តើភ្នាក់ងារអាជីពគួរមើលតួនាទីខ្លួនដូចម្តេច?", "Closing as many sales as possible": "បិទការលក់ឲ្យបានច្រើនបំផុត", "Showing every listing quickly": "បង្ហាញអចលនទ្រព្យទាំងអស់ឲ្យលឿន", "Advising the client, even if it means no sale today": "ផ្តល់ដំបូន្មានដល់អតិថិជន ទោះបីថ្ងៃនេះមិនបានលក់ក៏ដោយ", "Getting the highest price for the developer": "យកតម្លៃខ្ពស់បំផុតឲ្យក្រុមហ៊ុនអភិវឌ្ឍន៍", "An advisor first. This changes how you talk to every client. You are there to advise, not to sell.": "ទីប្រឹក្សាជាមុនសិន។ វាផ្លាស់ប្តូររបៀបដែលអ្នកនិយាយជាមួយអតិថិជនគ្រប់រូប។ អ្នកនៅទីនោះដើម្បីប្រឹក្សា មិនមែនដើម្បីលក់ទេ។", "What are the 3 rules of a professional agent?": "តើច្បាប់ ៣ របស់ភ្នាក់ងារអាជីពជាអ្វី?", "Speed, Volume, Commission": "ល្បឿន បរិមាណ កម្រៃជើងសារ", "Be clear not persuasive · Trust is the product · Follow the system": "និយាយឲ្យច្បាស់ កុំបញ្ចុះបញ្ចូល · ការទុកចិត្តជាផលិតផល · អនុវត្តតាមប្រព័ន្ធ", "Price, Location, Yield": "តម្លៃ ទីតាំង ទិន្នផល", "Marketing, Sales, Closing": "ទីផ្សារ ការលក់ ការបិទកិច្ចព្រមព្រៀង", "Be clear, not persuasive. Trust is the product. Follow the system, every time. These 3 rules guide every conversation a professional agent has.": "និយាយឲ្យច្បាស់ កុំបញ្ចុះបញ្ចូល។ ការទុកចិត្តជាផលិតផល។ អនុវត្តតាមប្រព័ន្ធគ្រប់ពេល។ ច្បាប់ទាំង ៣ នេះណែនាំរាល់ការសន្ទនារបស់ភ្នាក់ងារអាជីព។", "A client asks you to guarantee a specific return on their investment. What do you do?": "អតិថិជនសុំឲ្យអ្នកធានាផលចំណេញជាក់លាក់លើការវិនិយោគរបស់គាត់។ តើអ្នកធ្វើដូចម្តេច?", "Give a careful estimate to make them feel good": "ផ្តល់ការប៉ាន់ស្មានដោយប្រុងប្រយ័ត្ន ដើម្បីឲ្យគាត់សប្បាយចិត្ត", "Explain that no advisor can honestly guarantee a return, and why": "ពន្យល់ថាគ្មានទីប្រឹក្សាណាអាចធានាផលចំណេញដោយស្មោះត្រង់បានទេ និងហេតុផល", "Check with the developer and repeat their number": "សួរក្រុមហ៊ុនអភិវឌ្ឍន៍ ហើយនិយាយតួលេខរបស់គេឡើងវិញ", "Quote the highest gross yield you have heard": "ប្រាប់ទិន្នផលដុលខ្ពស់បំផុតដែលអ្នកធ្លាប់ឮ", "Never use the word \"guarantee\" for investment returns. Explaining why builds trust. Guessing destroys it.": "កុំប្រើពាក្យ «ធានា» សម្រាប់ផលចំណេញពីការវិនិយោគ។ ការពន្យល់ហេតុផលកសាងការទុកចិត្ត។ ការទាយបំផ្លាញវា។", "What does a professional agent compete on?": "តើភ្នាក់ងារអាជីពប្រកួតប្រជែងលើអ្វី?", "The lowest commission in Phnom Penh": "កម្រៃជើងសារទាបបំផុតនៅភ្នំពេញ", "Trust, clarity, and advisory depth": "ការទុកចិត្ត ភាពច្បាស់លាស់ និងជម្រៅនៃការប្រឹក្សា", "The most property listings": "មានអចលនទ្រព្យដាក់លក់ច្រើនបំផុត", "The fastest closing time": "បិទការលក់លឿនបំផុត", "Not volume, not the lowest commission. Trust, clarity and depth of advice: that is what clients remember and recommend.": "មិនមែនបរិមាណ មិនមែនកម្រៃជើងសារទាបបំផុតទេ។ ការទុកចិត្ត ភាពច្បាស់លាស់ និងជម្រៅនៃដំបូន្មាន៖ នោះហើយជាអ្វីដែលអតិថិជនចងចាំ និងណែនាំបន្ត។", "What do you think is the hardest part about being an advisor instead of a salesperson? Write 2-3 sentences.": "តើអ្នកគិតថាអ្វីជាផ្នែកលំបាកបំផុតក្នុងការធ្វើជាទីប្រឹក្សា ជំនួសឲ្យអ្នកលក់? សរសេរ ២ ទៅ ៣ ប្រយោគ។", "Which one is working like a professional?": "តើម្នាក់ណាធ្វើការដូចអ្នកអាជីព?", "Pushes the brochure: “Sign today!”": "រុញខិត្តប័ណ្ណ៖ «ចុះហត្ថលេខាថ្ងៃនេះ!»", "Listens and takes notes": "ស្តាប់ និងកត់ត្រា", "An advisor listens first. The client's goal decides what you show, not your list of projects.": "ទីប្រឹក្សាស្តាប់ជាមុនសិន។ គោលដៅរបស់អតិថិជនជាអ្នកកំណត់អ្វីដែលអ្នកបង្ហាញ មិនមែនបញ្ជីគម្រោងរបស់អ្នកទេ។", "A client asks a question you can't answer. Which is the professional way?": "អតិថិជនសួរសំណួរដែលអ្នកមិនអាចឆ្លើយបាន។ តើមួយណាជាវិធីអាជីព?", "“Probably around 8%…”": "«ប្រហែលជា ៨%…»", "“Let me confirm that for you.”": "«ខ្ញុំសូមផ្ទៀងផ្ទាត់ជូនបន្តិច។»", "Rule 1: be clear, not persuasive. Never guess. Find the correct answer first.": "ច្បាប់ទី ១៖ និយាយឲ្យច្បាស់ កុំបញ្ចុះបញ្ចូល។ កុំទាយ។ ស្វែងរកចម្លើយត្រឹមត្រូវជាមុនសិន។", "Continue": "បន្ត", "Start": "ចាប់ផ្តើម", "Check": "ពិនិត្យ", "Skip": "រំលង", "Again": "ម្តងទៀត", "Done": "រួចរាល់", "Decide": "សម្រេចចិត្ត", "Learn": "រៀន", "Quiz": "តេស្ត", "Practice": "អនុវត្ត", "Your words": "ពាក្យរបស់អ្នក", "Lessons": "មេរៀន", "Settings": "ការកំណត់", "Quick check": "ពិនិត្យរហ័ស", "You'll learn": "អ្វីដែលអ្នកនឹងរៀន", "Right": "ត្រឹមត្រូវ", "Not quite": "មិនទាន់ត្រឹមត្រូវ", "Lesson complete": "បានបញ្ចប់មេរៀន", "Whole tower": "អគារទាំងមូល", "Back to me": "ត្រឡប់មកខ្ញុំវិញ", "Your climb": "ដំណើររបស់អ្នក", "Think of it like this": "សូមគិតបែបនេះ", "Do this": "ធ្វើដូច្នេះ", "Coach on": "គ្រូបង្វឹក៖ បើក", "Coach off": "គ្រូបង្វឹក៖ បិទ", "Listen": "ស្តាប់", "Which is the professional way?": "តើមួយណាជាវិធីអាជីព?", "Rooftop": "ដំបូលអគារ", "Trainee": "អ្នកហាត់ការ", "Associate": "សហការី", "Advisor": "ទីប្រឹក្សា", "Trusted Advisor": "ទីប្រឹក្សាដែលគួរទុកចិត្ត", "Senior Advisor": "ទីប្រឹក្សាជាន់ខ្ពស់", "Lead Advisor": "ទីប្រឹក្សានាំមុខ", "Principal Advisor": "ទីប្រឹក្សាឈានមុខ", "Certified Agent": "ភ្នាក់ងារទទួលស្គាល់", "Coming soon": "ឆាប់ៗនេះ", "In your own words": "តាមពាក្យរបស់អ្នក", "Write here": "សរសេរនៅទីនេះ"};
+function kmText(t){ const k=t.trim(); if(!k) return null; if(KM[k]) return t.replace(k,KM[k]);
+  if(k.includes(' · ')){ const parts=k.split(' · '); const out=parts.map(p=>KM[p]||p.replace(/^Step (\d+)$/,'ជំហាន $1').replace(/^Level (\d+)$/,'កម្រិត $1').replace(/^Floor (\d+)$/,'ជាន់ $1').replace(/^next: (.+)$/,(m,x)=>'បន្ទាប់៖ '+(KM[x]||x))); if(out.some((p,i)=>p!==parts[i])) return t.replace(k,out.join(' · ')); }
+  const m=k.match(/^(Next|Continue) · (.+)$/); return null; }
+function kmPass(root){ if(state.lang!=='km') return; const w=document.createTreeWalker(root||document.body,NodeFilter.SHOW_TEXT); const todo=[];
+  while(w.nextNode()){ const n=w.currentNode; if(n.parentElement&&/^(SCRIPT|STYLE|TEXTAREA)$/.test(n.parentElement.tagName)) continue; const r=kmText(n.nodeValue); if(r&&r!==n.nodeValue) todo.push([n,r]); }
+  todo.forEach(([n,r])=>n.nodeValue=r);
+  (root||document).querySelectorAll('[placeholder]').forEach(el=>{ const r=KM[el.getAttribute('placeholder')]; if(r) el.setAttribute('placeholder',r); }); }
+let kmObs=null, kmT=0;
+function kmWatch(){ document.documentElement.lang=state.lang==='km'?'km':'en'; if(kmObs){ kmObs.disconnect(); kmObs=null; } if(state.lang!=='km') return;
+  kmPass(); kmObs=new MutationObserver(()=>{ cancelAnimationFrame(kmT); kmT=requestAnimationFrame(()=>kmPass()); }); kmObs.observe(document.body,{childList:true,subtree:true}); }
 function viewSettings(){
   const cur=pickVoice();
   return `<h1 class="page-title">Settings</h1>
+  ${state.lang==='km'||/[?&]km\b/.test(location.search)?`<p class="sec-k">Language</p>
+  <div class="card settings"><div class="src-row"><button class="small-btn${state.lang!=='km'?' on':''}" type="button" data-lang="en">English</button><button class="small-btn${state.lang==='km'?' on':''}" type="button" data-lang="km">ខ្មែរ · draft</button></div></div>`:''}
   <div class="card settings">
     <label>Speed <span class="rate-val" id="rateVal">${state.rate.toFixed(2)}×</span><input type="range" id="rate" min="0.6" max="1.2" step="0.05" value="${state.rate}"></label>
     <label class="toggle"><input type="checkbox" id="coachVoiceT" ${coachOn()?'checked':''}> Coach voice</label>
@@ -6733,7 +8048,7 @@ function bindBuilder(){ const map={bName:'name',bWho:'who',bGet:'get',bAvoid:'av
     if(c&&t===personal("Good to meet you. I'm {name}. ‧‧‧ {intro}")) return runBtn(e.currentTarget,tk=>playClip(c,[],tk)); if(t) playSegs(e.currentTarget, segsOf(t)); }); }
 function bind(n,i){
   document.querySelectorAll('#main [data-go]').forEach(b=>b.addEventListener('click',()=>go(b.dataset.go, b.dataset.i!==undefined?+b.dataset.i:undefined)));
-  if(n==='lesson'){ if(lsess){ if(lsess.cards[lsess.n].type==='builder') bindBuilder(); $('atRefl')?.addEventListener('input',e=>{ state.refl=state.refl||{}; state.refl[lsess.i]=e.target.value; save(); }); return; } const l=LESSONS[i];
+  if(n==='lesson'){ if(lsess){ if(lsess.cards[lsess.n].type==='builder') bindBuilder(); $('certName')?.addEventListener('input',e=>{ state.cert=state.cert||{}; state.cert.name=e.target.value.trim(); e.target.classList.remove('need'); save(); }); $('atRefl')?.addEventListener('input',e=>{ state.refl=state.refl||{}; state.refl[lsess.i]=e.target.value; save(); }); return; } const l=LESSONS[i];
     // The same voice as the lesson cards: the recorded clip, or the line made on this device, else the device voice.
     document.querySelectorAll('[data-pair]').forEach(b=>b.addEventListener('click',()=>{ const k=+b.dataset.pair, p=l.pairs[k], c=!p.lang&&((useFiles()&&AUDIO[`l${i}-p${k}`])||pvClip(p.better,KCAST.you));
       if(c) return runBtn(b,t=>playClip(c,[],t)); if(!p.lang&&useFiles()&&isPersonal(p.better)&&PV.state!=='fail') return runBtn(b,async t=>{ const w=await pvWait(p.better,KCAST.you,t); if(w) await playClip(w,[],t); });
@@ -6767,6 +8082,7 @@ function bind(n,i){
     $('rate').addEventListener('input',e=>{ state.rate=+e.target.value; $('rateVal').textContent=state.rate.toFixed(2)+'×'; save(); });
     $('testVoice').addEventListener('click',e=>{ const b=e.currentTarget, c=AUDIO['at0-t0']; if(useFiles()&&c) runBtn(b,t=>playClip(c,[],t)); else playSegs(b, segsOf('Good to meet you. ‧‧‧ Thank you for your time. ↘')); });
     document.querySelectorAll('[data-src]').forEach(b=>b.addEventListener('click',()=>{ stopAll(); state.voiceSrc=b.dataset.src; save(); render(); }));
+    document.querySelectorAll('[data-lang]').forEach(b=>b.addEventListener('click',()=>{ state.lang=b.dataset.lang; save(); if(state.lang!=='km'){ location.reload(); return; } render(); kmWatch(); }));
     $('bkBtn')?.addEventListener('click',async e=>{ const b=e.currentTarget; b.disabled=true; b.textContent='Preparing…'; try{ await bkPrepare(); }catch(err){ alert('The backup could not be prepared.'); } render(); });
     $('bkSave')?.addEventListener('click',bkSave);
     $('bkFile').addEventListener('change',e=>{ const f=e.target.files[0]; if(f) bkRestore(f); e.target.value=''; });
@@ -6780,7 +8096,7 @@ matchMedia('(prefers-color-scheme: dark)').addEventListener?.('change',()=>{ if(
 $('backBtn').addEventListener('click',()=>{ if(sess) act('exit'); else go($('backBtn').dataset.go); });
 $('main').addEventListener('click',e=>{ const b=e.target.closest('[data-act]'); if(b) act(b.dataset.act,b); });
 load(); if(state.vsV!==2){ state.vsV=2; delete state.voiceSrc; save(); }   // once: every device back to the natural voices (an old "Device voice" choice made everything robotic)
-state.route={name:'home'}; render(); scrollToNow(); offlineInit(); setTimeout(()=>loadMineReady.then(pvBuild),1000);   // every visit opens on the mountain, at your current step
+state.route={name:'home'}; render(); kmWatch(); scrollToNow(); offlineInit(); setTimeout(()=>loadMineReady.then(pvBuild),1000);   // every visit opens on the mountain, at your current step
 const loadMineReady=loadMine().then(()=>{ if(['studio','settings'].includes(state.route.name)) render(); });
 
 </script>

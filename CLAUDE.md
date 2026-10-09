@@ -44,12 +44,24 @@ text, one idea per card, natural voices, a journey home screen (a tower: each le
 - Tables fit a phone (<=560px): number tables (`.at-table.num`) stay a table, tighter, numbers never break; word tables
   (`.at-table.words`) become one card per row, each value under its column name (`td[data-h]`). The summit label moves
   right of the spire when there is no room on the left (`.msummit.r`). Overflow check: every card at 320/375/768/1280, and every word drawn in a picture or the tower must sit inside its box with 2 units to spare (bubbles, documents, signs).
+- People pictures (2026-10-09, approved): one Pixar-style 3D cast made in Gemini (art/, git-ignored; prompts in art/PROMPTS.md):
+  the agent, Sophea, Mr. Tanaka, Anna, David, Mark, the manager. Real Gemini scenes where they exist; otherwise portraits in a
+  conversation layout with sharp speech bubbles and action labels. Text is never baked into a Gemini image.
 - Pictures standard (2026-10-05, approved: "clean and pleasant", "easy to understand"): every explanatory
   picture is realistic. Photo-style renders in `img/` (title certificates on a desk with the public-domain royal arms, real
   Khmer headings and a SAMPLE mark, never real names or numbers; furnished floor plans), made from HTML scenes in headless
   Chrome; or free-licence real photos (Wikimedia Commons) credited under the picture (`atPhoto`, `photo:{src,alt,credit}` on
   a section or a flow step). Quiz/decision pictures use `pic('img/…')` in `AT_ILL`. Source documents (REAKH PDFs etc.) stay
   out of git (.gitignore) and are drawn from, never copied. People scenes: polished illustrations (to do).
+- Learn cards (2026-10-05, round 5): every section has `photo` (img/learn-<lesson index>-<section>.jpg, rendered from the
+  scene library) and `short` (1 to 2 sentences shown on screen); the coach still reads the full `body`.
+- Level 7 "Growing Your Business" (week "3.5"): lessons 21 to 26 (leads, listings, rentals, closing, personal brand, fraud and
+  AML red flags), appended at the END of `lessons` so saved progress (by lesson index) never shifts. RANKS 8, CAMPS 7, ALTS 8.
+- Final assessment (`assessment:true`, last lesson): `examCards` draws 15 choice questions from 15 random lessons
+  (cards carry `si`, the source lesson, so the quiz voice clips still match); PASS 12. Pass = done + `state.cert`
+  {name,date,score,total} + certificate card (`certHTML`), saved as a PNG via the share sheet or download (`certSave`).
+- Khmer draft (hidden: the switch shows only with `?km` in the URL; to be redone with Gemini): Settings → Language (`state.lang`). `KM` maps exact English strings to Khmer; `kmWatch` swaps text on screen
+  (MutationObserver). So far: interface, level and lesson titles, lesson 1. Voice stays English. Needs a native reviewer.
 - The voice never reads markup: `flowing()` in make_voice.py turns pause dots into commas/full stops so each line is one
   natural sentence; `speakable()` says an abbreviation once ("Capital Gains Tax (CGT)" → the name), Realestate.com.kh
   as "Real Estate dot com dot K H", "$1 to $2" as "one to two dollars", "BKK1" as "B K K one".

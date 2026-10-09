@@ -13,3 +13,7 @@ sources/
 /*.jpeg
 /*.webp
 /*.heic
+
+tools/blender/
+art/
+tools/clay/
